@@ -2,7 +2,7 @@
     <swiper
     class="slider__items"
     :modules="modules"
-    :slides-per-view="4"
+    :slides-per-view="slidesCount"
     :space-between="5"
     :parallax="true"
 
@@ -51,18 +51,16 @@
         },
         setup() {
             const swiperSlide = useSwiperSlide();
-            const onSwiper = (swiper) => {
+                const onSwiper = (swiper) => {
             };
-            const onSlideChange = (e) => {
+                const onSlideChange = (e) => {
             };
-
-        return {
-          onSwiper,
-          onSlideChange,
-          modules: [ Navigation, Pagination, Scrollbar, A11y ],
-          
-        };
-      },
+            return {
+                onSwiper,
+                onSlideChange,
+                modules: [ Navigation, Pagination, Scrollbar, A11y ],
+            };
+        },
         props: {
             collectionId: String,
             indexPoem: String,
@@ -71,30 +69,42 @@
             },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                slidesCount: null
             }
         },
-        created(){
-            
+        created() {
+            window.addEventListener('resize', this.handleResize);
+            this.handleResize();
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
         },
         mounted(){
-         //   this.swiper = document.querySelector(`.swiper .slide-${this.indexPoem}`).swiper;
-          //  console.log(document.querySelector(`.swiper .slide-${this.indexPoem}`))
-          //  this.swiper.slideTo(this.$route.params.id - 1)
-         
+            this.swiper = document.querySelector(`.slide-${this.indexPoem} .swiper`).swiper
+            this.swiper.slideTo(this.$route.params.id - 1)
+           
         },
         methods:{
+            handleResize() {
+                console.log(window.innerWidth)
+                if(window.innerWidth < 1024) this.slidesCount = 3
+                if(window.innerWidth < 768) this.slidesCount = 1
+                if(window.innerWidth > 1024) this.slidesCount = 4
+                console.log(this.slidesCount)
+            },
             onSlideChange(e){
                // const index = e.activeIndex + 1
                // this.$emit('setCurrIndex', index)
-                //this.$router.push({ name: 'poems-item', params: { id: index }})             
+                // this.$router.push({ name: 'poems-item', params: { id: index }})             
             },
             slideNext(){
                 this.swiper.slideNext()
             },
             slidePrev(){
                 this.swiper.slidePrev()
-            }
+            },
+
         }
     };
   </script>

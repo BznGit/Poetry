@@ -23,7 +23,10 @@
                 <div class="module-content">
                     <div class="slider primary" data-slider="itc-slider" data-loop="false">
                         <div :class="`slider__wrapper slide-${index}`">
-                            <SliderPoems :poems="item.allPoems" :indexPoem="index" :collectionId="item.id"/>
+                            <SliderPoems 
+                            :poems="item.allPoems"
+                            :indexPoem="index"
+                            :collectionId="item.id"/>
                         </div>
                     </div>
                 </div>
@@ -53,12 +56,11 @@
                 <div class="text">
                     {{item.titel}}
                 </div>
-                <div class="text quote">
-                    {{item.forvard}}
+                <div class="text quote" style="white-space: pre-wrap;">
+                    {{item.foreword}}
                 </div>
                 <div class="text">
-                    Желаю Вам Света и Чистоты!<br/>
-                    И. Булгаков
+                    {{item.end}}
                 </div>
             </div>
         </div>
@@ -86,43 +88,42 @@ export default {
     data () {
         return {
             data: this.userStore.getAllCollections(),
-          
          }
     },
     mounted(){
         const moduleForewords = document.querySelectorAll('.module-foreword')
-    const forewords = document.querySelectorAll('.foreword')
+        const forewords = document.querySelectorAll('.foreword')
 
-    for (let i = 0; i < moduleForewords.length; i++) {
-        const linkMore = moduleForewords[i].querySelector('.link-more')
-        const foreword = forewords[i]
-        const closeBtn = foreword.querySelector('.close')
-        const shadow = foreword.querySelector('.shadow')
+        for (let i = 0; i < moduleForewords.length; i++) {
+            const linkMore = moduleForewords[i].querySelector('.link-more')
+            const foreword = forewords[i]
+            const closeBtn = foreword.querySelector('.close')
+            const shadow = foreword.querySelector('.shadow')
 
-        linkMore.addEventListener('click', function (event) {
-            event.preventDefault()
-            foreword.classList.add('active')
-            document.body.classList.add('overflow')
-        })
+            linkMore.addEventListener('click', function (event) {
+                event.preventDefault()
+                foreword.classList.add('active')
+                document.body.classList.add('overflow')
+            })
 
-        document.addEventListener('click', function (event) {
-            const target = event.target
-            if (!target.closest('.foreword') && !target.closest('.module-foreword')) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-            }
-        })
+            document.addEventListener('click', function (event) {
+                const target = event.target
+                if (!target.closest('.foreword') && !target.closest('.module-foreword')) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+                }
+            })
 
-        closeBtn.addEventListener('click', function (event) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-        })
+            closeBtn.addEventListener('click', function (event) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+            })
 
-        shadow.addEventListener('click', function (event) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-        })
-    }
+            shadow.addEventListener('click', function (event) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+            })
+        }
     }
 }
 </script>

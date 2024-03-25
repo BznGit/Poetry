@@ -1,4 +1,5 @@
 <template>
+ 
     <swiper
     class="slider__items"
     :modules="modules"
@@ -74,20 +75,18 @@
                 swiper: null
             }
         },
-        created(){
-            
-        },
-        mounted(){
+         mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
+           console.log('...=',document.querySelector(`.swiper`))
            this.swiper.slideTo(this.$route.params.id - 1)
            console.log(this.$route.params)
          
         },
         methods:{
             onSlideChange(e){
-               const index = e.activeIndex + 1
-               this.$emit('setCurrIndex', index)
-             //  this.$router.push({ name: `poems`, params: {  id: index }})             
+                const index = e.activeIndex + 1
+                this.$emit('setCurrIndex', index)
+                this.$router.push({  params: {  id: index }})             
             },
             slideNext(){
                 this.swiper.slideNext()

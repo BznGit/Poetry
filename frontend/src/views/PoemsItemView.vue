@@ -3,10 +3,10 @@
         <div class="module poem-slider">
             <div class="module-center">
                 <div class="module-nav">
-                    <a class="link-more" href="/poems-collection">
+                    <router-link class="link-more" :to="`/poems/${collection.id}`">
                         <img class="icon" src="@/assets/svg/back.svg"/>
                         <div class="text">Весь сборник</div>
-                    </a>
+                    </router-link>
                     <div class="module-title">
                         <h2 class="title">«{{collection.name}}»</h2>
                         <div class="counter">
@@ -23,6 +23,7 @@
                                 :currIndex="currIndex" 
                                 @setCurrIndex="setCurrIndex"
                                 :collectionId="collection.id"
+                                :indexPoem="collection.color"
                             />
                         </div>   
                     </div>
@@ -52,8 +53,6 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.id);
-        console.log(this.$route.params.collection);
         this.collection = this.userStore.getCollection(this.$route.params.collection)
         this.currIndex = this.$route.params.id
     },
