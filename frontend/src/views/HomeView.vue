@@ -61,7 +61,7 @@
                         </i>
                     </div>
                     <div class="module-content">
-                        <div class="grid texts">
+                         <div class="grid texts">
                             <a class="item text item-01" href="#">
                                 <div class="align">
                                     <div>И смех и грех</div>
