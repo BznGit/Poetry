@@ -3,34 +3,47 @@
         <div class="module book-slider">
             <div class="module-center">
                 <div class="module-content">
-                        <div class="slider primary" data-slider="itc-slider" data-loop="false">
-                            <div class="slider__wrapper">
-                                <Slider :currIndex="currIndex" @setCurrIndex="setCurrIndex" class="slider__items"/>
-                            </div>
+                    <div class="slider primary" data-slider="itc-slider" data-loop="false">
+                        <div class="slider__wrapper">
+                            <SliderBooksFull
+                                :currindex="currIndex"
+                                @setCurrIndex="setCurrIndex"
+                                :books="books"
+                                class="slider__items"
+                            />
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
-   
 </template>
 
 <script>
-import Slider from '../components/SliderBooks.vue'
+import { useStore } from '../store/index'
+import SliderBooksFull from '../components/books/SliderBooksFull.vue'
 
 export default { 
+    setup() {
+        const userStore = useStore();
+        return {
+            userStore
+        };
+    },
     name: 'EventsItemView',
     components: {
-        Slider
+        SliderBooksFull
     },
     data(){
         return {
-            currIndex: 1
+            currIndex: null,
+            books: null
         }
     },
     created(){
-        console.log(this.$route.params.id);
-        this.currIndex = this.$route.params.id
+        this.books = this.userStore.getBooks;
+        this.currIndex = this.books.findIndex(item=>item.id == this.$route.params.id)
+
     },
     methods:{
         setCurrIndex(index){

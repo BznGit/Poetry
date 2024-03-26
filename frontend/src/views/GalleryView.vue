@@ -17,8 +17,12 @@
             <div class="module-content">
                 <div class="grid paintings page">
                     <div v-for="column in gallery.parts" :key="column"  class="column">
-
-                        <router-link v-for="item in column" :key="item" class="item painting item-01" :to="`/gallery/`+ gallery.id +`/` + item.img">
+                        <router-link 
+                            v-for="item in column"
+                            :key="item" 
+                            :class="`item painting item-${item < 10? '0' + item : item}`"
+                            :to="`/gallery/`+ gallery.id +`/` + item.number"
+                        >
                             <button class="painting-buy">
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
