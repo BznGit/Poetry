@@ -40,7 +40,7 @@
                 </div>
                 <div class="cart">
                     {{ cartVis }}
-                    <router-link class="menu-item cart" to="/cart">
+                    <router-link class="menu-item cart active" to="/cart">
                         <div class="cart-icon">
                             <img class="icon active" src="@/assets/svg/cart_w.svg"/>
                             <img class="icon empty " src="@/assets/svg/cart_g.svg"/>

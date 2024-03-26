@@ -1,22 +1,36 @@
 <template>
+ 
     <swiper
-        class="slider__items"
-        :modules="modules"
-        :slides-per-view="1"
-        :space-between="5"
-        :parallax="true"
+    class="slider__items"
+    :modules="modules"
+    :slides-per-view="1"
+    :space-between="5"
+    :parallax="true"
 
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
+    @swiper="onSwiper"
+    @slideChange="onSlideChange"
     >
-        <swiper-slide v-for="(item, index) in poems">
-            <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
-                <div :class="`item poem poem-0${indexPoem}`">
-                
-                    <div class="poem-text">
-                        <div v-html="item.text"></div>
+        <swiper-slide v-for="(item, index) in paitings">
+            <div :class="`slider__item painting item-${index < 10? '0' + index : index} slider__item_active`" style="">
+                <button class="painting-buy">
+                    <img class="icon" src="@/assets/svg/cart_w.svg">
+                </button>
+                <div class="painting-text">
+                        <div class="align" v-html="item.poem"></div>
+                        {{ item.img }}
+                </div>
+                <div class="painting-image">
+                    <img class="image" :src="`../../files/gallery/${item.img}`"  loading="lazy">
+                    <div class="painting-info">
+                        <div class="info">
+                            <div class="info-row">Картина {{item.number}}</div>
+                            <div class="info-row">{{item.material}}, {{item.paints}}, {{item.size}}. {{item.year}}</div>
+                        </div>
+                        <a class="button primary green" @click="bay" >
+                            <img class="icon" src="@/assets/svg/cart_w.svg"/>
+                            <span class="text">купить</span>
+                        </a>
                     </div>
-                    
                 </div>
             </div>
         </swiper-slide>
@@ -64,10 +78,9 @@
         };
       },
         props: {
-            collectionId: String,
-            indexPoem: String,
-            poems: Object,
-            
+            paitings: Object,
+            currIndex: String,
+            galleryId: String,
             },
         data(){
             return{
@@ -77,8 +90,8 @@
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
            console.log('...=',document.querySelector(`.swiper`))
-          // this.swiper.slideTo(this.$route.params.id - 1)
-          // console.log(this.$route.params)
+           this.swiper.slideTo(this.$route.params.id - 1)
+           console.log(this.$route.params)
          
         },
         methods:{

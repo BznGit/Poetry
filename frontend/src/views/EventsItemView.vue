@@ -3,15 +3,20 @@
         <div class="module events-slider">
             <div class="module-center">
                 <div class="module-nav">
-                    <a class="link-more" href="/events">
+                    <router-link class="link-more" to="/events">
                         <img class="icon" src="@/assets/svg/back.svg"/>
                         <div class="text">Все события</div>
-                    </a>
+                    </router-link>
                 </div>
                     <div class="module-content">
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper">
-                                <Slider :currIndex="currIndex" @setCurrIndex="setCurrIndex" class="slider__items"/>
+                                <SliderEvents
+                                    :currindex="currIndex"
+                                    @setCurrIndex="setCurrIndex"
+                                    :events="events"                                    
+                                    class="slider__items"
+                                />
                             </div>
                         </div>
                     </div>
@@ -22,27 +27,35 @@
 </template>
 
 <script>
-import Slider from '../components/SliderEvents.vue'
-
+import SliderEvents from '../components/events/SliderEvents.vue'
+import { useStore } from '../store/index'
 export default { 
+    setup() {
+        const userStore = useStore();
+        return {
+            userStore
+        };
+    },
     name: 'EventsItemView',
     components: {
-        Slider
+        SliderEvents
     },
     data(){
         return {
-            currIndex: 1
+            currIndex: null,
+            books: null
         }
     },
     created(){
-        console.log(this.$route.params.id);
-        this.currIndex = this.$route.params.id
+        this.events = this.userStore.events;
+        this.currIndex = this.events.findIndex(item=>item.id == this.$route.params.id)
+
     },
     methods:{
         setCurrIndex(index){
             this.currIndex = index;
         }
-    }  
+    }   
 }
 </script>
 

@@ -13,7 +13,7 @@
             <div class="slider__item painting item-01" style="">
                 <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.img">
                     <div class="painting-image">
-                        <img class="image" :src="`./files/gallery/` + item.img"  loading="lazy"/>
+                        <img class="image" :src="`./files/gallery/` + item.number"  loading="lazy"/>
                     </div>
                     <div class="painting-text">
                         <div  class="align">

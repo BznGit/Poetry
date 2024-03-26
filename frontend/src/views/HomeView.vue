@@ -25,7 +25,11 @@
                     <div class="module-content">
                         <div class="grid paintings">
                             <div v-for="column in gallery.parts" :key="column"  class="column">
-                                <router-link v-for="item in column" :key="item" class="item painting item-01" :to="`/`+ gallery.id +`/` + item.img">
+                                <router-link 
+                                    v-for="item in column" 
+                                    :key="item" :class="`item painting item-${item < 10? '0' + item : item}`"
+                                    :to="`/gallery/`+ gallery.id +`/` + item.number"
+                                >
                                     <div class="painting-image">
                                         <img class="image" :src="`./files/gallery/` + item.img"  loading="lazy"/>
                                     </div>
@@ -62,121 +66,16 @@
                     </div>
                     <div class="module-content">
                         <div class="grid texts">
-                            <a class="item text item-01" href="#">
-                                <div class="align">
-                                    <div>И смех и грех</div>
-                                    <div>Ты жизнь убил на то</div>
-                                    <div>Что вывел формулу</div>
-                                    <div>Что есть добро</div>
-                                    <div>Что зло</div>
-                                    <div>Причём понятья эти разделил</div>
-                                    <div>Чем очень сильно удивил</div>
-                                </div>
-                            </a>
-                            <a class="item text item-02" href="#">
-                                <div class="align">
-                                    <div>Мысль не видна</div>
-                                    <div>Но виден результат</div>
-                                    <div>Которому ты рад</div>
-                                    <div>Или не рад</div>
-                                </div>
-                            </a>
-                            <a class="item text item-03" href="#">
-                                <div class="align">
-                                    <div>Для каждого найдётся искушенье</div>
-                                    <div>Вопрос лишь в том</div>
-                                    <div>Готов ли к искупленью</div>
-                                </div>
-                            </a>
-                            <a class="item text item-04" href="#">
-                                <div class="align">
-                                    <div>Любовь</div>
-                                    <div>Это щедрый Божественный дар</div>
-                                    <div>Влюблённость</div>
-                                    <div>Пылающий страстью пожар</div>
-                                    <div>Любовь</div>
-                                    <div>Это то что даётся не всем</div>
-                                    <div>Влюблённость</div>
-                                    <div>Пожалуйста</div>
-                                    <div>С кучей проблем</div>
-                                </div>
-                            </a>
-                            <a class="item text item-05" href="#">
-                                <div class="align">
-                                    <div>Коль чувства только чистые в Душе</div>
-                                    <div>То ты не здесь ещё</div>
-                                    <div>Иль там уже</div>
-                                </div>
-                            </a>
-                            <a class="item text item-06" href="#">
-                                <div class="align">
-                                    <div>Огонь Души</div>
-                                    <div>Не подожжёт твой дом</div>
-                                    <div>Отсутствие Огня Души</div>
-                                    <div>Его остудит</div>
-                                    <div>Но дом холодный не пригоден для жилья</div>
-                                    <div>И вряд ли кто с тобой жить в этом доме будет</div>
-                                </div>
-                            </a>
-                            <a class="item text item-07" href="#">
-                                <div class="align">
-                                    <div>Ты дружбу променял на сто рублей</div>
-                                    <div>Оправдываясь тем что был голодный</div>
-                                    <div>А говорят</div>
-                                    <div>Грядущая зима</div>
-                                    <div>Пообещала быть весьма холодной</div>
-                                </div>
-                            </a>
-                            <a class="item text item-08" href="#">
-                                <div class="align">
-                                    <div>Что либо объяснить тому кто Вас не слышит</div>
-                                    <div>Сложно</div>
-                                    <div>Кто слушать не желает</div>
-                                    <div>Не возможно</div>
-                                </div>
-                            </a>
-                            <a class="item text item-09" href="#">
-                                <div class="align">
-                                    <div>Стараемся не видеть очевидное</div>
-                                    <div>Особенно когда оно обидное</div>
-                                    <div>Обидное увидеть нам обидно</div>
-                                    <div>Глупцы мы</div>
-                                    <div>Это очевидно</div>
-                                </div>
-                            </a>
-                            <a class="item text item-10" href="#">
-                                <div class="align">
-                                    <div>Ты выше не продвинешься</div>
-                                    <div>Пока</div>
-                                    <div>Сознанье закрывают облака</div>
-                                    <div>Когда разгонишь облака с Сознанья</div>
-                                    <div>Тогда откроют Истинные Знанья</div>
-                                </div>
-                            </a>
-                            <a class="item text item-11" href="#">
-                                <div class="align">
-                                    <div>Никто из нас понятья не имеет</div>
-                                    <div>Что отдаёт за то</div>
-                                    <div>Чем в данный миг владеет</div>
-                                </div>
-                            </a>
-                            <a class="item text item-12" href="#">
-                                <div class="align">
-                                    <div>Картинки</div>
-                                    <div>Те что открывает зренье</div>
-                                    <div>Являют Суть</div>
-                                    <div>Коль есть прозренье</div>
-                                </div>
-                            </a>
-                            <a class="item text item-13" href="#">
-                                <div class="align">
-                                    <div>Другой молчит</div>
-                                    <div>Крича Душой</div>
-                                    <div>Ну что тут скажешь</div>
-                                    <div>Он иной</div>
-                                </div>
-                            </a>
-                        </div>
+                            <router-link
+                                v-for="item in 13" 
+                                :class="`item text item-${item < 10? '0' + item : item}`
+                                " href="#"
+                                :to="`/poems/${collectionId}/${collection.allPoems[item].id}`"
+                            >
+                            
+                                <div class="align" v-html="collection.allPoems[item].text"></div>  
+                            </router-link>
+                         </div>
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper collection">
                                 <SliderPoemsMob1 :data="collection.allPoems" :collectionId="collection.id"  class="slider__items grid texts" />
@@ -184,7 +83,7 @@
                         </div>
                     </div>
                     <div class="module-more">
-                        <router-link class="link-more" :to="`/`+ collection.id +`/` + collection.allPoems[0].id">
+                        <router-link class="link-more" :to="`/poems/`+ collection.id">
                             <div class="text">Весь сборник</div>
                             <img class="icon" src="@/assets/svg/more.svg"/>
                         </router-link>
@@ -270,28 +169,17 @@
                     <h2 class="module-title">Книги</h2>
                     <div class="module-content">
                         <div class="grid books">
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book01---Слова-рождённые-душой_800.jpg"/>
-                            </a>
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book02---поэтические-полотна_800.jpg"/>
-                            </a>
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book03_В_спираль_закрученная_мысль_800.jpg"/>
-                            </a>
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book04---Звездопад-на-каждый-день_800.jpg"/>
-                            </a>
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book05---Директория-любви_800.jpg"/>
-                            </a>
-                            <a class="item book" href="#">
-                                <img class="book-image" src="@/assets/jpg/book06---Знакомьтесь-это-мы_800.jpg"/>
-                            </a>
+                            <router-link 
+                                v-for="(item, index) in books"
+                                class="item book" 
+                                :to="`/books/${item.id}`"
+                            >
+                                <img class="book-image" :src="`./files/books/${item.img}`"/>
+                            </router-link>
                         </div>
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper books">
-                                <SliderBooks :data="books" />
+                                <SliderBooks :data="books"/>
                             </div>
                         </div>
                     </div>

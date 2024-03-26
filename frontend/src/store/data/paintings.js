@@ -2,6 +2,7 @@ export const  paintings =  [
   // «Экология созная»
   {
     img: 'picture_01.jpg',
+    number: '1',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -28,6 +29,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_02.jpg',
+    number: '2',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -62,6 +64,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_03.jpg',
+    number: '3',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -85,6 +88,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_04.jpg',
+    number: '4',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -96,6 +100,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_05.jpg',
+    number: '5',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -126,6 +131,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_06.jpg',
+    number: '6',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -170,6 +176,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_07.jpg',
+    number: '7',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -191,6 +198,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_08.jpg',
+    number: '8',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -242,8 +250,9 @@ export const  paintings =  [
       Есть показатель сколь бездумны мы
     `
   },
-  {
+  { 
     img: 'picture_09.jpg',
+    number: '9',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',
@@ -276,6 +285,7 @@ export const  paintings =  [
   },
   {
     img: 'picture_10.jpg',
+    number: '10',
     material: 'Холст',
     paints: 'масло',
     size: '100x80',

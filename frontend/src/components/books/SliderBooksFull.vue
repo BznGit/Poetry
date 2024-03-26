@@ -17,7 +17,7 @@
             <div :class="`slider__item item-${index+1 < 10? '0' + index+1 : index+1} item book slider__item_active`" style="">
                 <div class="book-title">{{item.name}}</div>
                 <div class="book-image">
-                    <img class="image" :src="`./files/books/${item.img}`"/>
+                    <img class="image" :src="`../files/books/${item.img}`"/>
                 </div>
                 <div class="book-buttons">
                     <router-link class="link-more" :to="`/poems/${item.id}`">
@@ -59,8 +59,7 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
-   
-    
+     
     export default {
   
         components: {
@@ -69,39 +68,32 @@
         },
         setup() {
             const swiperSlide = useSwiperSlide();
-            const onSwiper = (swiper) => {
+                const onSwiper = (swiper) => {
             };
-            const onSlideChange = (e) => {
+                const onSlideChange = (e) => {
             };
-
-        return {
-          onSwiper,
-          onSlideChange,
-          modules: [ Navigation, Pagination, Scrollbar, A11y ],
-          
-        };
-      },
-        props: {
-                id: String
-            },
-        data(){
-            return{
-                swiper: null
-            }
+            return {
+                onSwiper,
+                onSlideChange,
+                modules: [ Navigation, Pagination, Scrollbar, A11y ],
+            };
         },
-        created(){
-            
+        props: {
+            currIndex: Number,
+            books: Object
         },
         mounted(){
+            console.log(this.currIndex)
+            let index = this.books.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-            this.swiper.slideTo(this.$route.params.id - 1)
-         
+            this.swiper.slideTo(index)
         },
         methods:{
             onSlideChange(e){
-                const index = e.activeIndex + 1
+                const index = e.activeIndex
+                let currId = this.books[index].id
                 this.$emit('setCurrIndex', index)
-                this.$router.push({ name: 'books-item', params: { id: index }})             
+                this.$router.push({ params: { id: currId }})             
             },
             slideNext(){
                 this.swiper.slideNext()

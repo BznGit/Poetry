@@ -1,16 +1,17 @@
 <template>
+
 <div class="main">
             <div class="module gallery-slider">
                 <div class="module-center">
                     <div class="module-nav">
-                        <div class="link-more">
+                        <router-link class="link-more" :to="`/gallery`">
                             <img class="icon" src="@/assets/svg/back.svg"/>
                             <div class="text">Вся галерея</div>
-                        </div>
+                        </router-link>
                         <div class="module-title">
-                            <h2 class="title">«Экология Сознания»</h2>
+                            <h2 class="title">«{{gallery.name}}»</h2>
                             <div class="counter">
-                                <span>{{ currIndex }}</span>/<span>10</span>
+                                <span>{{ currIndex }}</span>/<span>{{gallery.fullPaints.length}}</span>
                             </div>
                         </div>
                         <a class="button primary green" href="">
@@ -21,7 +22,12 @@
                     <div class="module-content">
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper">
-                               <Slider :currIndex="currIndex" @setCurrIndex="setCurrIndex" class="slider__items"/>
+                               <SliderGalleryItem
+                                    :paitings="gallery.fullPaints" 
+                                    :currIndex="currIndex" 
+                                    :galleryId="gallery.id"
+                                    @setCurrIndex="setCurrIndex"
+                                 />
                             </div>
                         </div>
                     </div>
@@ -31,27 +37,35 @@
 </template>
 
 <script>
-import Slider from '../components/SliderGallery.vue'
 
-export default { 
+import SliderGalleryItem from '../components/galleryItem/SliderGalleryItem.vue'
+import { useStore } from '../store/index'
+export default {
+    setup() {
+        const userStore = useStore();
+        return {
+            userStore
+        };
+    }, 
     name: 'GallaryItemView',
     components: {
-        Slider
+        SliderGalleryItem
     },
     data(){
         return {
-            currIndex: 1
+           currIndex: 1,
+           gallery: null
         }
     },
     created(){
-        console.log(this.$route.params.id);
+        this.gallery = this.userStore.getGallery(this.$route.params.gallery)
         this.currIndex = this.$route.params.id
     },
     methods:{
         setCurrIndex(index){
             this.currIndex = index;
         }
-    }  
+    }     
 }
 </script>
 

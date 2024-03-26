@@ -1,5 +1,5 @@
 <template>
-<div class="main">
+    <div class="main">
             <div class="module books">
                 <div class="module-center">
                     <h2 class="module-title">Книги</h2>
@@ -10,48 +10,16 @@
                         </i>
                     </div>
                     <div class="module-content">
-                        <div class="grid books page">
-                            <div class="column">
-                                <a class="item book" href="/books/1">
+                        <div  class="grid books page">
+                            <div v-for="(item, index) in books" class="column">
+                                <router-link 
+                                    class="item book" 
+                                    :to="`/books/${item.id}`"
+                                >
                                     <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book01---Слова-рождённые-душой_800.jpg"/>
+                                        <img class="image" :src="`./files/books/${item.img}`"/>
                                     </div>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="item book" href="/books-item/2">
-                                    <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book02---поэтические-полотна_800.jpg"/>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="item book" href="/books-item/3">
-                                    <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book03_В_спираль_закрученная_мысль_800.jpg"/>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="item book" href="/books-item">
-                                    <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book04---Звездопад-на-каждый-день_800.jpg"/>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="item book" href="/books-item">
-                                    <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book05---Директория-любви_800.jpg"/>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="column">
-                                <a class="item book" href="/books-item">
-                                    <div class="book-image">
-                                        <img class="image" src="@/assets/jpg/book06---Знакомьтесь-это-мы_800.jpg"/>
-                                    </div>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -90,15 +58,28 @@
 </template>
 
 <script>
+import { useStore } from '../store/index'
+import SliderBooksFull from '../components/books/SliderBooksFull.vue'
 
 export default {
-  components: {
-
-  },
-  name: 'BooksView',
-  props: {
-    msg: String
-  }
+    setup() {
+        const userStore = useStore();
+        return {
+            userStore
+        };
+    },
+    components: {
+        SliderBooksFull
+    },
+    name: 'BooksView',
+    props: {
+        msg: String
+    },
+    data(){
+        return {
+            books: this.userStore.getBooks
+        }
+    },
 }
 </script>
 
