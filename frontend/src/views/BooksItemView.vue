@@ -9,7 +9,6 @@
                                 :currindex="currIndex"
                                 @setCurrIndex="setCurrIndex"
                                 :books="books"
-                                class="slider__items"
                             />
                         </div>
                     </div>
@@ -47,6 +46,7 @@ export default {
     },
     methods:{
         setCurrIndex(index){
+            console.log
             this.currIndex = index;
         }
     }  

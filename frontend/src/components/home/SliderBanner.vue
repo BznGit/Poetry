@@ -1,12 +1,13 @@
 <template>
     <swiper
+      class="slider__items"
       :slides-per-view="1"
       :space-between="0"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="(item, index) in data" :key="item.name">
-        <a class="slider__item item-01 slider__item_active" href="#" style="">
+        <a :class="`slider__item item-${index < 10? '0' + (index + 1) : index} `" href="/events" style="">
                         <div class="banner">
                             <div class="banner-image">
                               <img :src="`./files/events/` + item.img" >

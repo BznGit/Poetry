@@ -1,4 +1,5 @@
 <template>
+
     <div class="main">
         <div class="module cart">
             <div class="module-center">
@@ -25,6 +26,23 @@
                                 <div class="info">
                                     <div class="info-row">Картина № {{ item.number }}</div>
                                     <div class="info-row">{{item.material}}, {{item.paints}}, {{item.size}}. {{item.year}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid cart">
+
+                        <div v-for="(item, index) in this.userStore.getCartBook" :key="item.id" :class="`item painting item-0${index}`">
+                            <div class="painting-delete" @click="deleteItemBook(item.id)">
+                                <img class="image" src="@/assets/svg/close_w.svg"/>
+                            </div>
+                            <div class="painting-image">
+                                <img class="image" :src="`./files/books/${item.img}`"/>
+                            </div>
+                            <div class="painting-info">
+                                <div class="info">
+                                    <div class="info-row">{{ item.name }}</div>
+                                    <div class="info-row"></div>
                                 </div>
                             </div>
                         </div>
@@ -93,14 +111,19 @@ export default {
     },
     data(){
         return{
-            paints: this.userStore.getCart
+            paints: this.userStore.getCart,
+            book: this.userStore.getCartBook
         }
     },
     methods:{
         deleteItem(number){
             console.log('delete', number)
             this.userStore.deleteItemFromCart(number)
-            this.renderComponent = true;
+    
+        },
+        deleteItemBook(id){
+            console.log('delete', id)
+            this.userStore.deleteBookFromCart(id)
         }
     }, 
 

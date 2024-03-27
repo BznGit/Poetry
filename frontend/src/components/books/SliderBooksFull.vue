@@ -14,7 +14,7 @@
             class="item book" 
             :to="`/books/${item.id}`"
         >
-            <div :class="`slider__item item-${index+1 < 10? '0' + index+1 : index+1} item book slider__item_active`" style="">
+            <div :class="`slider__item item-${index < 10? '0' + (index + 1) : index} item book slider__item_active`" style="">  
                 <div class="book-title">{{item.name}}</div>
                 <div class="book-image">
                     <img class="image" :src="`../files/books/${item.img}`"/>
@@ -24,10 +24,10 @@
                         <div class="text">Сборник онлайн</div>
                         <img class="icon" src="@/assets/svg/more.svg">
                     </router-link>
-                    <router-link class="button primary green" :to="`/cart`">
+                    <a class="button primary green"  @click="addToCart(item.id)">
                         <img class="icon" src="@/assets/svg/cart_w.svg"/>
                         <span class="text">купить PDF</span>
-                    </router-link>
+                    </a>
                 </div>
                 <div class="book-content">
                     <div class="text" style="white-space: pre-wrap;">
@@ -59,6 +59,7 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
+    import { useStore } from '../../store/index'
      
     export default {
   
@@ -67,6 +68,7 @@
             SwiperSlide,
         },
         setup() {
+            const userStore = useStore();
             const swiperSlide = useSwiperSlide();
                 const onSwiper = (swiper) => {
             };
@@ -76,6 +78,7 @@
                 onSwiper,
                 onSlideChange,
                 modules: [ Navigation, Pagination, Scrollbar, A11y ],
+                userStore
             };
         },
         props: {
@@ -100,6 +103,10 @@
             },
             slidePrev(){
                 this.swiper.slidePrev()
+            }, 
+            addToCart(id){
+              console.log(id)
+                this.userStore.addCartBook(id) 
             }
         }
     };

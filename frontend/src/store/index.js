@@ -14,13 +14,15 @@ export const useStore = defineStore('counter', {
     gallerys: gallerys,
     events: events,
     books: books,
-    cart:[]
+    cart:[],
+    cartBook: []
   }),
 
   getters: {
     getEvents: (state) => state.events,
     getBooks: (state) => state.books,
     getCart: (state) => state.cart,
+    getCartBook: (state) => state.cartBook,
 
   },
 
@@ -29,9 +31,19 @@ export const useStore = defineStore('counter', {
       let obj = paintings.find(item=>item.number == number)
       this.cart.push(obj)
     },
+    addCartBook(id){
+      console.log('addCartBook',id)
+      let obj = books.find(item=>item.id == id)
+      this.cartBook.push(obj)
+      console.log('addCartBook',this.cartBook)
+    },
     deleteItemFromCart(number){
-      let index = this.cart.findIndex(item=>item.number == number)
+      let index = this.cart.findIndex(item=>item.number == number) 
       this.cart.splice(index, 1)
+    },
+    deleteBookFromCart(id){
+      let index = this.cartBook.findIndex(item=>item.id == id)
+      this.cartBook.splice(index, 1)
     },
     getPartGallerys(){
       let arr = []

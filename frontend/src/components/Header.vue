@@ -43,7 +43,7 @@
                         <div class="cart-icon">
                             <img class="icon active" src="@/assets/svg/cart_w.svg"/>
                             <img class="icon empty " src="@/assets/svg/cart_g.svg"/>
-                            <div class="cart-value">{{ count==0? '' : userStore.getCart.length}}</div>
+                            <div class="cart-value">{{ count==0? '' : count}}</div>
                         </div>
                     </router-link>
                     <div :class="`cart-popup ${activ? 'active':''}`">
@@ -82,8 +82,9 @@ export default {
   },
   computed:{
     count:function(){
-      
-        return(this.userStore.getCart).length
+        console.log('summ>',(this.userStore.getCartBook).length)
+      let sum = (this.userStore.getCart).length + (this.userStore.getCartBook).length
+        return sum
     }
   },
   mounted () {
