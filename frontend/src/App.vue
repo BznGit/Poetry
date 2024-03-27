@@ -1,29 +1,20 @@
 <template>
-
       <Header/>
       <router-view/>
       <Footer/>
-
 </template>
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
-//import './assets/less/style.css';
-//import './assets/less/style.less';
+  import Header from './components/Header.vue'
+  import Footer from './components/Footer.vue'
 
-export default {
+  export default {
 
-  name: 'App',
-  components: {
-    Header,
-    Footer
-
-  },
-  mounted(){
-
+    name: 'App',
+    components: {
+      Header,
+      Footer
+    },
   }
-
-}
 </script>
 <style lang="scss">
 
