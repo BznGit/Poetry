@@ -14,6 +14,7 @@ import CartView from '../views/CartView.vue'
 import PoemsItemView from '../views/PoemsItemView.vue'
 import PoemsCollectionView from '../views/PoemsCollectionView.vue'
 import GalleryItemView from '../views/GalleryItemView.vue'
+import PolicyView from '../views/PolicyView.vue'
 
 const routes = [
   {
@@ -81,6 +82,11 @@ const routes = [
     path: '/cart',
     name: 'cart',
     component: CartView
+  },
+  {
+    path: '/policy',
+    name: 'policy',
+    component: PolicyView
   },
 
  

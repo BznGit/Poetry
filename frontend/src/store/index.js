@@ -13,15 +13,26 @@ export const useStore = defineStore('counter', {
     paintings: paintings,
     gallerys: gallerys,
     events: events,
-    books: books
+    books: books,
+    cart:[]
   }),
 
   getters: {
     getEvents: (state) => state.events,
     getBooks: (state) => state.books,
+    getCart: (state) => state.cart,
+
   },
 
   actions: {
+    addCart(number){
+      let obj = paintings.find(item=>item.number == number)
+      this.cart.push(obj)
+    },
+    deleteItemFromCart(number){
+      let index = this.cart.findIndex(item=>item.number == number)
+      this.cart.splice(index, 1)
+    },
     getPartGallerys(){
       let arr = []
       this.gallerys.forEach(item=>{

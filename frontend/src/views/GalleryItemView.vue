@@ -14,7 +14,7 @@
                                 <span>{{ currIndex }}</span>/<span>{{gallery.fullPaints.length}}</span>
                             </div>
                         </div>
-                        <a class="button primary green" href="">
+                        <a class="button primary green" @click="addToCart(this.$route.params.id)">
                             <img class="icon" src="@/assets/svg/cart_w.svg"/>
                             <span class="text">купить</span>
                         </a>
@@ -64,8 +64,11 @@ export default {
     methods:{
         setCurrIndex(index){
             this.currIndex = index;
+        },
+        addToCart(id){
+            this.userStore.addCart(id) 
         }
-    }     
+}     
 }
 </script>
 

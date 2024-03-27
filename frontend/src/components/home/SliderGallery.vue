@@ -11,9 +11,9 @@
     >
         <swiper-slide v-for = "(item, index) in data " :key="item">
             <div class="slider__item painting item-01" style="">
-                <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.img">
+                <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.number">
                     <div class="painting-image">
-                        <img class="image" :src="`./files/gallery/` + item.number"  loading="lazy"/>
+                        <img class="image" :src="`./files/gallery/` + item.img"  loading="lazy"/>
                     </div>
                     <div class="painting-text">
                         <div  class="align">

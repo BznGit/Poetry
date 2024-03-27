@@ -39,15 +39,14 @@
                     </router-link>
                 </div>
                 <div class="cart">
-                    {{ cartVis }}
                     <router-link class="menu-item cart active" to="/cart">
                         <div class="cart-icon">
                             <img class="icon active" src="@/assets/svg/cart_w.svg"/>
                             <img class="icon empty " src="@/assets/svg/cart_g.svg"/>
-                            <div class="cart-value">3</div>
+                            <div class="cart-value">{{ count==0? '' : userStore.getCart.length}}</div>
                         </div>
                     </router-link>
-                    <div class="cart-popup ">
+                    <div :class="`cart-popup ${activ? 'active':''}`">
                         <img class="pointer" src="@/assets/svg/cart_pointer.svg"/>
                         <div class="painting">
                             <img class="image" src="@/assets/jpg/picture_01.jpg">
@@ -65,15 +64,29 @@
 </template>
 
 <script>
+import { useStore } from '../store/index'
 export default {
+    setup() {
+        const userStore = useStore();
+        return {
+          userStore
+        };
+    },
   name: 'HeaderComp',
   data(){
     return{
-       rout: this.$route.path
+       rout: this.$route.path,
+        activ: false
+    }
+  },
+  computed:{
+    count:function(){
+      
+        return(this.userStore.getCart).length
     }
   },
   mounted () {
-   const mobileMenuButton = document.querySelector('button')
+    const mobileMenuButton = document.querySelector('button')
     const body = document.body
     mobileMenuButton.onclick = function () {
         mobileMenuButton.classList.toggle('checked')
@@ -83,13 +96,13 @@ export default {
     }
 
   },
-  mathods: {
-    catrVisevent () {
-        console.log('===========')
+    mathods: {
+        catrVisevent () {
+            console.log('===========')
+        },
+        beforeRouteUpdate(to, from, next) { console.log('|->', to, from)}
     },
-    beforeRouteUpdate(to, from, next) { console.log('|->', to, from)}
-  },
-  watch:{
+    watch:{
         $route(val, ws){
             console.log('->', val.path, ws)
             if (val.path =='/cart'){
@@ -107,7 +120,17 @@ export default {
                 icons[0].classList.add('active')
                 icons[0].classList.remove('emty')
             }
+        },
+        count(newq, old){
+             this.activ = true
+                console.log('***===',this.activ )
+                setTimeout(()=>{
+                    this.activ = false
+                    console.log(this.activ )
+                },3000)
+            
         }
+
     }
 }
 </script>

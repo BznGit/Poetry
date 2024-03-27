@@ -12,7 +12,7 @@
     >
         <swiper-slide v-for="(item, index) in paitings">
             <div :class="`slider__item painting item-${index < 10? '0' + index : index} slider__item_active`" style="">
-                <button class="painting-buy">
+                <button class="painting-buy"@click="addToCart(item.number)" >
                     <img class="icon" src="@/assets/svg/cart_w.svg">
                 </button>
                 <div class="painting-text">
@@ -26,7 +26,7 @@
                             <div class="info-row">Картина {{item.number}}</div>
                             <div class="info-row">{{item.material}}, {{item.paints}}, {{item.size}}. {{item.year}}</div>
                         </div>
-                        <a class="button primary green" @click="bay" >
+                        <a class="button primary green" @click="addToCart(item.number)" >
                             <img class="icon" src="@/assets/svg/cart_w.svg"/>
                             <span class="text">купить</span>
                         </a>
@@ -54,16 +54,17 @@
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
+
     import 'swiper/css/scrollbar';
-   
+    import { useStore } from '../../store/index'
     
     export default {
-  
         components: {
             Swiper,
             SwiperSlide,
         },
         setup() {
+            const userStore = useStore();
             const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
@@ -71,9 +72,10 @@
             };
 
         return {
-          onSwiper,
-          onSlideChange,
-          modules: [ Navigation, Pagination, Scrollbar, A11y ],
+            userStore,
+            onSwiper,
+            onSlideChange,
+            modules: [ Navigation, Pagination, Scrollbar, A11y ],
           
         };
       },
@@ -105,6 +107,9 @@
             },
             slidePrev(){
                 this.swiper.slidePrev()
+            },
+            addToCart(id){
+                this.userStore.addCart(id) 
             }
         }
     };
