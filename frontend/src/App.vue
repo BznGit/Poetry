@@ -8,8 +8,8 @@
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
-import './assets/less/style.css';
-import './assets/less/style.less';
+//import './assets/less/style.css';
+//import './assets/less/style.less';
 
 export default {
 
