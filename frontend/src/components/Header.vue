@@ -57,6 +57,7 @@
                             <img class="icon" src="@/assets/svg/more.svg"/>
                         </router-link>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -122,15 +123,15 @@ export default {
             }
         },
         count(newq, old){
-             this.activ = true
+            if(newq>old){
+                this.activ = true
                 console.log('***===',this.activ )
                 setTimeout(()=>{
                     this.activ = false
-                    console.log(this.activ )
+                  
                 },3000)
-            
+            }
         }
-
     }
 }
 </script>
