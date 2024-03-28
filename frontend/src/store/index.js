@@ -52,7 +52,7 @@ export const useStore = defineStore('counter', {
       })
       return arr
     },
-    getPartGallery(id) {
+  getPartGallery(id) {
       let curGallery = this.gallerys.find(item=>item.id == id)
       let arr1 = [];
       let arr2 = [];
@@ -68,19 +68,23 @@ export const useStore = defineStore('counter', {
 
       for(let i = index1; i <= count1; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-        pic.poem =  this.addDivPoems(pic.poem)
+      this.addDivPoems(pic.poem)
         arr1.push(pic)
+        
       }
       for(let i = index2; i <= count2; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-        pic.poem =  this.addDivPoems(pic.poem)
+         this.addDivPoems(pic.poem)
         arr2.push(pic)
+   
       }
       for(let i = index3; i <= count3; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-        pic.poem =  this.addDivPoems(pic.poem)
+       this.addDivPoems(pic.poem)
         arr3.push(pic)
+    
       }
+
       curGallery.parts = [ arr1, arr2, arr3 ]
       return  curGallery
     },
@@ -116,22 +120,23 @@ export const useStore = defineStore('counter', {
       return curCollection
     },
     getCollection(id) {
-      let curCollection = this.collectionsPoems.find(item=>item.id == id)
+      let curCollection1 = this.collectionsPoems.find(item=>item.id == id)
       let arr = [];
-      curCollection.poems.forEach(item=>{
+      curCollection1.poems.forEach(item=>{
         let allPoems = this.poems.find(elem=>elem.name == item)
         allPoems.text =  this.addDivPoems(allPoems.text)
         arr.push(allPoems)
       })
-      curCollection.allPoems = arr
-      return  curCollection
+      curCollection1.allPoems = arr
+      return  curCollection1
+
     },
     addDivPoems(poem){
-      let a = poem.slice(0)
+  
+      let a = poem.slice(1)
       let n = a.replace(/\n/g, '</div>')
       let divs = n.replace(/[А-Я]/g, '<div>$&')
-
-      return divs
+       return divs
     },
     getPartPoems(){
       let ishod = [

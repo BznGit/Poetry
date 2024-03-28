@@ -1,4 +1,5 @@
 <template>
+ 
          <div class="slider primary index" data-slider="itc-slider" data-loop="true">
             <router-link class="slider__wrapper" to="/events">
                 <SliderBanner />
@@ -36,6 +37,7 @@
                                     <div class="painting-text">
                                         <div  class="align">
                                             <div v-html="item.poem"></div>
+                                     
                                         </div>
                                     </div>
                                 </router-link>
