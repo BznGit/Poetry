@@ -127,7 +127,7 @@ export const useStore = defineStore('counter', {
       return  curCollection
     },
     addDivPoems(poem){
-      let a = poem.slice(1)
+      let a = poem.slice(0)
       let n = a.replace(/\n/g, '</div>')
       let divs = n.replace(/[А-Я]/g, '<div>$&')
 
