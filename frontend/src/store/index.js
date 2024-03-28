@@ -32,10 +32,9 @@ export const useStore = defineStore('counter', {
       this.cart.push(obj)
     },
     addCartBook(id){
-      console.log('addCartBook',id)
       let obj = books.find(item=>item.id == id)
       this.cartBook.push(obj)
-      console.log('addCartBook',this.cartBook)
+
     },
     deleteItemFromCart(number){
       let index = this.cart.findIndex(item=>item.number == number) 
@@ -143,24 +142,18 @@ export const useStore = defineStore('counter', {
       let arr = []
       ishod.forEach(name=>{
         let poem = this.poems.find(elem=>elem.name == name)
-        console.log(poem)
         poem.text =  this.addDivPoems(poem.text)
         let obj = {}
         this.collectionsPoems.forEach(collection=>{
-
           let ok = collection.poems.includes(name)
-          console.log(ok)
-          console.log(collection.poems)
           if (ok) {
-            console.log(collection)
+    
             obj.collection = collection
             obj.poem = poem
           }
         })
-        console.log(obj)
         arr.push(obj)
       })
-      console.log(arr)
       return arr
     }
   }

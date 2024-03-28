@@ -16,8 +16,7 @@
                     <img class="icon" src="@/assets/svg/cart_w.svg">
                 </button>
                 <div class="painting-text">
-                        <div class="align" v-html="item.poem"></div>
-                        {{ item.img }}
+                    <div class="align" v-html="item.poem"></div>
                 </div>
                 <div class="painting-image">
                     <img class="image" :src="`../../files/gallery/${item.img}`"  loading="lazy">

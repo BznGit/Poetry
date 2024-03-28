@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import VueScrollTo from "vue-scrollto";
 
 import HomeView from '../views/HomeView.vue'
@@ -101,7 +101,8 @@ const router = createRouter({
       VueScrollTo.scrollTo("#app");
     }
   },
-  history: createWebHistory(process.env.BASE_URL),
+  //history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes, linkExactActiveClass: "checked my"
 
 })
