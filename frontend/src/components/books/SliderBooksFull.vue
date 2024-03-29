@@ -89,7 +89,8 @@
             console.log(this.currIndex)
             let index = this.books.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-            this.swiper.slideTo(index)
+           // this.swiper.slideTo(index)
+           this.swiper.activeIndex = index
         },
         methods:{
             onSlideChange(e){
