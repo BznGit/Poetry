@@ -87,7 +87,7 @@ export default {
          }
     },
     mounted(){
-    
+        this.userStore.$state
     const moduleForewords = document.querySelectorAll('.module-foreword')
     const forewords = document.querySelectorAll('.foreword')
 
@@ -121,31 +121,30 @@ export default {
             document.body.classList.remove('overflow')
         })
     }
-    const paintings = document.querySelectorAll('.item.painting')
-    paintings.forEach(function (painting) {
-        const align = painting.querySelector('.align')
-        const divs = align.querySelectorAll('div')
-        const totalHeight = Array.from(divs).reduce((acc, div) => acc + div.offsetHeight, 0)
+    window.addEventListener('load', function() {
+          const paintings = document.querySelectorAll('.item.painting');
 
-        const animationDuration = divs.length * 1.5
+          paintings.forEach(function(painting) {
+              const align = painting.querySelector('.align');
+              const divs = align.querySelectorAll('div');
+              const totalHeight = Array.from(divs).reduce((acc, div) => acc + div.offsetHeight + parseFloat(getComputedStyle(div).paddingTop) + parseFloat(getComputedStyle(div).paddingBottom), 0);
 
-        align.style.transitionDuration = animationDuration + 's'
+              const animationDuration = divs.length * 1.5;
+              align.style.transitionDuration = animationDuration + 's';
 
-        painting.addEventListener('mouseenter', function () {
-            align.style.transform = 'translateY(-' + totalHeight + 'px)'
+              setTimeout(function() {
+                  align.style.transform = 'translateY(-' + (totalHeight + parseFloat(getComputedStyle(align).paddingTop) + parseFloat(getComputedStyle(align).paddingBottom)) + 'px)';
+              }, 1000);
 
-            divs.forEach(function (div) {
-                const rect = div.getBoundingClientRect()
-                const textRect = painting.querySelector('.painting-text').getBoundingClientRect()
-                if (rect.top <= textRect.top) {
-                    div.style.opacity = '1'
-                }
-            })
-        })
-        painting.addEventListener('mouseleave', function () {
-            align.style.transform = 'none'
-        })
-    })
+              divs.forEach(function(div) {
+                  const rect = div.getBoundingClientRect();
+                  const textRect = painting.querySelector('.painting-text').getBoundingClientRect();
+                  if (rect.top <= textRect.top) {
+                      div.style.opacity = '1';
+                  }
+              });
+          });
+      });
   }
 }
 

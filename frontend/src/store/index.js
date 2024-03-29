@@ -70,19 +70,19 @@ export const useStore = defineStore('counter', {
 
       for(let i = index1; i <= count1; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-      this.addDivPoems(pic.poem)
+         pic.poem = structuredClone(this.addDivPoems(pic.poem))
         arr1.push(pic)
         
       }
       for(let i = index2; i <= count2; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-         this.addDivPoems(pic.poem)
+        pic.poem  =  structuredClone(this.addDivPoems(pic.poem))
         arr2.push(pic)
    
       }
       for(let i = index3; i <= count3; i++){
         let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-       this.addDivPoems(pic.poem)
+        pic.poem  = structuredClone(this.addDivPoems(pic.poem))
         arr3.push(pic)
     
       }
