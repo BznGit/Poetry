@@ -1,4 +1,5 @@
 <template>
+    
     <swiper
         class="slider__items"
         :modules="modules"
@@ -12,7 +13,6 @@
         <swiper-slide v-for="(item, index) in poems">
             <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
                 <div :class="`item poem poem-0${indexPoem}`">
-                
                     <div class="poem-text">
                         <div v-html="item.text"></div>
                     </div>
@@ -35,6 +35,7 @@
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+    import { useStore } from '../../store/index'
 
     // Import Swiper styles
     import 'swiper/css';
@@ -50,6 +51,7 @@
             SwiperSlide,
         },
         setup() {
+            const userStore = useStore();
             const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
@@ -60,6 +62,7 @@
           onSwiper,
           onSlideChange,
           modules: [ Navigation, Pagination, Scrollbar, A11y ],
+          userStore
           
         };
       },
@@ -77,7 +80,8 @@
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
            console.log('...=',document.querySelector(`.swiper`))
-          // this.swiper.slideTo(this.$route.params.id - 1)
+           let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
+           this.swiper.slideTo(index)
           // console.log(this.$route.params)
          
         },
