@@ -229,32 +229,31 @@ export default {
     }
   },
   mounted(){
-    
-    const paintings = document.querySelectorAll('.item.painting')
-    paintings.forEach(function (painting) {
-        const align = painting.querySelector('.align')
-        const divs = align.querySelectorAll('div')
-        const totalHeight = Array.from(divs).reduce((acc, div) => acc + div.offsetHeight, 0)
 
-        const animationDuration = divs.length * 1.5
+      window.addEventListener('load', function() {
+          const paintings = document.querySelectorAll('.item.painting');
 
-        align.style.transitionDuration = animationDuration + 's'
+          paintings.forEach(function(painting) {
+              const align = painting.querySelector('.align');
+              const divs = align.querySelectorAll('div');
+              const totalHeight = Array.from(divs).reduce((acc, div) => acc + div.offsetHeight + parseFloat(getComputedStyle(div).paddingTop) + parseFloat(getComputedStyle(div).paddingBottom), 0);
 
-        painting.addEventListener('mouseenter', function () {
-            align.style.transform = 'translateY(-' + totalHeight + 'px)'
+              const animationDuration = divs.length * 1.5;
+              align.style.transitionDuration = animationDuration + 's';
 
-            divs.forEach(function (div) {
-                const rect = div.getBoundingClientRect()
-                const textRect = painting.querySelector('.painting-text').getBoundingClientRect()
-                if (rect.top <= textRect.top) {
-                    div.style.opacity = '1'
-                }
-            })
-        })
-        painting.addEventListener('mouseleave', function () {
-            align.style.transform = 'none'
-        })
-    })
+              setTimeout(function() {
+                  align.style.transform = 'translateY(-' + (totalHeight + parseFloat(getComputedStyle(align).paddingTop) + parseFloat(getComputedStyle(align).paddingBottom)) + 'px)';
+              }, 1000);
+
+              divs.forEach(function(div) {
+                  const rect = div.getBoundingClientRect();
+                  const textRect = painting.querySelector('.painting-text').getBoundingClientRect();
+                  if (rect.top <= textRect.top) {
+                      div.style.opacity = '1';
+                  }
+              });
+          });
+      });
   }
 }
 </script>
