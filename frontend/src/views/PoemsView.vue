@@ -8,8 +8,8 @@
                 <h2 :class="`module-title poem-0${index}`">
                     «{{item.name}}»
                 </h2>
-                <div class="module-text">
-                    <i>
+                <div class="module-text" >
+                    <i style="white-space: pre-wrap;">
                         {{item.titel}}
                     </i>
                 </div>

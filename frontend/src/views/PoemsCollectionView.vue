@@ -8,9 +8,9 @@
                     <h2 class="module-title">
                         «{{collection.name}}»
                     </h2>
-                    <div class="module-text">
+                    <div class="module-text"style="white-space: pre-wrap;" >
                         <i>
-                            {{collection.titel}}
+                           {{collection.titel}}
                         </i>
                     </div>
                     <div :class="`module-foreword foreword-${collection.color}`">
