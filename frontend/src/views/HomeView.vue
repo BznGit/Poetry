@@ -235,23 +235,24 @@ export default {
 
           paintings.forEach(function(painting) {
               const align = painting.querySelector('.align');
-              const divs = align.querySelectorAll('div');
-              const totalHeight = Array.from(divs).reduce((acc, div) => acc + div.offsetHeight + parseFloat(getComputedStyle(div).paddingTop) + parseFloat(getComputedStyle(div).paddingBottom), 0);
+              const alignHeight = align.offsetHeight;
 
-              const animationDuration = divs.length * 1.5;
+              const animationDuration = alignHeight * 0.05;
               align.style.transitionDuration = animationDuration + 's';
 
-              setTimeout(function() {
-                  align.style.transform = 'translateY(-' + (totalHeight + parseFloat(getComputedStyle(align).paddingTop) + parseFloat(getComputedStyle(align).paddingBottom)) + 'px)';
-              }, 1000);
+              function startAnimation() {
+                  align.style.transitionDuration = '0s';
+                  align.style.transform = 'translateY(0)';
 
-              divs.forEach(function(div) {
-                  const rect = div.getBoundingClientRect();
-                  const textRect = painting.querySelector('.painting-text').getBoundingClientRect();
-                  if (rect.top <= textRect.top) {
-                      div.style.opacity = '1';
-                  }
-              });
+                  setTimeout(function() {
+                      align.style.transitionDuration = animationDuration + 's';
+                      align.style.transform = 'translateY(-' + alignHeight + 'px)';
+                  }, 100);
+              }
+
+              startAnimation(); // Запустить первую итерацию анимации сразу
+
+              setInterval(startAnimation, 35000); // Повторять каждые 35 секунд
           });
       });
   }
