@@ -29,11 +29,13 @@ export const useStore = defineStore('counter', {
   actions: {
     addCart(number){
       let obj = paintings.find(item=>item.number == number)
-      this.cart.push(obj)
+      let index = this.cart.findIndex(item=>item.number ==obj.number)
+      if(index== -1) this.cart.push(obj);else return
     },
     addCartBook(id){
-      let obj = books.find(item=>item.id == id)
-      this.cartBook.push(obj)
+      let obj = books.find(item=>item.id === id)
+      let index = this.cartBook.findIndex(item=>item.id == obj.id)
+      if(index== -1) this.cartBook.push(obj); else return
 
     },
     deleteItemFromCart(number){
