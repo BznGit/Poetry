@@ -59,7 +59,8 @@ export default {
     },
     created(){
         this.gallery = this.userStore.getGallery(this.$route.params.gallery)
-        this.currIndex = this.$route.params.id
+        let index = this.gallery.fullPaints.findIndex(item=>item.id == this.$route.params.id)
+        this.currIndex = index + 1
     },
     methods:{
         setCurrIndex(index){

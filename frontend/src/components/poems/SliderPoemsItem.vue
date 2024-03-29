@@ -79,7 +79,6 @@
         },
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
-           console.log('...=',document.querySelector(`.swiper`))
            let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
            console.log(index)
            this.swiper.slideTo(index)

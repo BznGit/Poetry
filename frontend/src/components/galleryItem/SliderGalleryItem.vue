@@ -85,21 +85,24 @@
             },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                index1: null,
             }
         },
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
-           console.log('...=',document.querySelector(`.swiper`))
-           this.swiper.slideTo(this.$route.params.id - 1)
-           console.log(this.$route.params)
-         
+           console.log('...=',document.querySelector(`.swiper`))        
+           this.index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
+           this.swiper.activeIndex = this.index
+           this.$emit('setCurrIndex', this.index + 1)
         },
         methods:{
             onSlideChange(e){
                 const index = e.activeIndex + 1
                 this.$emit('setCurrIndex', index)
-                this.$router.push({  params: {  id: index }})             
+                let id = this.paitings[e.activeIndex].number
+                this.$router.push({  params: {  id: id }})  
+                    
             },
             slideNext(){
                 this.swiper.slideNext()
