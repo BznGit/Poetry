@@ -81,6 +81,7 @@
            this.swiper = document.querySelector(`.swiper`).swiper;
            let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
            console.log(index)
+           console.log(this.poems[index].name)
           // this.swiper.slideTo(index)
           this.swiper.activeIndex = index
           // console.log(this.$route.params)

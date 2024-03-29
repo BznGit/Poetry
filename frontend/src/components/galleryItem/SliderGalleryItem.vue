@@ -86,15 +86,15 @@
         data(){
             return{
                 swiper: null,
-                index1: null,
+              
             }
         },
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
            console.log('...=',document.querySelector(`.swiper`))        
-           this.index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
-           this.swiper.activeIndex = this.index
-           this.$emit('setCurrIndex', this.index + 1)
+           let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
+           this.swiper.activeIndex = index
+           this.$emit('setCurrIndex', index + 1)
         },
         methods:{
             onSlideChange(e){
