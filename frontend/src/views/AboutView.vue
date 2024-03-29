@@ -37,10 +37,10 @@
                                 <div>Вечной жизни</div>
                                 <div>Высших Откровений</div>
                             </div>
-                            <a class="link-more" href="/gallery">
+                            <router-link class="link-more" to="/gallery">
                                 <div class="text">Вся галерея</div>
                                 <img class="icon" src="@/assets/svg/more.svg"/>
-                            </a>
+                            </router-link>
                         </div>
                         <div class="column">
                             <div class="line">
@@ -80,10 +80,10 @@
                                 <div>Диктуемые Высью</div>
                                 <div>А я б записывал Слова</div>
                             </div>
-                            <a class="link-more" href="/poems">
+                            <router-link class="link-more" to="/poems">
                                 <div class="text">Все сборники</div>
                                 <img class="icon" src="@/assets/svg/more.svg"/>
-                            </a>
+                            </router-link>
                         </div>
                     </div>
                     <div class="item event content">

@@ -81,6 +81,7 @@
            this.swiper = document.querySelector(`.swiper`).swiper;
            console.log('...=',document.querySelector(`.swiper`))
            let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
+           console.log(index)
            this.swiper.slideTo(index)
           // console.log(this.$route.params)
          
@@ -88,8 +89,10 @@
         methods:{
             onSlideChange(e){
                 const index = e.activeIndex + 1
+                console.log(index)
                 this.$emit('setCurrIndex', index)
-                this.$router.push({  params: {  id: index }})             
+                let id = this.poems[e.activeIndex].id
+                this.$router.push({  params: {  id: id }})             
             },
             slideNext(){
                 this.swiper.slideNext()

@@ -54,10 +54,12 @@ export default {
     },
     created(){
         this.collection = this.userStore.getCollection(this.$route.params.collection)
-        this.currIndex = this.$route.params.id
+        let index = this.collection.allPoems.findIndex(item=>item.id == this.$route.params.id)
+        this.currIndex = index + 1
     },
     methods:{
         setCurrIndex(index){
+            console.log('view>',index)
             this.currIndex = index;
         }
     }  
