@@ -92,13 +92,13 @@ export default {
         let arr3 = [];
         let arr4 = [];
         let total = poems.length;
-        let delta = Math.trunc(total / 4) ;
+        let delta = Math.trunc(total / 4) -1 ;
         let index1 = 0;
         let count1 = (index1 + delta);
         let index2 = count1 + 1;
         let count2 = (index2 + delta);
-        let index3 = count1 + 1;
-        let count3 = (index2 + delta);      
+        let index3 = count2 + 1;
+        let count3 = (index3 + delta);      
         let index4 = count3 + 1;
         let count4 = total - 1;
 
@@ -114,9 +114,7 @@ export default {
         for(let i = index4; i <= count4; i++){
             arr4.push(poems[i])
         }
-        this.partPoems = [ arr1, arr2, arr3, arr4 ]
-        console.log(this.partPoems)
-      
+        this.partPoems = [ arr1, arr2, arr3, arr4 ]   
     },
     mounted(){
         const moduleForewords = document.querySelectorAll('.module-foreword')

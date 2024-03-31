@@ -221,7 +221,7 @@ export default {
   },
   data () {
     return {
-        gallery: this.userStore.getPartGallerys()[0],
+         gallery: this.userStore.getPartGallerys()[0],
         galleryMob: this.userStore.getAllGallerys()[0],
         collection: this.userStore.getPartCollections(),
         poems: this.userStore.getPartPoems(),
@@ -230,7 +230,7 @@ export default {
   },
   mounted(){
 
-      window.addEventListener('load', function() {
+  //   window.addEventListener('load', function() {
           const paintings = document.querySelectorAll('.item.painting');
 
           paintings.forEach(function(painting) {
@@ -254,7 +254,7 @@ export default {
 
               setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
           });
-      });
+    //  });
   }
 }
 </script>

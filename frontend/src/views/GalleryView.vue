@@ -121,7 +121,7 @@ export default {
             document.body.classList.remove('overflow')
         })
     }
-    window.addEventListener('load', function() {
+   // window.addEventListener('load', function() {
           const paintings = document.querySelectorAll('.item.painting');
 
           paintings.forEach(function(painting) {
@@ -144,7 +144,7 @@ export default {
                   }
               });
           });
-      });
+     // });
   }
 }
 

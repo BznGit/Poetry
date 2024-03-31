@@ -6,6 +6,7 @@ import { gallerys } from '@/store/data/gallerys'
 import { events } from '@/store/data/events'
 import { books } from '@/store/data/books'
 
+
 export const useStore = defineStore('counter', {
   state: () => ({
     poems: poems,
@@ -23,10 +24,11 @@ export const useStore = defineStore('counter', {
     getBooks: (state) => state.books,
     getCart: (state) => state.cart,
     getCartBook: (state) => state.cartBook,
-
   },
 
   actions: {
+
+    // Cart service ===============================================
     addCart(number){
       let obj = paintings.find(item=>item.number == number)
       let index = this.cart.findIndex(item=>item.number ==obj.number)
@@ -36,7 +38,6 @@ export const useStore = defineStore('counter', {
       let obj = books.find(item=>item.id === id)
       let index = this.cartBook.findIndex(item=>item.id == obj.id)
       if(index== -1) this.cartBook.push(obj); else return
-
     },
     deleteItemFromCart(number){
       let index = this.cart.findIndex(item=>item.number == number) 
@@ -46,16 +47,18 @@ export const useStore = defineStore('counter', {
       let index = this.cartBook.findIndex(item=>item.id == id)
       this.cartBook.splice(index, 1)
     },
+
+    // Gallery service ===============================================
     getPartGallerys(){
       let arr = []
       this.gallerys.forEach(item=>{
-        let curGallery = this.getPartGallery(item.id)
+      let curGallery = structuredClone(this.getPartGallery(item.id))
         arr.push(curGallery) 
       })
       return arr
     },
-  getPartGallery(id) {
-      let curGallery = this.gallerys.find(item=>item.id == id)
+    getPartGallery(id) {
+      let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
       let arr1 = [];
       let arr2 = [];
       let arr3 = [];
@@ -69,64 +72,63 @@ export const useStore = defineStore('counter', {
       let count3 = total - 1;
 
       for(let i = index1; i <= count1; i++){
-        let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
-         pic.poem = structuredClone(this.addDivPoems(pic.poem))
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
+        pic.poem = structuredClone(this.addDivPoems(pic.poem))
         arr1.push(pic)
         
       }
       for(let i = index2; i <= count2; i++){
-        let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
         pic.poem  =  structuredClone(this.addDivPoems(pic.poem))
         arr2.push(pic)
-   
       }
       for(let i = index3; i <= count3; i++){
-        let pic = this.paintings.find(elem=>elem.img == curGallery.paintings[i])
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
         pic.poem  = structuredClone(this.addDivPoems(pic.poem))
         arr3.push(pic)
-    
       }
-
       curGallery.parts = [ arr1, arr2, arr3 ]
       return  curGallery
     },
     getAllGallerys(){
       let arr = []
       this.gallerys.forEach(item=>{
-        let curGallery = this.getGallery(item.id)
+        let curGallery = structuredClone(this.getGallery(item.id))
         arr.push(curGallery) 
       })
       return arr
     },
     getGallery(id) {
-      let curGallery = this.gallerys.find(item=>item.id == id)
+      let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
       let arr = [];
       curGallery.paintings.forEach(item=>{
-        let pic = this.paintings.find(elem=>elem.img == item)
-        pic.poem =  this.addDivPoems(pic.poem)
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == item))
+        pic.poem =  structuredClone(this.addDivPoems(pic.poem))
         arr.push(pic)
       })
       curGallery.fullPaints = arr
       return  curGallery
     },
+
+    // Collections service ===============================================
     getAllCollections(){
       let arr = []
       this.collectionsPoems.forEach(item=>{
-        let curCollection = this.getCollection(item.id)
+        let curCollection = structuredClone(this.getCollection(item.id))
         arr.push(curCollection) 
       })
       return arr
     },
     getPartCollections(){
-      let curCollection = this.getCollection(this.collectionsPoems[0].id)
+      let curCollection =structuredClone (this.getCollection(this.collectionsPoems[0].id))
       return curCollection
     },
     getCollection(id) {
-      let curCollection1 = this.collectionsPoems.find(item=>item.id == id)
+      let curCollection1 = structuredClone(this.collectionsPoems.find(item=>item.id == id))
       let arr = [];
       curCollection1.poems.forEach(item=>{
-        let allPoems = this.poems.find(elem=>elem.name == item)
-        allPoems.text =  this.addDivPoems(allPoems.text)
+        let allPoems =structuredClone(this.poems.find(elem=>elem.name == item))
+        allPoems.text =  structuredClone(this.addDivPoems(allPoems.text))
         arr.push(allPoems)
       })
       curCollection1.allPoems = arr
@@ -134,7 +136,7 @@ export const useStore = defineStore('counter', {
 
     },
     addDivPoems(poem){
-  
+      console.log(poem)
       let a = poem.slice(1)
       let n = a.replace(/\n/g, '</div>')
       let divs = n.replace(/[А-Я]/g, '<div>$&')
@@ -148,13 +150,12 @@ export const useStore = defineStore('counter', {
       ];
       let arr = []
       ishod.forEach(name=>{
-        let poem = this.poems.find(elem=>elem.name == name)
-        poem.text =  this.addDivPoems(poem.text)
+        let poem = structuredClone(this.poems.find(elem=>elem.name == name))
+        poem.text =  structuredClone(this.addDivPoems(poem.text))
         let obj = {}
         this.collectionsPoems.forEach(collection=>{
           let ok = collection.poems.includes(name)
           if (ok) {
-    
             obj.collection = collection
             obj.poem = poem
           }
