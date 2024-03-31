@@ -36,7 +36,7 @@
                                     </div>
                                     <div class="painting-text">
                                         <div  class="align">
-                                            <div v-html="item.poem"></div>
+                                            <div  class="list" v-html="item.poem"></div>
                                      
                                         </div>
                                     </div>
@@ -74,7 +74,7 @@
                                 :to="`/poems/${collection.id}/${collection.allPoems[item].id}`"
                             >
                             
-                                <div class="align" v-html="collection.allPoems[item].text"></div>  
+                                <div class="align"  v-html="collection.allPoems[item].text"></div>  
                             </router-link>
                          </div>
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
