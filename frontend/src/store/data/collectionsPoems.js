@@ -132,7 +132,7 @@ export const  collectionsPoems =  [
     id: 'meet-us-this-is-us',
     name: 'Знакомьтесь, это мы',
     logo: 'poem_pic_04.svg',
-    color: '03', // синий
+    color: '3', // синий
     titel: `
       Этой книгой я приглашаю читателей в увлекательное путешествие к самим себе
     `,
