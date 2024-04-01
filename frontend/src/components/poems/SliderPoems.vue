@@ -28,7 +28,6 @@
         <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 1000;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
-           
         </button>
   </template>
   <script>
@@ -82,21 +81,16 @@
         },
         mounted(){
             this.swiper = document.querySelector(`.slide-${this.indexPoem} .swiper`).swiper
-            this.swiper.slideTo(this.$route.params.id - 1)
-           
+  
         },
         methods:{
-            handleResize() {
-                console.log(window.innerWidth)
+            handleResize() { 
                 if(window.innerWidth < 1024) this.slidesCount = 3
                 if(window.innerWidth < 768) this.slidesCount = 1
                 if(window.innerWidth > 1024) this.slidesCount = 4
-                console.log(this.slidesCount)
             },
             onSlideChange(e){
-               // const index = e.activeIndex + 1
-               // this.$emit('setCurrIndex', index)
-                // this.$router.push({ name: 'poems-item', params: { id: index }})             
+
             },
             slideNext(){
                 this.swiper.slideNext()

@@ -78,19 +78,13 @@
             }
         },
          mounted(){
-           this.swiper = document.querySelector(`.swiper`).swiper;
-           let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
-           console.log(index)
-           console.log(this.poems[index].name)
-          // this.swiper.slideTo(index)
-          this.swiper.activeIndex = index
-          // console.log(this.$route.params)
-         
+            this.swiper = document.querySelector(`.swiper`).swiper;
+            let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
+            this.swiper.activeIndex = index
         },
         methods:{
             onSlideChange(e){
                 const index = e.activeIndex + 1
-                console.log(index)
                 this.$emit('setCurrIndex', index)
                 let id = this.poems[e.activeIndex].id
                 this.$router.push({  params: {  id: id }})             

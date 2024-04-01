@@ -56,11 +56,20 @@
                 <div class="text">
                     {{item.titel}}
                 </div>
-                <div class="text quote" style="white-space: pre-wrap;">
-                    {{item.foreword}}
+                <div class="text" style="white-space: pre-wrap;">
+                    {{item.foreword? item.foreword.text1 : ''}}
                 </div>
-                <div class="text">
-                    {{item.end}}
+                <div class="text quote" style="white-space: pre-wrap;">
+                    {{item.foreword? item.foreword.quote1: ''}}
+                </div>
+                <div class="text" style="white-space: pre-wrap;">
+                    {{item.foreword?item.foreword.text2: ''}}
+                </div>
+                <div class="text quote" style="white-space: pre-wrap;">
+                    {{item.foreword?item.foreword.quote2: ''}}
+                </div>
+                <div class="text" style="white-space: pre-wrap;">
+                    {{item.foreword?item.foreword.end: ''}}
                 </div>
             </div>
         </div>

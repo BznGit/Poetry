@@ -128,7 +128,7 @@
         mounted(){
             let index = this.events.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-            this.swiper.slideTo(index)
+            this.swiper.activeIndex = index
          
         },
         methods:{
