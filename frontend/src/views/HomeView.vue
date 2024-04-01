@@ -100,7 +100,7 @@
                     <div class="module-content">
                         <div class="grid poems">
                             <div class="column">
-                                <router-link class="item poem poem-01" :to="`/poems/` + poems[0].collection.id + `/`+ poems[0].poem.id">
+                                <router-link class="item poem poem-01" :to="`/poems/` + poems[0].collection.id ">
                                     <div class="poem-text">
                                         <div v-html="poems[0].poem.text"></div>
                                     </div>
@@ -113,7 +113,7 @@
                                 </router-link>
                             </div>
                             <div class="column">
-                                <router-link class="item poem poem-02" :to="`/poems/` + poems[1].collection.id + `/`+ poems[1].poem.id">
+                                <router-link class="item poem poem-02" :to="`/poems/` + poems[1].collection.id ">
                                     <div class="poem-text">
                                         <div v-html="poems[1].poem.text"></div>
                                     </div>
@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                 </router-link>
-                                <router-link class="item poem poem-02" :to="`/poems/` + poems[2].collection.id + `/`+ poems[2].poem.id">
+                                <router-link class="item poem poem-02" :to="`/poems/` + poems[2].collection.id ">
                                     <div class="poem-text">
                                         <div v-html="poems[2].poem.text"></div>
                                     </div>
@@ -137,7 +137,7 @@
                                 </router-link>
                             </div>
                             <div class="column">
-                                <router-link class="item poem poem-03" :to="`/poems/` + poems[3].collection.id + `/`+ poems[3].poem.id">
+                                <router-link class="item poem poem-03" :to="`/poems/` + poems[3].collection.id ">
                                     <div class="poem-text">
                                         <div v-html="poems[3].poem.text"></div>
                                     </div>

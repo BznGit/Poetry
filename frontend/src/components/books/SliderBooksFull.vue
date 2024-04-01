@@ -20,7 +20,11 @@
                     <img class="image" :src="`../files/books/${item.img}`"/>
                 </div>
                 <div class="book-buttons">
-                    <router-link v-if="item.online"  class="link-more" :to="`/poems/${item.id}`">
+                    <router-link 
+                        v-if="item.onlineLink != 'words-born-from-the-soul'" 
+                        :to="`${item.onlineLink=='poetic-paintings'? '/gallery/ecology-of-consciousness/1' : '/poems/'+ item.onlineLink}`"
+                        class="link-more"
+                    >
                         <div class="text">Сборник онлайн</div>
                         <img class="icon" src="@/assets/svg/more.svg">
                     </router-link>

@@ -3,7 +3,7 @@ export const  books =  [
     id: 'words-born-from-the-soul',
     name: 'Слова рожденные душой',
     img:'book_01.jpg',
-    online: false,
+    onlineLink: 'words-born-from-the-soul',
     titel:`
       Данный сборник включил в себя малострочные стихотворные формы, 
       которые словно звёздочки из высоких небесных глубин падали на белый
@@ -22,7 +22,7 @@ export const  books =  [
     id: 'poetic-paintings',
     name: 'Поэтические полотна',
     img:'book_02.jpg',
-    online: false,
+    onlineLink: 'poetic-paintings',
     titel:`
       Данный сборник включил в себя малострочные стихотворные формы,
       которые словно звёздочки из высоких небесных глубин падали на
@@ -40,7 +40,7 @@ export const  books =  [
     id: 'thought-twisted-into-a-spiral',
     name: 'В спираль закрученная мысль',
     img:'book_03.jpg',
-    online: true,
+    onlineLink: 'thought-twisted-into-a-spiral',
     titel:`
       Будем учиться вспоминать. Будем учиться чувствовать. 
       Будем учиться осознавать. Будем учиться знать. 
@@ -63,7 +63,7 @@ export const  books =  [
     id: 'starfall-for-every-day',
     name: 'Звездопад на каждый день',
     img:'book_04.jpg',
-    online: true,
+    onlineLink: 'starfall-for-every-day',
     titel:`
       Данный сборник включил в себя малострочные стихотворные формы, 
       которые словно звёздочки из высоких небесных глубин падали 
@@ -82,6 +82,7 @@ export const  books =  [
     id: 'directory-of-love',
     name: 'Директория любви',
     img:'book_05.jpg',
+    onlineLink: 'directory-of-love',
     titel:`
       Тексты Игоря Яковлевича проникают в тайные движения души, раскрывают невыразимые чувства: 
       это попытка поэта и философа осмыслить место человека в структуре космоса.
@@ -92,7 +93,7 @@ export const  books =  [
     id: 'meet-us-this-is-us',
     name: 'Знакомьтесь, это мы',
     img:'book_06.jpg',
-    online: true,
+    onlineLink: 'meet-us-this-is-us',
     titel:`
       Этой книгой я приглашаю читателей в увлекательное путешествие к самим себе. 
       Для того что бы оно было полезным, что бы знакомство с собой действительно состоялось, 
