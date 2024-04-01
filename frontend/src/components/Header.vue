@@ -1,5 +1,5 @@
 <template>
-    <div class="header index">
+    <div :class="`header ${homePage? 'index': ''}`">
         <div class="center">
             <div class="logo">
                 <router-link class="logo-link" to="/">
@@ -77,14 +77,15 @@ export default {
   data(){
     return{
         rout: this.$route.path,
-        activ: false
+        activ: false,
+        homePage: true
     }
   },
   computed:{
     count:function(){
          let sum = (this.userStore.getCart).length + (this.userStore.getCartBook).length
         return sum
-    }
+    },
   },
   mounted () {
     const mobileMenuButton = document.querySelector('button')
@@ -118,6 +119,7 @@ export default {
                 icons[0].classList.add('active')
                 icons[0].classList.remove('emty')
             }
+            if(val.path=='/') this.homePage = true; else this.homePage = false
         },
         count(newq, old){
             if(newq>old){
