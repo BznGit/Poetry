@@ -48,7 +48,7 @@
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-
+    import { useStore } from '../../store/index'
     // Import Swiper styles
     import 'swiper/css';
     import 'swiper/css/navigation';
@@ -63,7 +63,7 @@
             SwiperSlide,
         },
         setup() {
-
+            const userStore = useStore();
             const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
@@ -71,7 +71,7 @@
             };
 
         return {
-  
+            userStore,
             onSwiper,
             onSlideChange,
             modules: [ Navigation, Pagination, Scrollbar, A11y ],
@@ -111,6 +111,7 @@
                 this.swiper.slidePrev()
             },
             addToCart(id){
+                console.log('eded')
                 this.userStore.addCart(id) 
             }
         }
