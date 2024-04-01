@@ -11,7 +11,7 @@
     >  
         <swiper-slide v-for="(item, index) in events">
             <div :class="`slider__item item-${index+1 < 10? '0' + index+1 : index+1}`" style="">
-                <div class="event-status archive">
+                <div :class="`event-status ${item.active? 'active' : 'archive'}`">
                     <div class="title">
                         {{item.name}}
                     </div>

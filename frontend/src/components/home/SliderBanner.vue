@@ -7,7 +7,7 @@
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="(item, index) in data" :key="item.name">
-        <a :class="`slider__item item-${index < 10? '0' + (index + 1) : index} `" href="/events" style="">
+        <router-link :class="`slider__item item-${index < 10? '0' + (index + 1) : index}`" :to="`/events/${item.i}`" style="">
                         <div class="banner">
                             <div class="banner-image">
                               <img :src="`./files/events/` + item.img" >
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </router-link>
       </swiper-slide>
     </swiper>
 

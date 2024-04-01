@@ -1,7 +1,7 @@
 <template>
  
          <div class="slider primary index" data-slider="itc-slider" data-loop="true">
-            <router-link class="slider__wrapper" to="/events">
+            <div class="slider__wrapper" >
                 <SliderBanner />
                 <button class="slider__btn slider__btn_prev">
                     <img src="@/assets/svg/prev_y.svg">
@@ -14,7 +14,7 @@
                     <li class="slider__indicator" data-slide-to="1"></li>
                     <li class="slider__indicator" data-slide-to="2"></li>
                 </ol>
-            </router-link>
+            </div>
         </div>
         <div class="main">
             <div class="module paintings">
