@@ -53,9 +53,9 @@
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
-
     import 'swiper/css/scrollbar';
-    import { useStore } from '../../store/index'
+
+
     
     export default {
         components: {
@@ -63,7 +63,7 @@
             SwiperSlide,
         },
         setup() {
-            const userStore = useStore();
+
             const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
@@ -71,7 +71,7 @@
             };
 
         return {
-            userStore,
+  
             onSwiper,
             onSlideChange,
             modules: [ Navigation, Pagination, Scrollbar, A11y ],
@@ -91,7 +91,7 @@
         },
          mounted(){
            this.swiper = document.querySelector(`.swiper`).swiper;
-           console.log('...=',document.querySelector(`.swiper`))        
+            
            let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
            this.swiper.activeIndex = index
            this.$emit('setCurrIndex', index + 1)

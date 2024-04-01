@@ -17,10 +17,10 @@
                 <div class="module-content"> 
                     <div class="slider primary" data-slider="itc-slider" data-loop="false">
                         
-                        <div class="slider__wrapper">
+                        <div class="slider__wrapper ">
                             <SliderPoemsItem 
                                 :poems="collection.allPoems" 
-                                :currIndex="currIndex" 
+                                :currIndex: ="currIndex" 
                                 @setCurrIndex="setCurrIndex"
                                 :collectionId="collection.id"
                                 :indexPoem="collection.color"
@@ -48,19 +48,18 @@ export default {
     },
     data(){
         return {
-           currIndex: 1,
+           currIndex: null,
            collection: null
         }
     },
     created(){
-        this.collection = this.userStore.getCollection(this.$route.params.collection)
+        this.collection = structuredClone(this.userStore.getCollection(this.$route.params.collection))
         let index = this.collection.allPoems.findIndex(item=>item.id == this.$route.params.id)
         this.currIndex = index + 1
     },
     methods:{
         setCurrIndex(index){
-            console.log('view>',index)
-            this.currIndex = index;
+               this.currIndex = index;
         }
     }  
 }

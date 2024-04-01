@@ -1,22 +1,20 @@
 <template>
-    
     <swiper
         class="slider__items"
         :modules="modules"
         :slides-per-view="1"
         :space-between="5"
-        :parallax="true"
-
+        :effect="'none'"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
-        <swiper-slide v-for="(item, index) in poems">
+        <swiper-slide v-for="item in poems" :key="item.id">
             <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
                 <div :class="`item poem poem-0${indexPoem}`">
                     <div class="poem-text">
+            
                         <div v-html="item.text"></div>
                     </div>
-                    
                 </div>
             </div>
         </swiper-slide>
@@ -28,14 +26,13 @@
         <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 1000;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
-           
         </button>
   </template>
   <script>
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-    import { useStore } from '../../store/index'
+
 
     // Import Swiper styles
     import 'swiper/css';
@@ -51,7 +48,7 @@
             SwiperSlide,
         },
         setup() {
-            const userStore = useStore();
+            const swiper = useSwiper();
             const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
@@ -59,17 +56,18 @@
             };
 
         return {
-          onSwiper,
-          onSlideChange,
-          modules: [ Navigation, Pagination, Scrollbar, A11y ],
-          userStore
-          
+            swiper,
+            onSwiper,
+            onSlideChange,
+            swiperSlide,
+            modules: [ Navigation, Pagination, Scrollbar, A11y ],
         };
       },
         props: {
             collectionId: String,
             indexPoem: String,
             poems: Object,
+            currIndex: String,
             
             },
         data(){
@@ -81,6 +79,9 @@
             this.swiper = document.querySelector(`.swiper`).swiper;
             let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
             this.swiper.activeIndex = index
+            this.swiper.update()
+             //this.swiper.slideTo(index)
+            this.$emit('setCurrIndex', index + 1)
         },
         methods:{
             onSlideChange(e){
@@ -94,7 +95,8 @@
             },
             slidePrev(){
                 this.swiper.slidePrev()
-            }
+            },
+
         }
     };
   </script>
