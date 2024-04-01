@@ -95,7 +95,15 @@ export default {
         body.classList.toggle('overflow')
         return null
     }
-
+    window.onscroll = () => {
+      const header = document.querySelector(".header");
+      const Y = window.scrollY;
+      if (Y > 200) {
+          header.classList.add('fixed');
+      } else if  (Y < 1) {
+          header.classList.remove('fixed');
+      }
+    }
   },
     methods: {
         closeList(){

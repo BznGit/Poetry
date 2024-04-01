@@ -11,13 +11,11 @@
     >
         <swiper-slide v-for="(item, index) in poems">
             <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
-                <div :class="`item poem poem-0${indexPoem}`">
-                    <router-link class="item poem" :to="`/poems/${collectionId}/${item.id}`">
-                        <div class="poem-text">
-                            <div v-html="item.text"></div>
-                        </div>
-                    </router-link>
-                </div>
+                <router-link :class="`item poem poem-0${indexPoem}`" :to="`/poems/${collectionId}/${item.id}`">
+                    <div class="poem-text">
+                        <div v-html="item.text"></div>
+                    </div>
+                </router-link>
             </div>
         </swiper-slide>
     </swiper>

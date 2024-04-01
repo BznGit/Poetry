@@ -132,12 +132,12 @@ img {
 
 .header {
     background: #333333;
-    position: fixed;
+    bottom: 100%;
     width: 100%;
     z-index: 9;
-    top: 0;
     .center {
         justify-content: space-between;
+        transition: all 600ms;
         align-items: center;
         position: relative;
         max-width: 1366px;
@@ -149,6 +149,7 @@ img {
         z-index: 3;
         @media screen and (max-width: 1024px) {
             padding: 0 4vw;
+            height: 9vw;
         }
         @media screen and (max-width: 768px) {
             padding: 0 6vw;
@@ -156,6 +157,8 @@ img {
         }
     }
     .logo {
+        transform-origin: 0 50%;
+        transition: all 600ms;
         position: relative;
         z-index: 2;
         .logo-link {
@@ -177,6 +180,9 @@ img {
                     padding-top: 10px;
                     font-size: 20px;
                     line-height: 1;
+                }
+                .legend {
+                    display: none;
                 }
             }
         }
@@ -602,7 +608,7 @@ img {
             @media screen and (max-width: 1024px) {
                 height: 9vw;
             }
-            @media screen and (max-width: 1024px) {
+            @media screen and (max-width: 768px) {
                 height: 11vw;
             }
         }
@@ -622,6 +628,7 @@ img {
                     .legend {
                         font-family: 'PT_Serif-Italic';
                         font-size: 15px;
+                        display: block;
                     }
                 }
             }
@@ -666,16 +673,63 @@ img {
                 }
             }
         }
-        & + .slider {
-            margin-top: 100px;
+    }
+    &.fixed {
+        box-shadow: 0 5px 5px 0 rgba(0,0,0,.5);
+        transform: translateY(100%);
+        transition: all 600ms;
+        position: fixed;
+        .center {
+            height: 60px;
             @media screen and (max-width: 1024px) {
+                height: 7vw;
+            }
+            @media screen and (max-width: 768px) {
+                height: 9vw;
+                .logo {
+                    transform: scale(.7);
+                }
+            }
+        }
+        & + .slider {
+            margin-top: 70px;
+            @media screen and (max-width: 1024px) {
+                margin-top: 9vw;
+            }
+            @media screen and (max-width: 768px) {
                 margin-top: 11vw;
             }
         }
         & + .main {
-            padding-top: 100px;
+            margin-top: 70px;
             @media screen and (max-width: 1024px) {
-                padding-top: 11vw;
+                margin-top: 9vw;
+            }
+            @media screen and (max-width: 768px) {
+                margin-top: 11vw;
+            }
+        }
+            &.index {
+                .logo {
+                    transform: scale(.7);
+                }
+            & + .slider {
+                margin-top: 100px;
+                @media screen and (max-width: 1024px) {
+                    margin-top: 9vw;
+                }
+                @media screen and (max-width: 768px) {
+                    margin-top: 11vw;
+                }
+            }
+            & + .main {
+                margin-top: 100px;
+                @media screen and (max-width: 1024px) {
+                    margin-top: 9vw;
+                }
+                @media screen and (max-width: 768px) {
+                    margin-top: 11vw;
+                }
             }
         }
     }
@@ -688,6 +742,10 @@ img {
         background: #000000;
         font-size: 0;
         height: 360px;
+
+        .swiper {
+            overflow: visible;
+        }
         .slider__wrapper {
             height: 100%;
             .slider__items {
@@ -699,7 +757,6 @@ img {
                 display: flex;
                 height: 100%;
                 .slider__item {
-                    transform-style: preserve-3d;
                     backface-visibility: hidden;
                     will-change: transform;
                     position: relative;
@@ -2578,7 +2635,6 @@ img {
             .painting-text {
                 padding-left: 3vw;
                 .align {
-                    padding: 1.5vw 0;
                 }
                 div {
                     font-size: 1.2vw
@@ -2590,7 +2646,6 @@ img {
             .painting-text {
                 padding-left: 4vw;
                 .align {
-                    padding: 2vw 0;
                 }
                 div {
                     font-size: 2vw
