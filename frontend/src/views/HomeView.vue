@@ -69,7 +69,7 @@
                     <div class="module-content">
                         <div class="grid texts">
                             <router-link
-                                v-for="item in 13" 
+                                v-for="item in 15" 
                                 :class="`item text item-${item < 10? '0' + item : item}`"
                                 :to="`/poems/${collection.id}/${collection.allPoems[item].id}`"
                             >
