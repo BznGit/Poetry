@@ -20,7 +20,7 @@
                     <img class="image" :src="`../files/books/${item.img}`"/>
                 </div>
                 <div class="book-buttons">
-                    <router-link class="link-more" :to="`/poems/${item.id}`">
+                    <router-link v-if="item.online"  class="link-more" :to="`/poems/${item.id}`">
                         <div class="text">Сборник онлайн</div>
                         <img class="icon" src="@/assets/svg/more.svg">
                     </router-link>
@@ -86,11 +86,9 @@
             books: Object
         },
         mounted(){
-            console.log(this.currIndex)
             let index = this.books.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-           // this.swiper.slideTo(index)
-           this.swiper.activeIndex = index
+            this.swiper.activeIndex = index
         },
         methods:{
             onSlideChange(e){
@@ -106,7 +104,6 @@
                 this.swiper.slidePrev()
             }, 
             addToCart(id){
-              console.log(id)
                 this.userStore.addCartBook(id) 
             }
         }
