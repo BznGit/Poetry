@@ -7,17 +7,15 @@
     padding: 0;
     margin: 0
 }
-
 body, html {
+	background: #333333;
     height: 100%;
     padding: 0;
     margin: 0;
 
 }
-
 body {
     font-family: 'PT_Serif-Regular';
-    background: #333333;
     line-height: 1.45;
     font-size: 16px;
     color: #FFFFFF;
@@ -38,29 +36,24 @@ body {
         font-size: 3vw
     }
 }
-
 b, strong {
     font-family: 'PT_Serif-Bold';
 }
-
 table {
     border-collapse: collapse
 }
-
 h1, h3, h4, b, strong {
     font-weight: normal
 }
 button {
     cursor: pointer;
 }
-
 i {
     font-family: 'PT_Serif-Italic';
 }
 a {
     text-decoration: none
 }
-
 img {
     image-rendering: -webkit-optimize-contrast
 }
@@ -107,6 +100,7 @@ img {
     url(../fonts/PT_Serif-Regular.woff) format("woff"),
     url(../fonts/PT_Serif-Regular.ttf) format("truetype")
 }
+
 .noto {
     font-family: 'Noto_Serif';
 }
@@ -131,16 +125,30 @@ img {
 }
 
 .header {
-    animation-duration: 400ms;
-    animation-fill-mode: both;
-    animation-delay: 300ms;
-    background: #333333;
-    bottom: 100%;
+	position: relative;
     width: 100%;
     z-index: 9;
+	top: 0;
+	&:after {
+		animation-duration: 400ms;
+		animation-fill-mode: both;
+		animation-delay: 300ms;
+		transition: all 300ms;
+		background: #333333;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		content: '';
+		z-index: 2;
+		left: 0;
+		top: 0;
+	}
     .center {
         justify-content: space-between;
-        transition: all 400ms;
+		animation-duration: 400ms;
+		animation-fill-mode: both;
+		animation-delay: 300ms;
+		transition: all 300ms;
         align-items: center;
         position: relative;
         max-width: 1366px;
@@ -678,10 +686,14 @@ img {
         }
     }
     &.fixed {
-        box-shadow: 0 5px 5px 0 rgba(0,0,0,.5);
-        animation-name: header-move;
+		background: none;
         position: fixed;
+		&:after {
+			box-shadow: 0 5px 5px 0 rgba(0,0,0,.5);
+			animation-name: header-move;
+		}
         .center {
+			animation-name: header-fade;
             height: 60px;
             @media screen and (max-width: 1024px) {
                 height: 7vw;
@@ -4358,11 +4370,22 @@ img {
 }
 @keyframes header-move {
     0% {
-        transform: translateY(-50%);
+        transform: translateY(-100%);
     }
     100% {
-        transform: translateY(100%);
+        transform: translateY(0);
     }
+}
+@keyframes header-fade {
+	0% {
+		opacity: 0;
+	}
+	70% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 
