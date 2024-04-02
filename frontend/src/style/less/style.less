@@ -131,13 +131,16 @@ img {
 }
 
 .header {
+    animation-duration: 400ms;
+    animation-fill-mode: both;
+    animation-delay: 300ms;
     background: #333333;
     bottom: 100%;
     width: 100%;
     z-index: 9;
     .center {
         justify-content: space-between;
-        transition: all 600ms;
+        transition: all 400ms;
         align-items: center;
         position: relative;
         max-width: 1366px;
@@ -158,7 +161,7 @@ img {
     }
     .logo {
         transform-origin: 0 50%;
-        transition: all 600ms;
+        transition: all 400ms;
         position: relative;
         z-index: 2;
         .logo-link {
@@ -677,7 +680,7 @@ img {
     &.fixed {
         box-shadow: 0 5px 5px 0 rgba(0,0,0,.5);
         transform: translateY(100%);
-        transition: all 600ms;
+        animation-name: header-move;
         position: fixed;
         .center {
             height: 60px;
@@ -692,43 +695,43 @@ img {
             }
         }
         & + .slider {
-            margin-top: 70px;
+            margin-top: 60px;
             @media screen and (max-width: 1024px) {
-                margin-top: 9vw;
+                margin-top: 7vw;
             }
             @media screen and (max-width: 768px) {
-                margin-top: 11vw;
+                margin-top: 9vw;
             }
         }
         & + .main {
-            margin-top: 70px;
+            margin-top: 60px;
             @media screen and (max-width: 1024px) {
-                margin-top: 9vw;
+                margin-top: 7vw;
             }
             @media screen and (max-width: 768px) {
-                margin-top: 11vw;
+                margin-top: 9vw;
             }
         }
-            &.index {
-                .logo {
-                    transform: scale(.7);
-                }
+        &.index {
+            .logo {
+                transform: scale(.7);
+            }
             & + .slider {
-                margin-top: 100px;
+                margin-top: 60px;
                 @media screen and (max-width: 1024px) {
-                    margin-top: 9vw;
+                    margin-top: 7vw;
                 }
                 @media screen and (max-width: 768px) {
-                    margin-top: 11vw;
+                    margin-top: 9vw;
                 }
             }
-            & + .main {
-                margin-top: 100px;
+                & + .main {
+                margin-top: 60px;
                 @media screen and (max-width: 1024px) {
-                    margin-top: 9vw;
+                    margin-top: 7vw;
                 }
                 @media screen and (max-width: 768px) {
-                    margin-top: 11vw;
+                    margin-top: 9vw;
                 }
             }
         }
@@ -4352,6 +4355,14 @@ img {
     }
     100% {
         transform: translateX(-100%);
+    }
+}
+@keyframes header-move {
+    0% {
+        transform: translateY(-50%);
+    }
+    100% {
+        transform: translateY(100%);
     }
 }
 

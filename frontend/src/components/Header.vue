@@ -94,13 +94,15 @@ export default {
         mobileMenuButton.classList.toggle('checked')
         body.classList.toggle('overflow')
         return null
-    }
+    };
     window.onscroll = () => {
       const header = document.querySelector(".header");
       const Y = window.scrollY;
-      if (Y > 200) {
+      const headerHeight = header.offsetHeight;
+
+      if (Y > headerHeight * 2) {
           header.classList.add('fixed');
-      } else if  (Y < 1) {
+      } else if (Y === 0) {
           header.classList.remove('fixed');
       }
     }
