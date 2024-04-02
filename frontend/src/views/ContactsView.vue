@@ -13,22 +13,22 @@
                         <div class="box primary contacts">
                             <form class="form">
                                 <label class="form-field">
-                                    <input class="field input" type="text" required/>
+                                    <input v-model="name" class="field input" type="text" required/>
                                     <span class="name" >*Имя</span>
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field">
-                                    <input class="field input" type="text" required/>
+                                    <input v-model="mail" name='email' class="field input" type="text" required/>
                                     <span class="name">*Эл. почта</span>
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field">
-                                    <textarea class="field text" rows="10" required></textarea>
+                                    <textarea v-model="text" class="field text" rows="10" required></textarea>
                                     <span class="name">*Текст</span>
-                                    <span class="error">Некорректно заполнено поле</span>
+                                    <span class="error active">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field checkbox">
-                                    <input class="field" type="checkbox" required/>
+                                    <input v-model="checked" class="field" type="checkbox" required/>
                                     <span class="icons">
                                         <img class="icon one" src="@/assets/svg/checkbox.svg"/>
                                         <img class="icon two" src="@/assets/svg/checkbox_on.svg"/>
@@ -40,12 +40,12 @@
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <div class="buttons">
-                                    <button class="button primary yellow" disabled type="submit">отправить</button>
-                                    <div class="error">Ошибка. Проверьте правильность заполнения полей.</div>
+                                    <button class="button primary yellow"  :disabled ="disabled" @click="send">отправить</button>
+                                    <div class="error ">Ошибка. Проверьте правильность заполнения полей.</div>
                                 </div>
                             </form>
                             <div class="message">
-                                Спасмбо, письмо отправлено
+                                Спасибо, письмо отправлено
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,60 @@ export default {
   name: 'ContactsView',
   props: {
     msg: String
-  }
+  },
+    data () {
+        return {
+            name: 'Alex',
+            mail: 'x@y.com',
+            text: 'test',
+            checked: false,
+            psk:'0xEA1B20D8FF1C45BA',
+            disabled: true,
+
+        }
+    },
+    watch:{
+        name(old, yang){
+            this.validation()  
+        },
+        mail(old, yang){
+            this.validation()  
+        },
+        checked(old, yang){
+            this.validation()  
+        },
+
+    },
+    methods:{
+        validation(){
+            if((this.name.length != 0) && (this.mail.length != 0) && this.checked ) this.disabled = false; else this.disabled = true
+ 
+        },
+        send(){
+            fetch('php/smail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    [
+                        { name:"name", value: this.name },
+                        { name:"mail", value: this.mail },
+                        { name:"text", value: this.text },
+                        { name:"psk",  value: this.psk  }
+                    ]
+                )
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.status =='OK') alert('Письмо отправлено')
+                if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
+                if(data.status =='FAIL') alert('Неверный адрем почты ')
+            })
+            .catch(error => console.log(error));
+        }
+    }
 }
 </script>
 
