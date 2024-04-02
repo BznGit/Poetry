@@ -14,7 +14,7 @@
                             <form class="form">
                                 <label class="form-field">
                                     <input class="field input" type="text" required/>
-                                    <span class="name">*Имя</span>
+                                    <span class="name" >*Имя</span>
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field">
