@@ -1220,7 +1220,6 @@ img {
             display: flex;
         }
         .module-content {
-            margin: 0 -120px;
             padding: 0;
         }
     }
@@ -1246,6 +1245,7 @@ img {
             }
         }
         .painting-text {
+			transition: all 400ms;
             background: #333333;
             align-items: center;
             min-height: 600px;
@@ -1256,6 +1256,7 @@ img {
             display: flex;
             z-index: 1;
             &:hover {
+				color: #FFFFFF;
                 & + .painting-image {
                     .image {
                         transform: translateX(180px);
@@ -1400,6 +1401,7 @@ img {
                 border-radius: 1vw;
                 min-height: auto;
                 margin-top: 3vw;
+				color: #FFFFFF;
                 font-size: 4vw;
                 padding: 6vw;
                 order: 2;
