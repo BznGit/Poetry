@@ -62,9 +62,9 @@ export default {
   },
     data () {
         return {
-            name: 'Alex',
-            mail: 'x@y.com',
-            text: 'test',
+            name: '',
+            mail: '',
+            text: '',
             checked: false,
             psk:'0xEA1B20D8FF1C45BA',
             disabled: true,
@@ -80,8 +80,7 @@ export default {
         },
         checked(old, yang){
             this.validation()  
-        },
-
+        }
     },
     methods:{
         validation(){
