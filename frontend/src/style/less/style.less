@@ -3967,6 +3967,14 @@ img {
             left: 0;
         }
         &.error {
+			.field {
+				&.input {
+					border: 1px solid #FF7575;
+				}
+				&.text {
+					border: 1px solid #FF7575;
+				}
+			}
             .error {
                 opacity: 1;
             }
@@ -4158,8 +4166,8 @@ img {
 .message {
     font-family: 'PT_Serif-Bold';
     transition: all 300ms;
+	justify-content: center;
     align-items: center;
-    text-align: center;
     position: absolute;
     font-size: 32px;
     display: flex;
