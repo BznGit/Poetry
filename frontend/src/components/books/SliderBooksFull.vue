@@ -3,7 +3,7 @@
         class="slider__items"
         :modules="modules"
         :slides-per-view="1"
-        :space-between="50"
+        :space-between="0"
         :parallax="true"
 
         @swiper="onSwiper"
@@ -92,7 +92,9 @@
         mounted(){
             let index = this.books.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-            this.swiper.activeIndex = index
+           this.swiper.activeIndex = index
+ 
+            this.swiper.update()
         },
         methods:{
             onSlideChange(e){
