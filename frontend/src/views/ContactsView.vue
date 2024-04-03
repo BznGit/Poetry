@@ -11,7 +11,7 @@
                     </div>
                     <div class="module-content">
                         <div class="box primary contacts">
-                            <form :class="`form ${!send? 'send':''}`">
+                            <form :class="`form ${send? 'send':''}`">
                                 <label :class="`form-field ${errorName? 'error':''}`">
                                     <input v-model="name" class="field input" type="text" required/>
                                     <span class="name" >*Имя</span>
