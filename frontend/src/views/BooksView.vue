@@ -51,6 +51,9 @@ export default {
             books: this.userStore.getBooks
         }
     },
+    mounted(){
+        
+    }
 }
 </script>
 

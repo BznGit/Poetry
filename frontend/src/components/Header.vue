@@ -130,6 +130,8 @@ export default {
                 icons[0].classList.remove('emty')
             }
             if(val.path=='/') this.homePage = true; else this.homePage = false
+            const body = document.body
+            body.classList.remove('overflow')
         },
         count(newq, old){
             if(newq>old){
