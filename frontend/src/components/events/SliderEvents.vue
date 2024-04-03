@@ -17,7 +17,7 @@
                     </div>
                     <div class="divider">/</div>
                     <div :class="`status ${item.active? 'active' : ''}`">сейчас</div>
-                    <div :class="`status${!item.active? 'archive' : ''}`">в архиве</div>
+                    <div :class="`status ${!item.active? 'archive' : ''}`">в архиве</div>
                 </div>
                 <div class="item event archive">
                     <div class="event-media">
