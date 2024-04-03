@@ -58,13 +58,13 @@
                 </div>
                 <div class="module-content">
                     <div class="box primary contacts">
-                        <form class="form">
-                            <label class="form-field">
+                        <form :class="`form ${!send? 'send':''}`">
+                            <label :class="`form-field ${errorName? 'error':''}`">
                                 <input v-model="name" class="field input" type="text" required/>
                                 <span class="name">*Имя</span>
                                 <span class="error">Некорректно заполнено поле</span>
                             </label>
-                            <label class="form-field">
+                            <label :class="`form-field ${errorMail? 'error':''}`" >
                                 <input v-model="mail" class="field input" type="text" required/>
                                 <span class="name">*Эл. почта</span>
                                 <span class="error">Некорректно заполнено поле</span>
@@ -119,6 +119,9 @@ export default {
             checked: false,
             psk:'0xEA1B20D8FF1C45BA',
             disabled: true,
+            sended: false,
+            errorName: false, 
+            errorMail: false
         }
     },
     watch:{
@@ -134,6 +137,8 @@ export default {
     },
     methods:{
         validation(){
+            if(this.name.length == 0) this.errorName = true; else this.errorName = false;
+            if(this.mail.length == 0) this.errorMail = true; else this.errorMail = false;
             if((this.name.length != 0) && (this.mail.length != 0) && this.checked )
               this.disabled = false; 
             else this.disabled = true
@@ -179,7 +184,7 @@ export default {
                 console.log(data)
                 if(data.status =='OK') alert('Письмо отправлено')
                 if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
-                if(data.status =='FAIL') alert('Неверный адрем почты ')
+                if(data.status =='FAIL') alert('Ошибка ')
             })
             .catch(error => console.log(error));
         },

@@ -115,7 +115,6 @@ export default {
     },
     watch:{
         $route(val, ws){
-            console.log('->', val.path, ws)
             if (val.path =='/cart'){
                 const icons = document.querySelectorAll('.cart-icon .icon')
                 icons[0].classList.add('emty')
@@ -138,7 +137,6 @@ export default {
                 this.activ = true
                 setTimeout(()=>{
                     this.activ = false
-                  
                 }, 3000)
             }
         }
