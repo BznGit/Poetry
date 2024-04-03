@@ -71,11 +71,11 @@
             </div>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 1000;">
+        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
-        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 1000;">
+        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
            

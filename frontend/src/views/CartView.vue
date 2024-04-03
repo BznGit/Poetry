@@ -60,17 +60,17 @@
                     <div class="box primary contacts">
                         <form class="form">
                             <label class="form-field">
-                                <input class="field input" type="text" required/>
+                                <input v-model="name" class="field input" type="text" required/>
                                 <span class="name">*Имя</span>
                                 <span class="error">Некорректно заполнено поле</span>
                             </label>
                             <label class="form-field">
-                                <input class="field input" type="text" required/>
+                                <input v-model="mail" class="field input" type="text" required/>
                                 <span class="name">*Эл. почта</span>
                                 <span class="error">Некорректно заполнено поле</span>
                             </label>
                             <label class="form-field checkbox">
-                                <input class="field" type="checkbox" required/>
+                                <input  v-model="checked" class="field" type="checkbox" required/>
                                 <span class="icons">
                                     <img class="icon one" src="@/assets/svg/checkbox.svg"/>
                                     <img class="icon two" src="@/assets/svg/checkbox_on.svg"/>
@@ -82,7 +82,7 @@
                                 <span class="error">Некорректно заполнено поле</span>
                             </label>
                             <div class="buttons">
-                                <button class="button primary yellow" disabled type="submit">отправить</button>
+                                <button class="button primary yellow" :disabled ="disabled" @click="send" type="submit">отправить</button>
                                 <div class="error">Ошибка. Проверьте правильность заполнения полей.</div>
                             </div>
                         </form>
@@ -112,10 +112,77 @@ export default {
     data(){
         return{
             paints: this.userStore.getCart,
-            book: this.userStore.getCartBook
+            book: this.userStore.getCartBook,
+            name: '',
+            mail: '',
+            text: '',
+            checked: false,
+            psk:'0xEA1B20D8FF1C45BA',
+            disabled: true,
+        }
+    },
+    watch:{
+        name(old, yang){
+            this.validation()  
+        },
+        mail(old, yang){
+            this.validation()  
+        },
+        checked(old, yang){
+            this.validation()  
         }
     },
     methods:{
+        validation(){
+            if((this.name.length != 0) && (this.mail.length != 0) && this.checked )
+              this.disabled = false; 
+            else this.disabled = true
+            console.log(this.disabled)
+        },
+        send(){
+            console.log(this.paints)
+            let paintsText = ''; 
+            let count1 = this.paints.length
+            if(count1 > 0){
+                paintsText = 'Номера выбранных картин: '; 
+                this.paints.forEach((paint, index) => {
+                    paintsText += '№ ' + paint.number + (index==count1 - 1? '.' : ', ' )
+                });
+                paintsText = paintsText + '\n'
+            }
+            let bookText = ''; 
+            let count2 = this.book.length
+            if(count2 > 0){
+                bookText = 'Названия выбранных книг: '; 
+                this.book.forEach((book, index) => {
+                    bookText += '«' + book.name + '»' + (index==count2 - 1? '.' : ', ' )
+                });
+            }
+            this.text = paintsText  +  bookText
+            console.log(this.text)
+            fetch('php/smail.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    [
+                        { name:"name", value: this.name },
+                        { name:"mail", value: this.mail },
+                        { name:"text", value: this.text },
+                        { name:"psk",  value: this.psk  }
+                    ]
+                )
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.status =='OK') alert('Письмо отправлено')
+                if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
+                if(data.status =='FAIL') alert('Неверный адрем почты ')
+            })
+            .catch(error => console.log(error));
+        },
         deleteItem(number){
             console.log('delete', number)
             this.userStore.deleteItemFromCart(number)
