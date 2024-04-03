@@ -16,10 +16,10 @@
                         {{item.name}}
                     </div>
                     <div class="divider">/</div>
-                    <div :class="`status ${item.active? 'active' : ''}`">сейчас</div>
-                    <div :class="`status ${!item.active? 'archive' : ''}`">в архиве</div>
+                    <div class="status active">сейчас</div>
+                    <div class="status archive">в архиве</div>
                 </div>
-                <div class="item event archive">
+                <div :class="`item event ${!item.active? 'archive' : ''}`">
                     <div class="event-media">
                         <img class="image" :src="`../files/events/${item.img}`"/>
                     </div>
