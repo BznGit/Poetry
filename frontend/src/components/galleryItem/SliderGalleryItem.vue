@@ -111,7 +111,7 @@
                 this.swiper.slidePrev()
             },
             addToCart(id){
-                console.log('eded')
+          
                 this.userStore.addCart(id) 
             }
         }

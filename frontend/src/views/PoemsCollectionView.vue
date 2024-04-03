@@ -54,11 +54,20 @@
                 <div class="text">
                     {{collection.titel}}
                 </div>
-                <div class="text quote">
-                    {{collection.foreword }}
+                <div class="text" style="white-space: pre-wrap;">
+                    {{collection.foreword? collection.foreword.text1 : ''}}
                 </div>
-                <div class="text">
-                    {{collection.end }}
+                <div class="text quote" style="white-space: pre-wrap;">
+                    {{collection.foreword? collection.foreword.quote1: ''}}
+                </div>
+                <div class="text" style="white-space: pre-wrap;">
+                    {{collection.foreword?collection.foreword.text2: ''}}
+                </div>
+                <div class="text quote" style="white-space: pre-wrap;">
+                    {{collection.foreword?collection.foreword.quote2: ''}}
+                </div>
+                <div class="text" style="white-space: pre-wrap;">
+                    {{collection.foreword?collection.foreword.end: ''}}
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@
                     </router-link>
                 </div>
                 <div class="cart">
-                    <router-link class="menu-item cart active" to="/cart">
+                    <router-link :class="`menu-item cart ${count!=0?'active': ''}`" to="/cart">
                         <div class="cart-icon">
                             <img class="icon active" src="@/assets/svg/cart_w.svg"/>
                             <img class="icon empty " src="@/assets/svg/cart_g.svg"/>
