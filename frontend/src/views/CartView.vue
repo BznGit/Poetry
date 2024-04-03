@@ -182,7 +182,7 @@ export default {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                if(data.status =='OK') alert('Письмо отправлено')
+                if(data.status =='OK') this.sended = true
                 if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
                 if(data.status =='FAIL') alert('Ошибка ')
             })
