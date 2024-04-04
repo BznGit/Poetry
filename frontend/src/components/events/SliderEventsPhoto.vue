@@ -3,9 +3,9 @@
         class="slider__items"
         :modules="modules"
         :slides-per-view="1"
-        :space-between="5"
-        :parallax="true"
-        ref="slider"
+        :space-between="0"
+        :parallax="false"
+        
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
@@ -15,10 +15,8 @@
         > 
             <img :src="`../files/eventsPhoto/${item}`"/>
         </swiper-slide>
-
- 
     </swiper>
-    {{ photos }}
+
         <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
@@ -49,7 +47,7 @@
         },
         setup() {
             const userStore = useStore();
-            const swiperSlide = useSwiperSlide();
+            const swiper = useSwiper();
                 const onSwiper = (swiper) => {
             };
                 const onSlideChange = (e) => {
@@ -58,22 +56,28 @@
                 onSwiper,
                 onSlideChange,
                 modules: [ Navigation, Pagination, Scrollbar, A11y ],
-                userStore
+                userStore,
+              
             };
         },
         props: {
             photo: String,
-            allphotos: Array
+            allphotos: Array,
+            ref: Object
+        },
+        data(){
+            return {
+                swiper: null
+            }
         },
         mounted(){
-            console.log(this.allphotos)
-             let index = this.allphotos.findIndex(item=>item == this.photo)
-            console.log(index)
-            console.log('-->ref', this.$refs.slider)
-            this.swiper = this.$refs.slider
-            this.swiper.activeIndex = index
+           let index = this.allphotos.findIndex(item=>item == this.photo)
+           console.log(index)
+           this.swiper = document.querySelector(".photo .swiper").swiper;
+           console.log('-->ref', this.swiper)
+           this.swiper.activeIndex = index
  
-           // this.swiper.update()
+            this.swiper.update()
         },
         methods:{
             onSlideChange(e){

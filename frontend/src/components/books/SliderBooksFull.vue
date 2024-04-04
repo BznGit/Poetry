@@ -3,7 +3,7 @@
         class="slider__items"
         :modules="modules"
         :slides-per-view="1"
-        :space-between="5"
+        :space-between="1"
         :parallax="true"
 
         @swiper="onSwiper"
@@ -73,8 +73,7 @@
         },
         setup() {
             const userStore = useStore();
-            const swiperSlide = useSwiperSlide();
-                const onSwiper = (swiper) => {
+            const onSwiper = (swiper) => {
             };
                 const onSlideChange = (e) => {
             };

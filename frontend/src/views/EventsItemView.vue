@@ -12,7 +12,7 @@
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper">
                                 <SliderEvents
-                                  
+                               
                                     :currindex="currIndex"
                                     @setCurrIndex="setCurrIndex"
                                     @popupData="popupData"
@@ -25,16 +25,17 @@
             </div>
         </div>
         <div v-if="popup" class="popup active event-02">
-        <button @click.stop="popup=false" class="close">
+        <button @click="close" class="close">
             <img class="icon one" src="@/assets/svg/close_g.svg">
             <img class="icon two" src="@/assets/svg/close_y.svg">
         </button>
+   
         <div class="slider primary" data-slider="itc-slider" data-loop="false">
-            <div class="slider__wrapper">
+            <div class="slider__wrapper photo" >
                 <SliderEventsPhoto
                     :allphotos="allPhotos"
                     :photo="photo"                             
-                 
+                    class="slider__items"
                 />
             </div>
         </div>
@@ -64,15 +65,20 @@ export default {
             books: null,
             allPhotos: null,
             photo: null,
-            popup: false
+            popup: false,
         }
     },
     created(){
         this.events = this.userStore.events;
         this.currIndex = this.events.findIndex(item=>item.id == this.$route.params.id)
-
+  
     },
     methods:{
+        close(){
+           
+            this.popup = false
+             console.log('this.popup ', this.popup )
+        },
         setCurrIndex(index){
             this.currIndex = index;
         },
