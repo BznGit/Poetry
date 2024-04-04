@@ -67,6 +67,14 @@
                             :src="`../files/eventsPhoto/${image}`"
                         />
                     </div>
+                    <div class="popup active event-02">
+                        <button class="close">
+                            <img class="icon one" src="@/assets/svg/close_g.svg">
+                            <img class="icon two" src="@/assets/svg/close_y.svg">
+                        </button>
+                        <div class="slider primary" data-slider="itc-slider" data-loop="false">
+                        </div>
+                    </div>
                 </div>
             </div>
         </swiper-slide>

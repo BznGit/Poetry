@@ -82,7 +82,7 @@
                                 <span class="error">Некорректно заполнено поле</span>
                             </label>
                             <div class="buttons">
-                                <button class="button primary yellow" :disabled ="disabled" @click="send" type="submit">отправить</button>
+                                <button class="button primary yellow" :disabled ="disabled" @click.prevent="send" type="submit">отправить</button>
                                 <div class="error">Ошибка. Проверьте правильность заполнения полей.</div>
                             </div>
                         </form>
@@ -167,6 +167,8 @@ export default {
             console.log(this.text)
             fetch('php/smail.php', {
                 method: 'POST',
+                mode: 'no-cors' ,
+                credentials:'include' ,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -181,7 +183,7 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log('php>',data)
                 if(data.status =='OK') this.sended = true
                 if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
                 if(data.status =='FAIL') alert('Ошибка ')

@@ -13,22 +13,22 @@
                         <div class="box primary contacts">
                             <form :class="`form ${sended? 'send':''}`">
                                 <label :class="`form-field ${errorName? 'error':''}`">
-                                    <input v-model="name" class="field input" type="text" required/>
+                                    <input v-model.trim="name" class="field input" type="text" required/>
                                     <span class="name" >*Имя</span>
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <label :class="`form-field ${errorMail? 'error':''}`" >
-                                    <input v-model="mail" name='email' class="field input" type="text" required/>
+                                    <input v-model.trim="mail"  class="field input" type="text" required/>
                                     <span class="name">*Эл. почта</span>
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field" >
-                                    <textarea v-model="text" class="field text" rows="10" required></textarea>
+                                    <textarea v-model.trim="text" class="field text" rows="10" required></textarea>
                                     <span class="name">*Текст</span>
                                     <span class="error active">Некорректно заполнено поле</span>
                                 </label>
                                 <label class="form-field checkbox">
-                                    <input v-model="checked" class="field" type="checkbox" required/>
+                                    <input v-model.trim="checked" class="field" type="checkbox" required/>
                                     <span class="icons">
                                         <img class="icon one" src="@/assets/svg/checkbox.svg"/>
                                         <img class="icon two" src="@/assets/svg/checkbox_on.svg"/>
@@ -40,7 +40,7 @@
                                     <span class="error">Некорректно заполнено поле</span>
                                 </label>
                                 <div class="buttons">
-                                    <button class="button primary yellow"  :disabled ="disabled" @click="send">отправить</button>
+                                    <button class="button primary yellow"  :disabled ="disabled" @click.prevent="send">отправить</button>
                                     <div class="error ">Ошибка. Проверьте правильность заполнения полей.</div>
                                 </div>
                             </form>
@@ -95,6 +95,8 @@ export default {
         send(){
             fetch('php/smail.php', {
                 method: 'POST',
+                mode: 'no-cors' ,
+                credentials:'include' ,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -109,7 +111,7 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log('php>',data)
                 if(data.status =='OK') this.sended = true
                 if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
                 if(data.status =='FAIL') alert('Ошибка сервера')
