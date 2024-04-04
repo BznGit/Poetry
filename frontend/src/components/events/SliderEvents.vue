@@ -67,7 +67,7 @@
                             :src="`../files/eventsPhoto/${image}`"
                         />
                     </div>
-                    <div class="popup active event-02">
+                    <div v-if="popup" class="popup active event-02">
                         <button class="close">
                             <img class="icon one" src="@/assets/svg/close_g.svg">
                             <img class="icon two" src="@/assets/svg/close_y.svg">
@@ -127,7 +127,8 @@
         },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                popup:false
             }
         },
         created(){
