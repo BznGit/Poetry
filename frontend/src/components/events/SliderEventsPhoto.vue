@@ -11,7 +11,7 @@
     >
         <swiper-slide 
             v-for="(item, index) in allphotos"
-            class="item book" 
+        
         > 
             <img :src="`../files/eventsPhoto/${item}`"/>
         </swiper-slide>
