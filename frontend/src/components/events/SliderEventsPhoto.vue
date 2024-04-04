@@ -5,19 +5,17 @@
         :slides-per-view="1"
         :space-between="5"
         :parallax="true"
-
+        ref="slider"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
         <swiper-slide 
-
-            v-for="(item, index) in photos"
+            v-for="(item, index) in allphotos"
             class="item book" 
-        >
-      
-            <img :src="`../files/eventsPhoto/${image}`"/>
+        > 
+            <img :src="`../files/eventsPhoto/${item}`"/>
         </swiper-slide>
-        
+
  
     </swiper>
     {{ photos }}
@@ -64,22 +62,25 @@
             };
         },
         props: {
-            currIndex: Number,
-            photos: Object
+            photo: String,
+            allphotos: Array
         },
         mounted(){
-            let index = this.photos.findIndex(item=>item.id == this.$route.params.id)
-            this.swiper = document.querySelector(".swiper").swiper;
-           this.swiper.activeIndex = index
+            console.log(this.allphotos)
+             let index = this.allphotos.findIndex(item=>item == this.photo)
+            console.log(index)
+            console.log('-->ref', this.$refs.slider)
+            this.swiper = this.$refs.slider
+            this.swiper.activeIndex = index
  
-            this.swiper.update()
+           // this.swiper.update()
         },
         methods:{
             onSlideChange(e){
-                const index = e.activeIndex
-                let currId = this.photos[index].id
-                this.$emit('setCurrIndex', index)
-                this.$router.push({ params: { id: currId }})             
+                //const index = e.activeIndex
+               // let currId = this.photos[index].id
+                //this.$emit('setCurrIndex', index)
+               // this.$router.push({ params: { id: currId }})             
             },
             slideNext(){
                 this.swiper.slideNext()

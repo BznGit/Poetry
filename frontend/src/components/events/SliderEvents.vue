@@ -65,24 +65,10 @@
                     <div class="event-photo event-02">
                         <img v-for="image in item.additionally.images"
                             :src="`../files/eventsPhoto/${image}`"
-                            @click="popupVis(image)"
+                            @click="letPopup(item.additionally.images, image)"
                         />
                     </div>
-                    <div v-if="popup" class="popup active event-02">
-                        <button class="close">
-                            <img class="icon one" src="@/assets/svg/close_g.svg">
-                            <img class="icon two" src="@/assets/svg/close_y.svg">
-                        </button>
-                        <div class="slider primary" data-slider="itc-slider" data-loop="false">
-                            <div class="slider__wrapper">
-                                <SliderEventsPhoto
-                                        :currphoto="currPhoto"
-                                        :photos="item.additionally.images"                                    
-                                        class="slider__items"
-                                />
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </swiper-slide>
@@ -98,7 +84,7 @@
         </button>
   </template>
   <script>
-    import SliderEventsPhoto from '../events/SliderEventsPhoto.vue'
+   
     // Import Swiper Vue.js components
     import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -115,7 +101,7 @@
         components: {
             Swiper,
             SwiperSlide,
-            SliderEventsPhoto
+         
         },
         setup() {
             const swiperSlide = useSwiperSlide();
@@ -138,8 +124,7 @@
         data(){
             return{
                 swiper: null,
-                popup: false,
-                currPhoto: ''
+
             }
         },
         mounted(){
@@ -149,9 +134,10 @@
          
         },
         methods:{
-            popupVis(photo){
-                console.log('photo>',photo)
-                this.currPhoto = photo
+            letPopup(allPhotos, photo){
+                console.log('photo',allPhotos, photo)
+                this.$emit('popupData', allPhotos, photo)
+
             },
             onSlideChange(e){
                 const index = e.activeIndex

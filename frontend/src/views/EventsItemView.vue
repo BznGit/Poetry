@@ -12,8 +12,10 @@
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper">
                                 <SliderEvents
+                                  
                                     :currindex="currIndex"
                                     @setCurrIndex="setCurrIndex"
+                                    @popupData="popupData"
                                     :events="events"                                    
                                     class="slider__items"
                                 />
@@ -22,11 +24,26 @@
                     </div>
             </div>
         </div>
+        <div v-if="popup" class="popup active event-02">
+        <button @click.stop="popup=false" class="close">
+            <img class="icon one" src="@/assets/svg/close_g.svg">
+            <img class="icon two" src="@/assets/svg/close_y.svg">
+        </button>
+        <div class="slider primary" data-slider="itc-slider" data-loop="false">
+            <div class="slider__wrapper">
+                <SliderEventsPhoto
+                    :allphotos="allPhotos"
+                    :photo="photo"                             
+                 
+                />
+            </div>
+        </div>
     </div>
-   
+    </div>
 </template>
 
 <script>
+import SliderEventsPhoto from '../components/events/SliderEventsPhoto.vue'
 import SliderEvents from '../components/events/SliderEvents.vue'
 import { useStore } from '../store/index'
 export default { 
@@ -38,12 +55,16 @@ export default {
     },
     name: 'EventsItemView',
     components: {
-        SliderEvents
+        SliderEvents,
+        SliderEventsPhoto
     },
     data(){
         return {
             currIndex: null,
-            books: null
+            books: null,
+            allPhotos: null,
+            photo: null,
+            popup: false
         }
     },
     created(){
@@ -54,6 +75,13 @@ export default {
     methods:{
         setCurrIndex(index){
             this.currIndex = index;
+        },
+        popupData(allPhotos, photo){
+           
+           this.allPhotos = structuredClone(allPhotos);
+           this.photo = photo;
+           this.popup = true
+            console.log('popup page>>', allPhotos, photo)
         }
     }   
 }
