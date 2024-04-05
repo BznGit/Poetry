@@ -46,7 +46,6 @@ export default {
     },
     methods:{
         setCurrIndex(index){
-            console.log
             this.currIndex = index;
         }
     }  

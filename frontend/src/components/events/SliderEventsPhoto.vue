@@ -15,11 +15,11 @@
             <img :src="`../files/eventsPhoto/${item}`"/>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
+        <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
-        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
+        <button @click="slideNext" v-if="nextStop" class="slider__btn slider__btn_next" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
         </button>
@@ -44,9 +44,9 @@
         },
         setup() {
             const userStore = useStore();
-                       const onSwiper = (swiper) => {
+            const onSwiper = (swiper) => {
             };
-                const onSlideChange = (e) => {
+            const onSlideChange = (e) => {
             };
             return {
                 onSwiper,
@@ -62,18 +62,21 @@
         },
         data(){
             return {
-                swiper: null
+                swiper: null,
+                prevStop: true,
+                nextStop: true
             }
         },
         mounted(){
            let index = this.allphotos.findIndex(item=>item == this.photo)
            this.swiper = document.querySelector(".photo .swiper").swiper;
            this.swiper.activeIndex = index
+           this.checkPrevNextStop(index)
            this.swiper.update()
         },
         methods:{
             onSlideChange(e){
-           
+                this.checkPrevNextStop(e.activeIndex)
             },
             slideNext(){
                 this.swiper.slideNext()
@@ -83,7 +86,11 @@
             }, 
             addToCart(id){
                 this.userStore.addCartBook(id) 
-            }
+            },
+            checkPrevNextStop(index){
+                if(index == 0) this.prevStop = false; else this.prevStop = true;
+                if(index  == this.allphotos.length-1) this.nextStop = false; else this.nextStop = true;
+            },
         }
     };
   </script>

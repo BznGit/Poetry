@@ -24,11 +24,11 @@
             </div>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
+        <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
-        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
+        <button @click="slideNext" v-if="nextStop" class="slider__btn slider__btn_next" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
            
@@ -71,27 +71,29 @@
             },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                prevStop: true,
+                nextStop: true  
             }
         },
         mounted(){
            this.swiper = document.querySelector(".gallery .swiper").swiper;
-
-      
-         
+           this.checkPrevNextStop(this.swiper.activeIndex)
         },
         methods:{
             onSlideChange(e){
-               // const index = e.activeIndex + 1
-                //this.$emit('setCurrIndex', index)
-                //this.$router.push({ name: 'books-item', params: { id: index }})             
+                this.checkPrevNextStop(e.activeIndex)
             },
             slideNext(){
                 this.swiper.slideNext()
             },
             slidePrev(){
                 this.swiper.slidePrev()
-            }
+            },
+            checkPrevNextStop(index){
+                if(index == 0) this.prevStop = false; else this.prevStop = true;
+                if(index  == this.data.length-1) this.nextStop = false; else this.nextStop = true;
+            },
         }
     };
   </script>

@@ -100,52 +100,52 @@
                     <div class="module-content">
                         <div class="grid poems">
                             <div class="column">
-                                <router-link class="item poem poem-01" :to="`/poems/` + poems[0].collection.id ">
+                                <router-link class="item poem poem-01" :to="`/poems/` + poems[0].collection.id + '/' + poems[0].poem.id">
                                     <div class="poem-text">
                                         <div v-html="poems[0].poem.text"></div>
                                     </div>
                                     <div class="poem-link">
-                                        <div class="link-more" href="#">
+                                        <router-link class="link-more" :to="`/poems/` + poems[0].collection.id">
                                             <div class="text">{{poems[0].collection.name}}</div>
                                             <img class="icon" src="@/assets/svg/more.svg"/>
-                                        </div>
+                                        </router-link>
                                     </div>
                                 </router-link>
                             </div>
                             <div class="column">
-                                <router-link class="item poem poem-02" :to="`/poems/` + poems[1].collection.id ">
+                                <router-link class="item poem poem-02" :to="`/poems/` + poems[1].collection.id + '/' + poems[1].poem.id">
                                     <div class="poem-text">
                                         <div v-html="poems[1].poem.text"></div>
                                     </div>
                                     <div class="poem-link">
-                                        <div class="link-more" href="#">
+                                        <router-link class="link-more" :to="`/poems/` + poems[1].collection.id">
                                             <div class="text">{{poems[1].collection.name}}</div>
                                             <img class="icon" src="@/assets/svg/more.svg"/>
-                                        </div>
+                                        </router-link>
                                     </div>
                                 </router-link>
-                                <router-link class="item poem poem-02" :to="`/poems/` + poems[2].collection.id ">
+                                <router-link class="item poem poem-02" :to="`/poems/` + poems[2].collection.id + '/' + poems[2].poem.id">
                                     <div class="poem-text">
                                         <div v-html="poems[2].poem.text"></div>
                                     </div>
                                     <div class="poem-link">
-                                        <div class="link-more" href="#">
+                                        <router-link class="link-more" :to="`/poems/` + poems[2].collection.id">
                                             <div class="text">{{poems[2].collection.name}}</div>
                                             <img class="icon" src="@/assets/svg/more.svg"/>
-                                        </div>
+                                        </router-link>
                                     </div>
                                 </router-link>
                             </div>
                             <div class="column">
-                                <router-link class="item poem poem-03" :to="`/poems/` + poems[3].collection.id ">
+                                <router-link class="item poem poem-03" :to="`/poems/` + poems[3].collection.id + '/' + poems[3].poem.id">
                                     <div class="poem-text">
                                         <div v-html="poems[3].poem.text"></div>
                                     </div>
                                     <div class="poem-link">
-                                        <div class="link-more" :href="`/poems/` + poems[3].collection.id">
+                                        <router-link class="link-more" :to="`/poems/` + poems[3].collection.id" >
                                             <div class="text">{{poems[3].collection.name}}</div>
                                             <img class="icon" src="@/assets/svg/more.svg"/>
-                                        </div>
+                                        </router-link>
                                     </div>
                                 </router-link>
                             </div>
@@ -204,58 +204,52 @@ import SliderPoemsMob2 from '../components/home/SliderPoemsMob2.vue'
 import SliderBooks from '../components/home/SliderBooks.vue'
 
 export default {
-  setup () {
-    const userStore = useStore()
-    return { userStore }
-  },
-  components: {
-    SliderBanner, 
-    SliderGallery,
-    SliderPoemsMob1,
-    SliderPoemsMob2,
-    SliderBooks
-  },
-  name: 'HomeView',
-  props: {
-    msg: String
-  },
-  data () {
-    return {
-         gallery: this.userStore.getPartGallerys()[0],
-        galleryMob: this.userStore.getAllGallerys()[0],
-        collection: this.userStore.getPartCollections(),
-        poems: this.userStore.getPartPoems(),
-        books: this.userStore.getBooks
+    setup () {
+        const userStore = useStore()
+        return { userStore }
+    },
+    components: {
+        SliderBanner, 
+        SliderGallery,
+        SliderPoemsMob1,
+        SliderPoemsMob2,
+        SliderBooks
+    },
+    name: 'HomeView',
+    props: {
+        msg: String
+    },
+    data () {
+        return {
+            gallery: this.userStore.getPartGallerys()[0],
+            galleryMob: this.userStore.getAllGallerys()[0],
+            collection: this.userStore.getPartCollections(),
+            poems: this.userStore.getPartPoems(),
+            books: this.userStore.getBooks
+        }
+    },
+    mounted(){
+        const paintings = document.querySelectorAll('.item.painting');
+        paintings.forEach(function(painting) {
+            const align = painting.querySelector('.align');
+            const alignHeight = align.offsetHeight;
+            const animationDuration = alignHeight * 0.05;
+            align.style.transitionDuration = animationDuration + 's';
+
+            function startAnimation() {
+                align.style.transitionDuration = '0s';
+                align.style.transform = 'translateY(0)';
+
+                setTimeout(function() {
+                    align.style.transitionDuration = animationDuration + 's';
+                    align.style.transform = 'translateY(-' + alignHeight + 'px)';
+                }, 100);
+            }
+            
+            startAnimation(); // Запустить первую итерацию анимации сразу
+            setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
+        });
     }
-  },
-  mounted(){
-
-  //   window.addEventListener('load', function() {
-          const paintings = document.querySelectorAll('.item.painting');
-
-          paintings.forEach(function(painting) {
-              const align = painting.querySelector('.align');
-              const alignHeight = align.offsetHeight;
-
-              const animationDuration = alignHeight * 0.05;
-              align.style.transitionDuration = animationDuration + 's';
-
-              function startAnimation() {
-                  align.style.transitionDuration = '0s';
-                  align.style.transform = 'translateY(0)';
-
-                  setTimeout(function() {
-                      align.style.transitionDuration = animationDuration + 's';
-                      align.style.transform = 'translateY(-' + alignHeight + 'px)';
-                  }, 100);
-              }
-
-              startAnimation(); // Запустить первую итерацию анимации сразу
-
-              setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
-          });
-    //  });
-  }
 }
 </script>
 

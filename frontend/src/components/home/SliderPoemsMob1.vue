@@ -9,7 +9,7 @@
     @swiper="onSwiper"
     @slideChange="onSlideChange"
     >
-        <swiper-slide v-for = "(item, index) in 13" :key="item" >
+        <swiper-slide v-for = "(item, index) in 16" :key="item" >
             <div :class="`slider__item text item-${item < 10? '0' + item : item} ${item > 3? '0' + '' : 'slider__item_active'}`" style="">
                 <router-link class="item text item-01" :to="`/poems/${collectionId}/${data[index].id}`">
                     <div class="align">
@@ -19,11 +19,11 @@
             </div>
         </swiper-slide>
     </swiper>
-    <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
+    <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
         <img class="icon one" src="@/assets/svg/prev_g.svg">
         <img class="icon two" src="@/assets/svg/prev_y.svg">
     </button>
-    <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
+    <button @click="slideNext" v-if="nextStop" class="slider__btn slider__btn_next" style="z-index: 2;">
         <img class="icon one" src="@/assets/svg/next_g.svg">
         <img class="icon two" src="@/assets/svg/next_y.svg">
     </button>
@@ -65,21 +65,28 @@
             },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                prevStop: true,
+                nextStop: true   
             }
         },
         mounted(){
             this.swiper = document.querySelector(".collection .swiper").swiper;
+            this.checkPrevNextStop(this.swiper.activeIndex)
         },
         methods:{
             onSlideChange(e){
-             
+                this.checkPrevNextStop(e.activeIndex)
             },
             slideNext(){
                 this.swiper.slideNext()
             },
             slidePrev(){
                 this.swiper.slidePrev()
+            },
+            checkPrevNextStop(index){
+                if(index == 0) this.prevStop = false; else this.prevStop = true;
+                if(index  == 15) this.nextStop = false; else this.nextStop = true;
             }
         }
     };

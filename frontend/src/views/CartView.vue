@@ -142,10 +142,10 @@ export default {
             if((this.name.length != 0) && (this.mail.length != 0) && this.checked )
               this.disabled = false; 
             else this.disabled = true
-            console.log(this.disabled)
+
         },
         send(){
-            console.log(this.paints)
+
             let paintsText = ''; 
             let count1 = this.paints.length
             if(count1 > 0){
@@ -164,7 +164,7 @@ export default {
                 });
             }
             this.text = paintsText  +  bookText
-            console.log(this.text)
+
             fetch('php/smail.php', {
                 method: 'POST',
                 mode: 'no-cors' ,
@@ -183,7 +183,7 @@ export default {
             })
             .then(res => res.json())
             .then(data => {
-                console.log('php>',data)
+
                 if(data.status =='OK') this.sended = true
                 if(data.status =='OPSKFAIL') alert('Неверное кодовое слово')
                 if(data.status =='FAIL') alert('Ошибка ')
@@ -191,12 +191,9 @@ export default {
             .catch(error => console.log(error));
         },
         deleteItem(number){
-            console.log('delete', number)
             this.userStore.deleteItemFromCart(number)
-    
         },
         deleteItemBook(id){
-            console.log('delete', id)
             this.userStore.deleteBookFromCart(id)
         }
     }, 

@@ -19,11 +19,11 @@
             </div>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
+        <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
-        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
+        <button @click="slideNext" v-if="nextStop" class="slider__btn slider__btn_next" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
         </button>
@@ -39,10 +39,8 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
-   
     
     export default {
-  
         components: {
             Swiper,
             SwiperSlide,
@@ -67,20 +65,21 @@
             collectionId: String,
             indexPoem: String,
             poems: Object,
-            currIndex: String,
-            
-            },
+            currIndex: String, 
+        },
         data(){
             return{
-                swiper: null
+                swiper: null,
+                prevStop: true,
+                nextStop: true
             }
         },
-         mounted(){
+        mounted(){
             this.swiper = document.querySelector(`.swiper`).swiper;
             let index = this.poems.findIndex(item=>item.id == this.$route.params.id)
             this.swiper.activeIndex = index
+            this.checkPrevNextStop(index)
             this.swiper.update()
-             //this.swiper.slideTo(index)
             this.$emit('setCurrIndex', index + 1)
         },
         methods:{
@@ -88,7 +87,8 @@
                 const index = e.activeIndex + 1
                 this.$emit('setCurrIndex', index)
                 let id = this.poems[e.activeIndex].id
-                this.$router.push({  params: {  id: id }})             
+                this.$router.push({  params: {  id: id }}) 
+                this.checkPrevNextStop(e.activeIndex)            
             },
             slideNext(){
                 this.swiper.slideNext()
@@ -96,7 +96,10 @@
             slidePrev(){
                 this.swiper.slidePrev()
             },
-
+            checkPrevNextStop(index){
+                if(index == 0) this.prevStop = false; else this.prevStop = true;
+                if(index  == this.poems.length-1) this.nextStop = false; else this.nextStop = true;
+            },
         }
     };
   </script>

@@ -71,14 +71,13 @@
             </div>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" class="slider__btn slider__btn_prev" style="z-index: 2;">
+        <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
-        <button @click="slideNext" class="slider__btn slider__btn_next" style="z-index: 2;">
+        <button @click="slideNext" v-if="nextStop"  class="slider__btn slider__btn_next" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/next_g.svg">
-            <img class="icon two" src="@/assets/svg/next_y.svg">
-           
+            <img class="icon two" src="@/assets/svg/next_y.svg">         
         </button>
   </template>
   <script>
@@ -119,12 +118,15 @@
         data(){
             return{
                 swiper: null,
+                prevStop: true,
+                nextStop: true
             }
         },
         mounted(){
             let index = this.events.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
-            this.swiper.activeIndex = index
+            this.swiper.activeIndex = index;
+            this.checkPrevNextStop(index)
         },
         methods:{
             letPopup(allPhotos, photo){
@@ -132,6 +134,7 @@
             },
             onSlideChange(e){
                 const index = e.activeIndex
+                this.checkPrevNextStop(e.activeIndex)
                 let currId = this.events[index].id
                 this.$emit('setCurrIndex', index)
                 this.$router.push({ params: { id: currId }})             
@@ -141,7 +144,11 @@
             },
             slidePrev(){
                 this.swiper.slidePrev()
-            }
+            },
+            checkPrevNextStop(index){
+                if(index == 0) this.prevStop = false; else this.prevStop = true;
+                if(index  == this.events.length-1) this.nextStop = false; else this.nextStop = true;
+            },
         }
     };
   </script>
