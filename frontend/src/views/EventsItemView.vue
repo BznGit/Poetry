@@ -42,6 +42,7 @@
 </template>
 
 <script>
+//script 
 import SliderEventsPhoto from '../components/events/SliderEventsPhoto.vue'
 import SliderEvents from '../components/events/SliderEvents.vue'
 import { useStore } from '../store/index'
