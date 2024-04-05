@@ -49,7 +49,7 @@
                     <div :class="`cart-popup ${activ? 'active':''}`">
                         <img class="pointer" src="@/assets/svg/cart_pointer.svg"/>
                         <div class="painting">
-                            <img class="image" src="@/assets/jpg/picture_01.jpg">
+                            <img class="image" :src="`./files/${lastPic}`">
                         </div>
                         <div class="add">Добавлена в заявку</div>
                         <router-link class="link-more" to="/cart">
@@ -78,7 +78,8 @@ export default {
     return{
         rout: this.$route.path,
         activ: false,
-        homePage: true
+        homePage: true,
+        lastPic: null
     }
   },
   computed:{
@@ -133,6 +134,7 @@ export default {
             body.classList.remove('overflow')
         },
         count(newq, old){
+            this.lastPic = this.userStore.getLastpic
             if(newq>old){
                 this.activ = true
                 setTimeout(()=>{

@@ -16,7 +16,8 @@ export const useStore = defineStore('counter', {
     events: events,
     books: books,
     cart:[],
-    cartBook: []
+    cartBook: [],
+    lastPic: null
   }),
 
   getters: {
@@ -24,6 +25,7 @@ export const useStore = defineStore('counter', {
     getBooks: (state) => state.books,
     getCart: (state) => state.cart,
     getCartBook: (state) => state.cartBook,
+    getLastpic: (state) => state.lastPic
   },
 
   actions: {
@@ -32,12 +34,18 @@ export const useStore = defineStore('counter', {
     addCart(number){
       let obj = paintings.find(item=>item.number == number)
       let index = this.cart.findIndex(item=>item.number ==obj.number)
-      if(index== -1) this.cart.push(obj);else return
+      if(index== -1){
+        this.cart.push(obj)
+        this.lastPic = 'gallery/' + obj.img
+      } else return
     },
     addCartBook(id){
       let obj = books.find(item=>item.id === id)
       let index = this.cartBook.findIndex(item=>item.id == obj.id)
-      if(index== -1) this.cartBook.push(obj); else return
+      if(index== -1){
+        this.cartBook.push(obj);
+        this.lastPic = 'books/' + obj.img
+      }  else return
     },
     deleteItemFromCart(number){
       let index = this.cart.findIndex(item=>item.number == number) 
