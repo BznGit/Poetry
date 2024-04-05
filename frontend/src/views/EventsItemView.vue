@@ -12,12 +12,10 @@
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper">
                                 <SliderEvents
-                               
                                     :currindex="currIndex"
                                     @setCurrIndex="setCurrIndex"
                                     @popupData="popupData"
                                     :events="events"                                    
-                                    class="slider__items"
                                 />
                             </div>
                         </div>
@@ -71,23 +69,18 @@ export default {
     created(){
         this.events = this.userStore.events;
         this.currIndex = this.events.findIndex(item=>item.id == this.$route.params.id)
-  
     },
     methods:{
         close(){
-           
             this.popup = false
-             console.log('this.popup ', this.popup )
         },
         setCurrIndex(index){
             this.currIndex = index;
         },
         popupData(allPhotos, photo){
-           
            this.allPhotos = structuredClone(allPhotos);
            this.photo = photo;
            this.popup = true
-            console.log('popup page>>', allPhotos, photo)
         }
     }   
 }

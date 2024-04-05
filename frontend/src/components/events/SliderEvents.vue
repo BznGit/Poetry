@@ -59,8 +59,7 @@
                     <div class="event-text">
                         <div class="text">
                             {{ item.additionally.text }}
-                        </div>
-     
+                        </div>    
                     </div>
                     <div class="event-photo event-02">
                         <img v-for="image in item.additionally.images"
@@ -68,7 +67,6 @@
                             @click="letPopup(item.additionally.images, image)"
                         />
                     </div>
-                   
                 </div>
             </div>
         </swiper-slide>
@@ -86,7 +84,7 @@
   <script>
    
     // Import Swiper Vue.js components
-    import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
+    import { Swiper, SwiperSlide  } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
     // Import Swiper styles
@@ -95,28 +93,25 @@
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
    
-    
     export default {
-  
         components: {
             Swiper,
             SwiperSlide,
-         
         },
         setup() {
-            const swiperSlide = useSwiperSlide();
+        
             const onSwiper = (swiper) => {
             };
             const onSlideChange = (e) => {
             };
 
-        return {
-          onSwiper,
-          onSlideChange,
-          modules: [ Navigation, Pagination, Scrollbar, A11y ],
-          
-        };
-      },
+            return {
+                onSwiper,
+                onSlideChange,
+                modules: [ Navigation, Pagination, Scrollbar, A11y ],
+            
+            };
+        },
         props: {
             currIndex: Number,
             events: Object
@@ -124,20 +119,16 @@
         data(){
             return{
                 swiper: null,
-
             }
         },
         mounted(){
             let index = this.events.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
             this.swiper.activeIndex = index
-         
         },
         methods:{
             letPopup(allPhotos, photo){
-                console.log('photo',allPhotos, photo)
                 this.$emit('popupData', allPhotos, photo)
-
             },
             onSlideChange(e){
                 const index = e.activeIndex
