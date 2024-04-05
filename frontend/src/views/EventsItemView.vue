@@ -25,7 +25,7 @@
             </div>
         </div>
         <div v-if="popup" class="popup active event-02">
-        <button @click="close" class="close">
+        <button @click="close" class="close" style="z-index: 3;">
             <img class="icon one" src="@/assets/svg/close_g.svg">
             <img class="icon two" src="@/assets/svg/close_y.svg">
         </button>
