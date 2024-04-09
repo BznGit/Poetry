@@ -67,12 +67,18 @@ export const useStore = defineStore('counter', {
     },
     getPartGallery(id) {
       let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
-      console.log(curGallery)
+
       let arr1 = [];
       let arr2 = [];
       let arr3 = [];
-      let total = curGallery.paintings.length;
-      let delta = Math.trunc(total / 3) -1;
+      let arr = [ '18', '19',  '20', '21', '06', '10', '22', '09', '07','01', ]
+      let partArr = []
+      arr.forEach(number=>{        
+          let paint = curGallery.paintings.find(item=>item == 'pic_' + number + '.jpg')
+          partArr.push(paint)
+      })
+      let total = partArr.length;
+      let delta = Math.trunc(total / 3) - 1;
       let index1 = 0;
       let count1 = (index1 + delta);
       let index2 = count1 + 1;
@@ -81,19 +87,18 @@ export const useStore = defineStore('counter', {
       let count3 = total - 1;
 
       for(let i = index1; i <= count1; i++){
-        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
-        console.log(pic)
-        pic.poem = structuredClone(this.addDivPoems(pic.poem))
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
+         pic.poem = structuredClone(this.addDivPoems(pic.poem))
         arr1.push(pic)
         
       }
       for(let i = index2; i <= count2; i++){
-        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
         pic.poem  =  structuredClone(this.addDivPoems(pic.poem))
         arr2.push(pic)
       }
       for(let i = index3; i <= count3; i++){
-        let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
         pic.poem  = structuredClone(this.addDivPoems(pic.poem))
         arr3.push(pic)
       }

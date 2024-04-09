@@ -11,19 +11,33 @@ export const  gallerys =  [
       Что кроется за гранью пониманья 
       Возможно некоторым это помогло б 
       Расширить зону самоосознанья
-
     `,
     paintings: [
-      'picture_01.jpg',
-      'picture_02.jpg',
-      'picture_04.jpg',
-      'picture_05.jpg',
-      'picture_06.jpg',
-      'picture_07.jpg',
-      'picture_08.jpg',
-      'picture_09.jpg',
-      'picture_10.jpg',
-      'picture_03.jpg',
+      'pic_01.jpg',
+      'pic_02.jpg',
+      'pic_03.jpg',
+      'pic_04.jpg',
+      'pic_05.jpg',
+      'pic_06.jpg',
+      'pic_07.jpg',
+      'pic_08.jpg',
+      'pic_09.jpg',
+      'pic_10.jpg',
+      'pic_11.jpg',
+      'pic_12.jpg',
+      'pic_13.jpg',
+      'pic_14.jpg',
+      'pic_15.jpg',
+      'pic_16.jpg',
+      'pic_17.jpg',
+      'pic_18.jpg',
+      'pic_19.jpg',
+      'pic_20.jpg',
+      'pic_21.jpg',
+      'pic_22.jpg',
+      'pic_23.jpg',
+      'pic_24.jpg',
+      'pic_25.jpg',
 
     ] 
   }
