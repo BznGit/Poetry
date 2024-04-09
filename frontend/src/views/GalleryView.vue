@@ -64,7 +64,7 @@
                         <div class="text" >
                             {{gallery.forfard3}}
                         </div>
-                        <div class="quote" style="white-space: pre-wrap;">
+                        <div class="quote">
                             {{ gallery.quote }}
                         </div>
                     </div>
