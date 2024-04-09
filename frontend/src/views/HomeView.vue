@@ -37,7 +37,6 @@
                                     <div class="painting-text">
                                         <div  class="align">
                                             <div  class="list" v-html="item.poem"></div>
-                                     
                                         </div>
                                     </div>
                                 </router-link>

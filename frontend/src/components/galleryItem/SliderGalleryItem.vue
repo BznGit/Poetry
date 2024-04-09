@@ -4,7 +4,7 @@
     class="slider__items"
     :modules="modules"
     :slides-per-view="1"
-    :space-between="5"
+    :space-between="50"
     :parallax="true"
 
     @swiper="onSwiper"
@@ -15,10 +15,10 @@
                 <button class="painting-buy"@click="addToCart(item.number)" >
                     <img class="icon" src="@/assets/svg/cart_w.svg">
                 </button>
-                <div class="painting-text">
+                <div v-if="item.poem" class="painting-text">
                     <div class="align" v-html="item.poem"></div>
                 </div>
-                <div class="painting-image">
+                <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
                     <img class="image" :src="`../../files/gallery/${item.img}`"  loading="lazy">
                     <div class="painting-info">
                         <div class="info">
@@ -94,7 +94,7 @@
             let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
-            this.$emit('setCurrIndex', index + 1)
+            this.$emit('setCurrIndex', index + 1 )
         },
         methods:{
             onSlideChange(e){

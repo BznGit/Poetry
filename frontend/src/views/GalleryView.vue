@@ -61,7 +61,7 @@
                         </div>
                         <br>
                         <div  style="white-space: pre-wrap;">
-                            {{gallery.quote }}
+                            {{ gallery.quote }}
                         </div>
                     </div>
                 </div>
