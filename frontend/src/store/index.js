@@ -157,21 +157,12 @@ export const useStore = defineStore('counter', {
     addDivPoems(poem){
       if(!poem) return
 
-      let a = poem.slice(1)
-      let as = a.replace(/\n{2}/g, '<br>')
+      let a ='<div>' +  poem.slice(1)
+      
+      let as = a.replace(/\s{6}/g, '<br>')
       let n = as.replace(/\n/g, '</div><div>')
-      //let divs = n.replace(/[А-Я]/g, '<div>$&')
-      let ass= `Всё то
-    Что нынче не узнать
-
-    И ты
-    Народ сегодняшней планеты
-Ты стал иной`
-      let ass1 = ass.replace(/\n{2}/g, '<br>')
-      console.log(ass1)
-      let ass2 = ass1.replace(/\n/g, '</div><div>')
-      console.log(ass2)
-       return n
+      console.log(a)
+      return n
     },
     getPartPoems(){
       let ishod = [
