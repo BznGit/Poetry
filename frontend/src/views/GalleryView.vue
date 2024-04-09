@@ -52,11 +52,16 @@
                         <div class="title">
                             Предисловие
                         </div>
-                        <div class="text">
+                        <div class="">
                             {{gallery.titel}}
                         </div>
-                        <div class="text quote">
+                        <br>
+                        <div class="" style="white-space: pre-wrap;">
                             {{gallery.forfard}}
+                        </div>
+                        <br>
+                        <div  style="white-space: pre-wrap;">
+                            {{gallery.quote }}
                         </div>
                     </div>
                 </div>
@@ -82,7 +87,7 @@ export default {
     },
     data () {
         return {
-            data: this.userStore.getPartGallerys(),
+            data: this.userStore.getPartGallerys(true),
           
          }
     },

@@ -20,7 +20,7 @@
                                 <img class="image" src="@/assets/svg/close_w.svg"/>
                             </div>
                             <div class="painting-image">
-                                <img class="image" :src="`./files/gallery/${item.img}`"/>
+                                <img class="image" :src="`./files/gallery/${item.preview}`"/>
                             </div>
                             <div class="painting-info">
                                 <div class="info">

@@ -57,15 +57,15 @@ export const useStore = defineStore('counter', {
     },
 
     // Gallery service ===============================================
-    getPartGallerys(){
+    getPartGallerys(all){
       let arr = []
       this.gallerys.forEach(item=>{
-      let curGallery = structuredClone(this.getPartGallery(item.id))
+      let curGallery = structuredClone(this.getPartGallery(item.id, all))
         arr.push(curGallery) 
       })
       return arr
     },
-    getPartGallery(id) {
+    getPartGallery(id, all) {
       let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
 
       let arr1 = [];
@@ -73,10 +73,14 @@ export const useStore = defineStore('counter', {
       let arr3 = [];
       let arr = [ '18', '19',  '20', '21', '06', '10', '22', '09', '07','01', ]
       let partArr = []
-      arr.forEach(number=>{        
-          let paint = curGallery.paintings.find(item=>item == 'pic_' + number + '.jpg')
-          partArr.push(paint)
-      })
+      if(!all){
+        arr.forEach(number=>{        
+                let paint = curGallery.paintings.find(item=>item == 'pic_' + number + '.jpg')
+                partArr.push(paint)
+            })
+      } else partArr = structuredClone(curGallery.paintings)
+      
+   
       let total = partArr.length;
       let delta = Math.trunc(total / 3) - 1;
       let index1 = 0;

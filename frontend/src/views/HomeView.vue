@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="module-more">
-                        <router-link class="link-more" :to="`/gallery/`+ gallery.id +`/` + 1">
+                        <router-link class="link-more" :to="`/gallery/`">
                             <div class="text">Вся галерея</div>
                             <img class="icon" src="@/assets/svg/more.svg"/>
                         </router-link>
@@ -221,7 +221,7 @@ export default {
     },
     data () {
         return {
-            gallery: this.userStore.getPartGallerys()[0],
+            gallery: this.userStore.getPartGallerys(false)[0],
             galleryMob: this.userStore.getAllGallerys()[0],
             collection: this.userStore.getPartCollections(),
             poems: this.userStore.getPartPoems(),
