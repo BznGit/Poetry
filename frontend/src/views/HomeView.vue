@@ -32,7 +32,7 @@
                                     :to="`/gallery/`+ gallery.id +`/` + item.number"
                                 >
                                     <div class="painting-image">
-                                        <img class="image" :src="`./files/gallery/` + item.img"  loading="lazy"/>
+                                        <img class="image" :src="`./files/gallery/` + item.preview"  loading="lazy"/>
                                     </div>
                                     <div class="painting-text">
                                         <div  class="align">

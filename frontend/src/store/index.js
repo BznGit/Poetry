@@ -67,6 +67,7 @@ export const useStore = defineStore('counter', {
     },
     getPartGallery(id) {
       let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
+      console.log(curGallery)
       let arr1 = [];
       let arr2 = [];
       let arr3 = [];
@@ -81,6 +82,7 @@ export const useStore = defineStore('counter', {
 
       for(let i = index1; i <= count1; i++){
         let pic = structuredClone(this.paintings.find(elem=>elem.img == curGallery.paintings[i]))
+        console.log(pic)
         pic.poem = structuredClone(this.addDivPoems(pic.poem))
         arr1.push(pic)
         
