@@ -94,6 +94,7 @@ export const useStore = defineStore('counter', {
       
         let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
         pic.poem = structuredClone(this.addDivPoems(pic.poem))
+        console.log(ddArr, k1, pic)
         ddArr[k1].push(pic)
         console.log(ddArr, k1, pic)
         k1++
