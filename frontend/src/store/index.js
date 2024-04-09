@@ -60,7 +60,7 @@ export const useStore = defineStore('counter', {
     getPartGallerys(all){
       let arr = []
       this.gallerys.forEach(item=>{
-      let curGallery = structuredClone(this.getPartGallery(item.id, all))
+      let curGallery = structuredClone(this.getPartGallery2(item.id, all))
         arr.push(curGallery) 
       })
       return arr
@@ -71,6 +71,7 @@ export const useStore = defineStore('counter', {
       let arr1 = [];
       let arr2 = [];
       let arr3 = [];
+      let arr4 = [];
       let arr = [ '18', '19',  '20', '21', '06', '10', '22', '09', '07','01', ]
       let partArr = []
       if(!all){
@@ -80,40 +81,13 @@ export const useStore = defineStore('counter', {
             })
       } else partArr = structuredClone(curGallery.paintings)
       let ddArr = [ arr1, arr2, arr3 ]
-   
-      let total = partArr.length;
-      let delta = Math.trunc(total / 3) - 1;
-      let index1 = 0;
-      let count1 = (index1 + delta);
-      let index2 = count1 + 1;
-      let count2 = (index2 + delta);
-      let index3 = count2 + 1;
-      let count3 = total - 1;
-        let k1=0
-      for(let i = index1; i <= count1; i++){
-      
+      let k=0
+      for(let i = 0; i < partArr.length; i++){
         let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
         pic.poem = structuredClone(this.addDivPoems(pic.poem))
-        console.log(ddArr, k1, pic)
-        ddArr[k1].push(pic)
-        console.log(ddArr, k1, pic)
-        k1++
+        ddArr[k].push(pic)  
+        k == 2 ? k = 0 : k++    
       }
-      let k2=0
-      for(let i = index2; i <= count2; i++){
-        let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
-        pic.poem  =  structuredClone(this.addDivPoems(pic.poem))
-        ddArr[k2].push(pic)
-        k2++
-      }
-      let k3=0
-      for(let i = index3; i <= count3; i++){
-        let pic = structuredClone(this.paintings.find(elem=>elem.img == partArr[i]))
-        pic.poem  = structuredClone(this.addDivPoems(pic.poem))
-        ddArr[k3].push(pic)
-        k3++
-      }
-      console.log(ddArr)
       curGallery.parts = ddArr
       return  curGallery
     },
