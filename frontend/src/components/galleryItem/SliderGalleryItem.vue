@@ -17,6 +17,7 @@
                 </button>
                 <div v-if="item.poem" class="painting-text">
                     <div class="align" v-html="item.poem"></div>
+
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
                     <img class="image" :src="`../../files/gallery/${item.img}`"  loading="lazy">

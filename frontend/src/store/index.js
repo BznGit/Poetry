@@ -156,10 +156,13 @@ export const useStore = defineStore('counter', {
     },
     addDivPoems(poem){
       if(!poem) return
+
       let a = poem.slice(1)
-      let n = a.replace(/\n/g, '</div>')
-      let divs = n.replace(/[А-Я]/g, '<div>$&')
-       return divs
+      let as = a.replace(/\n\s{6}\n/g, '<br>')
+      let n = as.replace(/\n/g, '</div><div>')
+      //let divs = n.replace(/[А-Я]/g, '<div>$&')
+      console.log(n)
+       return n
     },
     getPartPoems(){
       let ishod = [
