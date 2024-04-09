@@ -101,7 +101,7 @@ export default {
         let arr3 = [];
         let arr4 = [];
         let total = poems.length;
-        let delta = Math.trunc(total / 4) ;
+        let delta = Math.trunc(total / 4) - 1;
         let index1 = 0;
         let count1 = (index1 + delta);
         let index2 = count1 + 1;

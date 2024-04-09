@@ -65,6 +65,18 @@ export const useStore = defineStore('counter', {
       })
       return arr
     },
+    getPartGallery2(id){
+      let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
+      let arr1 = [];
+      let arr2 = [];
+      let arr3 = [];
+      curGallery.paintings.forEach(namePic=>{
+        let pic = structuredClone(this.paintings.find(elem=>elem.img == namePic))
+        
+      })
+      
+
+    },
     getPartGallery(id, all) {
       let curGallery = structuredClone(this.gallerys.find(item=>item.id == id))
 
@@ -161,7 +173,7 @@ export const useStore = defineStore('counter', {
       
       let as = a.replace(/\s{6}/g, '<br>')
       let n = as.replace(/\n/g, '</div><div>')
-      console.log(a)
+      console.log(n)
       return n
     },
     getPartPoems(){
