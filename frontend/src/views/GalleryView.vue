@@ -52,15 +52,19 @@
                         <div class="title">
                             Предисловие
                         </div>
-                        <div class="">
+                        <div class="text">
                             {{gallery.titel}}
                         </div>
-                        <br>
-                        <div class="" style="white-space: pre-wrap;">
-                            {{gallery.forfard}}
+                        <div class="text" >
+                            {{gallery.forfard1}}
                         </div>
-                        <br>
-                        <div  style="white-space: pre-wrap;">
+                        <div class="text" >
+                            {{gallery.forfard2}}
+                        </div>
+                        <div class="text" >
+                            {{gallery.forfard3}}
+                        </div>
+                        <div class="quote" style="white-space: pre-wrap;">
                             {{ gallery.quote }}
                         </div>
                     </div>
