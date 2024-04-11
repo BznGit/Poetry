@@ -27,7 +27,7 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image">
-                                <img class="image" :src="`./files/gallery/` + item.preview"  loading="lazy"/>
+                                <img class="image"  :src="`./files/gallery/` + item.preview"  loading="lazy"/>
                             </div>
                             <div class="painting-text">
                                 <div  class="align">

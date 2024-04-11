@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img class="image" :src="`../../files/gallery/${item.img}`"  loading="lazy">
+                    <img class="image" :src="`../../files/gallery/${item.img}`" loading="lazy">
                     <div class="painting-info">
                         <div class="info">
                             <div class="info-row">Картина {{item.number}}</div>
