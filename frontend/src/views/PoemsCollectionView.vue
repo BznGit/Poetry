@@ -94,7 +94,20 @@ export default {
          }
     },
     created(){
-        this.collection = this.userStore.getCollection(this.$route.params.collection)
+       this.collection = this.userStore.getCollection(this.$route.params.collection)
+        let poems = this.collection.allPoems
+        let arr1 = [];
+        let arr2 = [];
+        let arr3 = [];
+        let arr4 = [];
+        let ddArr = [ arr1, arr2, arr3, arr4 ]
+        let k=0
+        for(let i = 0; i < poems.length; i++){
+            ddArr[k].push(poems[i])  
+            k == 3 ? k = 0 : k++    
+        }
+        this.partPoems = ddArr   
+        /*this.collection = this.userStore.getCollection(this.$route.params.collection)
         let poems = this.collection.allPoems
         let arr1 = [];
         let arr2 = [];
@@ -123,7 +136,7 @@ export default {
         for(let i = index4; i <= count4; i++){
             arr4.push(poems[i])
         }
-        this.partPoems = [ arr1, arr2, arr3, arr4 ]   
+        this.partPoems = [ arr1, arr2, arr3, arr4 ] */
     },
     mounted(){
         const moduleForewords = document.querySelectorAll('.module-foreword')
