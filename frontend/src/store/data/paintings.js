@@ -3,10 +3,11 @@ export const  paintings =  [
   {
     img: 'pic_01.jpg',
     preview:'pic_01_400.jpg',
+    height:'319',
     number: '1',
     material: 'Холст',
     paints: 'масло',
-    size: '100x80',
+    size: '150x80',
     year: '2021',
     poem:`
       Лучом тончайшим ухожу в простор
@@ -28,6 +29,7 @@ export const  paintings =  [
   {
     img: 'pic_02.jpg',
     preview:'pic_02_400.jpg',
+    height:'321',
     number: '2',
     material: 'Холст',
     paints: 'масло',
@@ -58,10 +60,11 @@ export const  paintings =  [
   {
     img: 'pic_03.jpg',
     preview:'pic_03_400.jpg',
+    height:'515',
     number: '3',
     material: 'Холст',
     paints: 'масло',
-    size: '100x80',
+    size: '405x522',
     year: '2021',
     poem:`
       Иду размерено не торопясь
@@ -99,6 +102,7 @@ export const  paintings =  [
   {
     img: 'pic_04.jpg',
     preview:'pic_04_400.jpg',
+    height:'332',
     number: '4',
     material: 'Холст',
     paints: 'масло',
@@ -126,6 +130,7 @@ export const  paintings =  [
   {
     img: 'pic_05.jpg',
     preview:'pic_05_400.jpg',
+    height:'535',
     number: '5',
     material: 'Холст',
     paints: 'масло',
@@ -164,6 +169,7 @@ export const  paintings =  [
   {
     img: 'pic_06.jpg',
     preview:'pic_06_400.jpg',
+    height:'515',
     number: '6',
     material: 'Холст',
     paints: 'масло',
@@ -210,6 +216,7 @@ export const  paintings =  [
   {
     img: 'pic_07.jpg',
     preview:'pic_07_400.jpg',
+    height:'605',
     number: '7',
     material: 'Холст',
     paints: 'масло',
@@ -239,6 +246,7 @@ export const  paintings =  [
   {
     img: 'pic_08.jpg',
     preview:'pic_08_400.jpg',
+    height:'458',
     number: '8',
     material: 'Холст',
     paints: 'масло',
@@ -255,6 +263,7 @@ export const  paintings =  [
   {
     img: 'pic_09.jpg',
     preview:'pic_09_400.jpg',
+    height:'319',
     number: '9',
     material: 'Холст',
     paints: 'масло',
@@ -290,6 +299,7 @@ export const  paintings =  [
   {
     img: 'pic_10.jpg',
     preview:'pic_10_400.jpg',
+    height:'525',
     number: '10',
     material: 'Холст',
     paints: 'масло',
@@ -313,6 +323,7 @@ export const  paintings =  [
   {
     img: 'pic_11.jpg',
     preview:'pic_11_400.jpg',
+    height:'457',
     number: '11',
     material: 'Холст',
     paints: 'масло',
@@ -328,6 +339,7 @@ export const  paintings =  [
   {
     img: 'pic_12.jpg',
     preview:'pic_12_400.jpg',
+    height:'532',
     number: '12',
     material: 'Холст',
     paints: 'масло',
@@ -345,6 +357,7 @@ export const  paintings =  [
   {
     img: 'pic_13.jpg',
     preview:'pic_13_400.jpg',
+    height:'535',
     number: '13',
     material: 'Холст',
     paints: 'масло',
@@ -378,6 +391,7 @@ export const  paintings =  [
   {
     img: 'pic_14.jpg',
     preview:'pic_14_400.jpg',
+    height:'565',
     number: '14',
     material: 'Холст',
     paints: 'масло',
@@ -392,6 +406,7 @@ export const  paintings =  [
   {
     img: 'pic_15.jpg',
     preview:'pic_15_400.jpg',
+    height:'531',
     number: '15',
     material: 'Холст',
     paints: 'масло',
@@ -426,6 +441,7 @@ export const  paintings =  [
   {
     img: 'pic_16.jpg',
     preview:'pic_16_400.jpg',
+    height:'601',
     number: '16',
     material: 'Холст',
     paints: 'масло',
@@ -445,6 +461,7 @@ export const  paintings =  [
   {
     img: 'pic_17.jpg',
     preview:'pic_17_400.jpg',
+    height:'359',
     number: '17',
     material: 'Холст',
     paints: 'масло',
@@ -490,6 +507,7 @@ export const  paintings =  [
   {
     img: 'pic_18.jpg',
     preview:'pic_18_400.jpg',
+    height:'602',
     number: '18',
     material: 'Холст',
     paints: 'масло',
@@ -518,6 +536,7 @@ export const  paintings =  [
   {
     img: 'pic_19.jpg',
     preview:'pic_19_400.jpg',
+    height:'300',
     number: '19',
     material: 'Холст',
     paints: 'масло',
@@ -553,6 +572,7 @@ export const  paintings =  [
   {
     img: 'pic_20.jpg',
     preview:'pic_20_400.jpg',
+    height:'722',
     number: '20',
     material: 'Холст',
     paints: 'масло',
@@ -566,6 +586,7 @@ export const  paintings =  [
   {
     img: 'pic_21.jpg',
     preview:'pic_21_400.jpg',
+    height:'517',
     number: '12',
     material: 'Холст',
     paints: 'масло',
@@ -599,6 +620,7 @@ export const  paintings =  [
   {
     img: 'pic_22.jpg',
     preview:'pic_22_400.jpg',
+    height:'314',
     number: '22',
     material: 'Холст',
     paints: 'масло',
@@ -654,6 +676,7 @@ export const  paintings =  [
   {
     img: 'pic_23.jpg',
     preview:'pic_23_400.jpg',
+    height:'531',
     number: '23',
     material: 'Холст',
     paints: 'масло',
@@ -675,6 +698,7 @@ export const  paintings =  [
   {
     img: 'pic_24.jpg',
     preview:'pic_24_400.jpg',
+    height:'451',
     number: '24',
     material: 'Холст',
     paints: 'масло',
@@ -710,6 +734,7 @@ export const  paintings =  [
   {
     img: 'pic_25.jpg',
     preview:'pic_25_400.jpg',
+    height:'506',
     number: '25',
     material: 'Холст',
     paints: 'масло',
@@ -727,6 +752,7 @@ export const  paintings =  [
   {
     img: 'pic_26.jpg',
     preview:'pic_26_400.jpg',
+    height:'527',
     number: '26',
     material: 'Холст',
     paints: 'масло',
@@ -736,6 +762,7 @@ export const  paintings =  [
   {
     img: '005-90х70-2015.jpg',
     preview:'005-90х70-2015_400.jpg',
+    height:'522',
     number: '27',
     material: 'Холст',
     paints: 'масло',
@@ -745,6 +772,7 @@ export const  paintings =  [
   {
     img: '008-60х70-2014.jpg',
     preview:'008-60х70-2014_400.jpg',
+    height:'338',
     number: '28',
     material: 'Холст',
     paints: 'масло',
@@ -754,6 +782,7 @@ export const  paintings =  [
   {
     img: '009-90х60-2014.jpg',
     preview:'009-90х60-2014_400.jpg',
+    height:'602',
     number: '29',
     material: 'Холст',
     paints: 'масло',
@@ -763,6 +792,7 @@ export const  paintings =  [
   {
     img: '010-80х60-2016.jpg',
     preview:'010-80х60-2016_400.jpg',
+    height:'538',
     number: '30',
     material: 'Холст',
     paints: 'масло',
@@ -772,6 +802,7 @@ export const  paintings =  [
   {
     img: '011-70х60-2015.jpg',
     preview:'011-70х60-2015_400.jpg',
+    height:'466',
     number: '31',
     material: 'Холст',
     paints: 'масло',
@@ -781,6 +812,7 @@ export const  paintings =  [
   {
     img: '016-70х90-2008.jpg',
     preview:'016-70х90-2008_400.jpg',
+    height:'310',
     number: '32',
     material: 'Холст',
     paints: 'масло',
@@ -790,6 +822,7 @@ export const  paintings =  [
   {
     img: '018-70х70-2016.jpg',
     preview:'018-70х70-2016_400.jpg',
+    height:'399',
     number: '33',
     material: 'Холст',
     paints: 'масло',
@@ -799,6 +832,7 @@ export const  paintings =  [
   {
     img: '019-70х70-2016.jpg',
     preview:'019-70х70-2016_400.jpg',
+    height:'399',
     number: '34',
     material: 'Холст',
     paints: 'масло',
@@ -808,6 +842,7 @@ export const  paintings =  [
   {
     img: '020-70х60-2014.jpg',
     preview:'020-70х60-2014_400.jpg',
+    height:'463',
     number: '35',
     material: 'Холст',
     paints: 'масло',
@@ -817,6 +852,7 @@ export const  paintings =  [
   {
     img: '021-80х60-2015.jpg',
     preview:'021-80х60-2015_400.jpg',
+    height:'532',
     number: '36',
     material: 'Холст',
     paints: 'масло',
@@ -826,6 +862,7 @@ export const  paintings =  [
   {
     img: '022-100х50-2016.jpg',
     preview:'022-100х50-2016_400.jpg',
+    height:'812',
     number: '37',
     material: 'Холст',
     paints: 'масло',
@@ -835,6 +872,7 @@ export const  paintings =  [
   {
     img: '023-90х50-2015.jpg',
     preview:'023-90х50-2015_400.jpg',
+    height:'722',
     number: '38',
     material: 'Холст',
     paints: 'масло',
@@ -844,6 +882,7 @@ export const  paintings =  [
   {
     img: '024-80х60-2015.jpg',
     preview:'024-80х60-2015_400.jpg',
+    height:'539',
     number: '39',
     material: 'Холст',
     paints: 'масло',
@@ -853,6 +892,7 @@ export const  paintings =  [
   {
     img: '026-90х60-2016.jpg',
     preview:'026-90х60-2016_400.jpg',
+    height:'605',
     number: '40',
     material: 'Холст',
     paints: 'масло',
@@ -862,6 +902,7 @@ export const  paintings =  [
   {
     img: '027-80х60-2015.jpg',
     preview:'027-80х60-2015_400.jpg',
+    height:'535',
     number: '41',
     material: 'Холст',
     paints: 'масло',
@@ -871,6 +912,7 @@ export const  paintings =  [
   {
     img: '031-80х60-2014.jpg',
     preview:'031-80х60-2014_400.jpg',
+    height:'537',
     number: '42',
     material: 'Холст',
     paints: 'масло',
@@ -880,6 +922,7 @@ export const  paintings =  [
   {
     img: '052-70х60-2014.jpg',
     preview:'052-70х60-2014_400.jpg',
+    height:'466',
     number: '43',
     material: 'Холст',
     paints: 'масло',
@@ -889,6 +932,7 @@ export const  paintings =  [
   {
     img: '053-70х60-2015.jpg',
     preview:'053-70х60-2015_400.jpg',
+    height:'467',
     number: '44',
     material: 'Холст',
     paints: 'масло',
@@ -898,6 +942,7 @@ export const  paintings =  [
   {
     img: '054-80х60-2014.jpg',
     preview:'054-80х60-2014_400.jpg',
+    height:'532',
     number: '45',
     material: 'Холст',
     paints: 'масло',
@@ -907,6 +952,7 @@ export const  paintings =  [
   {
     img: '055-100х80-2016.jpg',
     preview:'055-100х80-2016_400.jpg',
+    height:'499',
     number: '46',
     material: 'Холст',
     paints: 'масло',
@@ -916,6 +962,7 @@ export const  paintings =  [
   {
     img: '056-100х80-2016.jpg',
     preview:'056-100х80-2016_400.jpg',
+    height:'510',
     number: '47',
     material: 'Холст',
     paints: 'масло',
@@ -925,6 +972,7 @@ export const  paintings =  [
   {
     img: '057-100х80-2016.jpg',
     preview:'057-100х80-2016_400.jpg',
+    height:'500',
     number: '48',
     material: 'Холст',
     paints: 'масло',
@@ -934,6 +982,7 @@ export const  paintings =  [
   {
     img: '058-100х70-2016.jpg',
     preview:'058-100х70-2016_400.jpg',
+    height:'578',
     number: '49',
     material: 'Холст',
     paints: 'масло',
@@ -943,6 +992,7 @@ export const  paintings =  [
   {
     img: '060-110х90-2016.jpg',
     preview:'060-110х90-2016_400.jpg',
+    height:'491',
     number: '50',
     material: 'Холст',
     paints: 'масло',
@@ -952,6 +1002,7 @@ export const  paintings =  [
   {
     img: '061-100х70-2016.jpg',
     preview:'061-100х70-2016_400.jpg',
+    height:'573',
     number: '51',
     material: 'Холст',
     paints: 'масло',
@@ -961,6 +1012,7 @@ export const  paintings =  [
   {
     img: '062-100х70-2016.jpg',
     preview:'062-100х70-2016_400.jpg',
+    height:'578',
     number: '52',
     material: 'Холст',
     paints: 'масло',
@@ -970,6 +1022,7 @@ export const  paintings =  [
   {
     img: '063-100х60-2017.jpg',
     preview:'063-100х60-2017_400.jpg',
+    height:'671',
     number: '53',
     material: 'Холст',
     paints: 'масло',
@@ -979,6 +1032,7 @@ export const  paintings =  [
   {
     img: '064-100х80-2016.jpg',
     preview:'064-100х80-2016_400.jpg',
+    height:'499',
     number: '54',
     material: 'Холст',
     paints: 'масло',
@@ -988,6 +1042,7 @@ export const  paintings =  [
   {
     img: '066-110х90-2017.jpg',
     preview:'066-110х90-2017_400.jpg',
+    height:'492',
     number: '55',
     material: 'Холст',
     paints: 'масло',
@@ -997,6 +1052,7 @@ export const  paintings =  [
   {
     img: '067-100х60-2016.jpg',
     preview:'067-100х60-2016_400.jpg',
+    height:'677',
     number: '56',
     material: 'Холст',
     paints: 'масло',
@@ -1006,6 +1062,7 @@ export const  paintings =  [
   {
     img: '072-100х70-2017.jpg',
     preview:'072-100х70-2017_400.jpg',
+    height:'578',
     number: '57',
     material: 'Холст',
     paints: 'масло',
@@ -1015,6 +1072,7 @@ export const  paintings =  [
   {
     img: '073-100х80-2017.jpg',
     preview:'073-100х80-2017_400.jpg',
+    height:'529',
     number: '58',
     material: 'Холст',
     paints: 'масло',
@@ -1024,6 +1082,7 @@ export const  paintings =  [
   {
     img: '074-100х80-2017.jpg',
     preview:'074-100х80-2017_400.jpg',
+    height:'501',
     number: '59',
     material: 'Холст',
     paints: 'масло',
@@ -1033,6 +1092,7 @@ export const  paintings =  [
   {
     img: '075-110х90-2017.jpg',
     preview:'075-110х90-2017_400.jpg',
+    height:'495',
     number: '60',
     material: 'Холст',
     paints: 'масло',
@@ -1042,6 +1102,7 @@ export const  paintings =  [
   {
     img: '076-100х80-2017.jpg',
     preview:'076-100х80-2017_400.jpg',
+    height:'501',
     number: '61',
     material: 'Холст',
     paints: 'масло',
@@ -1051,6 +1112,7 @@ export const  paintings =  [
   {
     img: '077-100х70-2017.jpg',
     preview:'077-100х70-2017_400.jpg',
+    height:'579',
     number: '62',
     material: 'Холст',
     paints: 'масло',
@@ -1060,6 +1122,7 @@ export const  paintings =  [
   {
     img: '079-100х70-2017.jpg',
     preview:'079-100х70-2017_400.jpg',
+    height:'573',
     number: '63',
     material: 'Холст',
     paints: 'масло',
@@ -1069,6 +1132,7 @@ export const  paintings =  [
   {
     img: '082-70х80-2016.jpg',
     preview:'082-70х80-2016_400.jpg',
+    height:'345',
     number: '64',
     material: 'Холст',
     paints: 'масло',
@@ -1078,6 +1142,7 @@ export const  paintings =  [
   {
     img: '086-100х80-2018.jpg',
     preview:'086-100х80-2018_400.jpg',
+    height:'504',
     number: '65',
     material: 'Холст',
     paints: 'масло',
@@ -1087,6 +1152,7 @@ export const  paintings =  [
   {
     img: '087-100х70-2018.jpg',
     preview:'087-100х70-2018_400.jpg',
+    height:'571',
     number: '66',
     material: 'Холст',
     paints: 'масло',
@@ -1096,6 +1162,7 @@ export const  paintings =  [
   {
     img: '088-100х80-2018.jpg',
     preview:'088-100х80-2018_400.jpg',
+    height:'503',
     number: '67',
     material: 'Холст',
     paints: 'масло',
@@ -1105,6 +1172,7 @@ export const  paintings =  [
   {
     img: '090-100х80-2018.jpg',
     preview:'090-100х80-2018_400.jpg',
+    height:'500',
     number: '68',
     material: 'Холст',
     paints: 'масло',
@@ -1114,6 +1182,7 @@ export const  paintings =  [
   {
     img: '092-100х70-2017.jpg',
     preview:'092-100х70-2017_400.jpg',
+    height:'573',
     number: '69',
     material: 'Холст',
     paints: 'масло',
@@ -1123,6 +1192,7 @@ export const  paintings =  [
   {
     img: '107-100х80-2018.jpg',
     preview:'107-100х80-2018_400.jpg',
+    height:'501',
     number: '70',
     material: 'Холст',
     paints: 'масло',
@@ -1132,6 +1202,7 @@ export const  paintings =  [
   {
     img: '108-100х60-2018.jpg',
     preview:'108-100х60-2018_400.jpg',
+    height:'671',
     number: '71',
     material: 'Холст',
     paints: 'масло',
@@ -1141,6 +1212,7 @@ export const  paintings =  [
   {
     img: '109-120х100-2018.jpg',
     preview:'109-120х100-2018_400.jpg',
+    height:'482',
     number: '72',
     material: 'Холст',
     paints: 'масло',
@@ -1150,6 +1222,7 @@ export const  paintings =  [
   {
     img: '111-100х80-2018.jpg',
     preview:'111-100х80-2018_400.jpg',
+    height:'504',
     number: '73',
     material: 'Холст',
     paints: 'масло',
@@ -1159,6 +1232,7 @@ export const  paintings =  [
   {
     img: '112-100х80-2018.jpg',
     preview:'112-100х80-2018_400.jpg',
+    height:'505',
     number: '74',
     material: 'Холст',
     paints: 'масло',
@@ -1168,6 +1242,7 @@ export const  paintings =  [
   {
     img: '116-100х70-2018.jpg',
     preview:'116-100х70-2018_400.jpg',
+    height:'573',
     number: '75',
     material: 'Холст',
     paints: 'масло',
@@ -1177,6 +1252,7 @@ export const  paintings =  [
   {
     img: '118-80х60-2013.jpg',
     preview:'118-80х60-2013_400.jpg',
+    height:'533',
     number: '76',
     material: 'Холст',
     paints: 'масло',

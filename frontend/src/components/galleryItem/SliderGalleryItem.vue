@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img class="image" v-lazy="`../../files/gallery/${item.img}`">
+                    <img style="height: 1000px; background: #333;" class="image" v-lazy="`../../files/gallery/${item.img}`">
                    
                     <div class="painting-info">
                         <div class="info">

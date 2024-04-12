@@ -5,13 +5,13 @@ import router from './router'
 import VueLazyload from 'vue-lazyload'
 import '@/style/less/style.less';
 
-import loadimage from '@/assets/svg/img_placeholder.svg'
+import loadimage from '@/assets/gif/ass.svg'
 import errorimage from '@/assets/svg/img_error.svg'
 //const errorimage = require('@/assets/svg/imgError.svg')
 const VueLazyloadOptions = {
     preLoad: 1,
     error: errorimage,
-    //loading: loadimage,
+   // loading: loadimage,
     attempt: 1
 }
 

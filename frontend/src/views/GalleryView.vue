@@ -27,11 +27,13 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image">
-                                <img class="image"  v-lazy="`./files/gallery/` + item.preview" />
+                      
+                                <img class="image" :style="`height: ${parseInt(item.height)}px; background: #333;`" v-lazy="`./files/gallery/` + item.preview" />
                                 
                             </div>
                             <div class="painting-text">
                                 <div  class="align">
+                                    
                                     <div class="list" v-html="item.poem"></div>
                                 </div>
                             </div>
@@ -100,11 +102,12 @@ export default {
 
     },
     mounted(){
-        this.userStore.$state
-        this.$Lazyload.$on('loaded', function () {
-            const paintings = document.querySelectorAll('.item.painting');
-            paintings.forEach(function(painting) {
-                const align = painting.querySelector('.align');
+       
+        this.$Lazyload.$on('loaded', function ({el}, formCache) {
+           // const paintings = document.querySelectorAll('.item.painting');
+           const paintings = el.parentNode.parentNode
+           // paintings.forEach(function(painting) {
+                const align = paintings.querySelector('.align');
                 const alignHeight = align.offsetHeight;
 
                 const animationDuration = alignHeight * 0.05;
@@ -123,7 +126,7 @@ export default {
                 startAnimation(); // Запустить первую итерацию анимации сразу
 
                 setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
-            });
+           // });
         })
         const moduleForewords = document.querySelectorAll('.module-foreword')
         const forewords = document.querySelectorAll('.foreword')

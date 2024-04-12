@@ -32,7 +32,7 @@
                                     :to="`/gallery/`+ gallery.id +`/` + item.number"
                                 >
                                     <div class="painting-image">
-                                        <img class="image" v-lazy="`./files/gallery/` + item.preview"  />
+                                        <img class="image"  :style="`height: ${parseInt(item.height)}px; background: #333;`" v-lazy="`./files/gallery/` + item.preview"  />
                                     </div>
                                     <div class="painting-text">
                                         <div  class="align">
@@ -228,11 +228,13 @@ export default {
         }
     },
     mounted(){
-        this.$Lazyload.$on('loaded', function () {
-            const paintings = document.querySelectorAll('.item.painting');
-            paintings.forEach(function(painting) {
-                const align = painting.querySelector('.align');
+        this.$Lazyload.$on('loaded', function ({el}, formCache) {
+           // const paintings = document.querySelectorAll('.item.painting');
+           const paintings = el.parentNode.parentNode
+           // paintings.forEach(function(painting) {
+                const align = paintings.querySelector('.align');
                 const alignHeight = align.offsetHeight;
+
                 const animationDuration = alignHeight * 0.05;
                 align.style.transitionDuration = animationDuration + 's';
 
@@ -245,10 +247,11 @@ export default {
                         align.style.transform = 'translateY(-' + alignHeight + 'px)';
                     }, 100);
                 }
-                
+
                 startAnimation(); // Запустить первую итерацию анимации сразу
+
                 setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
-            });
+           // });
         })
     }
 }
