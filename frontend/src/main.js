@@ -4,11 +4,19 @@ import App from './App.vue'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
 import '@/style/less/style.less';
-const loadimage = require('@/assets/svg/imgPlaceholder.svg')
-const errorimage = require('@/assets/svg/imgError.svg')
-createApp(App).use(router).use(createPinia()).use(VueLazyload, {
+
+import loadimage from '@/assets/svg/img_placeholder.svg'
+import errorimage from '@/assets/svg/img_error.svg'
+//const errorimage = require('@/assets/svg/imgError.svg')
+const VueLazyloadOptions = {
     preLoad: 1,
     error: errorimage,
     loading: loadimage,
     attempt: 1
-  }).mount('#app')
+}
+
+const app = createApp(App)
+app.use(router)
+app.use(createPinia())
+app.use(VueLazyload, VueLazyloadOptions)
+app.mount('#app')

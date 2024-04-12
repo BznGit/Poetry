@@ -12,7 +12,7 @@
         <swiper-slide 
             v-for="(item, index) in allphotos"
         >
-            <img :src="`../files/eventsPhoto/${item}`"/>
+            <img v-lazy="`../files/eventsPhoto/${item}`"/>
         </swiper-slide>
     </swiper>
         <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">

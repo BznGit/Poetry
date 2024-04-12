@@ -101,63 +101,65 @@ export default {
     },
     mounted(){
         this.userStore.$state
-    const moduleForewords = document.querySelectorAll('.module-foreword')
-    const forewords = document.querySelectorAll('.foreword')
+        this.$Lazyload.$on('loaded', function () {
+            const paintings = document.querySelectorAll('.item.painting');
+            paintings.forEach(function(painting) {
+                const align = painting.querySelector('.align');
+                const alignHeight = align.offsetHeight;
 
-    for (let i = 0; i < moduleForewords.length; i++) {
-        const linkMore = moduleForewords[i].querySelector('.link-more')
-        const foreword = forewords[i]
-        const closeBtn = foreword.querySelector('.close')
-        const shadow = foreword.querySelector('.shadow')
+                const animationDuration = alignHeight * 0.05;
+                align.style.transitionDuration = animationDuration + 's';
 
-        linkMore.addEventListener('click', function (event) {
-            event.preventDefault()
-            foreword.classList.add('active')
-            document.body.classList.add('overflow')
+                function startAnimation() {
+                    align.style.transitionDuration = '0s';
+                    align.style.transform = 'translateY(0)';
+
+                    setTimeout(function() {
+                        align.style.transitionDuration = animationDuration + 's';
+                        align.style.transform = 'translateY(-' + alignHeight + 'px)';
+                    }, 100);
+                }
+
+                startAnimation(); // Запустить первую итерацию анимации сразу
+
+                setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
+            });
         })
+        const moduleForewords = document.querySelectorAll('.module-foreword')
+        const forewords = document.querySelectorAll('.foreword')
 
-        document.addEventListener('click', function (event) {
-            const target = event.target
-            if (!target.closest('.foreword') && !target.closest('.module-foreword')) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-            }
-        })
+        for (let i = 0; i < moduleForewords.length; i++) {
+            const linkMore = moduleForewords[i].querySelector('.link-more')
+            const foreword = forewords[i]
+            const closeBtn = foreword.querySelector('.close')
+            const shadow = foreword.querySelector('.shadow')
 
-        closeBtn.addEventListener('click', function (event) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-        })
+            linkMore.addEventListener('click', function (event) {
+                event.preventDefault()
+                foreword.classList.add('active')
+                document.body.classList.add('overflow')
+            })
 
-        shadow.addEventListener('click', function (event) {
-            foreword.classList.remove('active')
-            document.body.classList.remove('overflow')
-        })
-    }
+            document.addEventListener('click', function (event) {
+                const target = event.target
+                if (!target.closest('.foreword') && !target.closest('.module-foreword')) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+                }
+            })
+
+            closeBtn.addEventListener('click', function (event) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+            })
+
+            shadow.addEventListener('click', function (event) {
+                foreword.classList.remove('active')
+                document.body.classList.remove('overflow')
+            })
+        }
         //   window.addEventListener('load', function() {
-        const paintings = document.querySelectorAll('.item.painting');
 
-        paintings.forEach(function(painting) {
-            const align = painting.querySelector('.align');
-            const alignHeight = align.offsetHeight;
-
-            const animationDuration = alignHeight * 0.05;
-            align.style.transitionDuration = animationDuration + 's';
-
-            function startAnimation() {
-                align.style.transitionDuration = '0s';
-                align.style.transform = 'translateY(0)';
-
-                setTimeout(function() {
-                    align.style.transitionDuration = animationDuration + 's';
-                    align.style.transform = 'translateY(-' + alignHeight + 'px)';
-                }, 100);
-            }
-
-            startAnimation(); // Запустить первую итерацию анимации сразу
-
-            setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
-        });
         //  });
   }
 }

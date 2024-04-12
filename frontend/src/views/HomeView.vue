@@ -228,26 +228,28 @@ export default {
         }
     },
     mounted(){
-        const paintings = document.querySelectorAll('.item.painting');
-        paintings.forEach(function(painting) {
-            const align = painting.querySelector('.align');
-            const alignHeight = align.offsetHeight;
-            const animationDuration = alignHeight * 0.05;
-            align.style.transitionDuration = animationDuration + 's';
+        this.$Lazyload.$on('loaded', function () {
+            const paintings = document.querySelectorAll('.item.painting');
+            paintings.forEach(function(painting) {
+                const align = painting.querySelector('.align');
+                const alignHeight = align.offsetHeight;
+                const animationDuration = alignHeight * 0.05;
+                align.style.transitionDuration = animationDuration + 's';
 
-            function startAnimation() {
-                align.style.transitionDuration = '0s';
-                align.style.transform = 'translateY(0)';
+                function startAnimation() {
+                    align.style.transitionDuration = '0s';
+                    align.style.transform = 'translateY(0)';
 
-                setTimeout(function() {
-                    align.style.transitionDuration = animationDuration + 's';
-                    align.style.transform = 'translateY(-' + alignHeight + 'px)';
-                }, 100);
-            }
-            
-            startAnimation(); // Запустить первую итерацию анимации сразу
-            setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
-        });
+                    setTimeout(function() {
+                        align.style.transitionDuration = animationDuration + 's';
+                        align.style.transform = 'translateY(-' + alignHeight + 'px)';
+                    }, 100);
+                }
+                
+                startAnimation(); // Запустить первую итерацию анимации сразу
+                setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
+            });
+        })
     }
 }
 </script>
