@@ -13,6 +13,7 @@
     "pinia": "^2.1.7",
     "swiper": "^11.0.7",
     "vue": "^3.2.13",
+    "vue-lazyload": "^3.0.0",
     "vue-router": "^4.0.3",
     "vue-scrollto": "^2.20.0"
   },

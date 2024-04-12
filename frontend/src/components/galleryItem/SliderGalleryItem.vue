@@ -20,7 +20,8 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img class="image" :src="`../../files/gallery/${item.img}`" loading="lazy">
+                    <img class="image" v-lazy="`../../files/gallery/${item.img}`">
+                   
                     <div class="painting-info">
                         <div class="info">
                             <div class="info-row">Картина {{item.number}}</div>
@@ -87,7 +88,8 @@
             return{
                 swiper: null,
                 prevStop: true,
-                nextStop: true      
+                nextStop: true ,
+                vis: false     
             }
         },
          mounted(){

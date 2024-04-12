@@ -27,7 +27,8 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image">
-                                <img class="image"  :src="`./files/gallery/` + item.preview"  loading="lazy"/>
+                                <img class="image"  v-lazy="`./files/gallery/` + item.preview" />
+                                
                             </div>
                             <div class="painting-text">
                                 <div  class="align">
@@ -92,8 +93,11 @@ export default {
     data () {
         return {
             data: this.userStore.getPartGallerys(true),
-          
+        
          }
+    },
+    methods:{
+
     },
     mounted(){
         this.userStore.$state

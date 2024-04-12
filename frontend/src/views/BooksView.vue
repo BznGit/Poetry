@@ -17,7 +17,7 @@
                                 :to="`/books/${item.id}`"
                             >
                                 <div class="book-image">
-                                    <img class="image" :src="`./files/books/${item.img}`"/>
+                                    <img class="image" v-lazy="`./files/books/${item.img}`"/>
                                 </div>
                             </router-link>
                         </div>
