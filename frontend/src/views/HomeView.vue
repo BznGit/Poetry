@@ -253,6 +253,10 @@ export default {
                 setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
            // });
         })
+        
+    },
+    beforeUnmount(){
+        this.$Lazyload.$off('loaded')
     }
 }
 </script>

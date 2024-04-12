@@ -164,7 +164,10 @@ export default {
         //   window.addEventListener('load', function() {
 
         //  });
-  }
+  },
+  beforeUnmount(){
+        this.$Lazyload.$off('loaded')
+    }
 }
 
 </script>
