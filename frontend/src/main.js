@@ -7,7 +7,7 @@ import '@/style/less/style.less';
 const loadimage = require('@/assets/svg/imgPlaceholder.svg')
 const errorimage = require('@/assets/svg/imgError.svg')
 createApp(App).use(router).use(createPinia()).use(VueLazyload, {
-    preLoad: 1.3,
+    preLoad: 1,
     error: errorimage,
     loading: loadimage,
     attempt: 1
