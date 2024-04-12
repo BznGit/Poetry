@@ -11,7 +11,7 @@ import errorimage from '@/assets/svg/img_error.svg'
 const VueLazyloadOptions = {
     preLoad: 1,
     error: errorimage,
-    loading: loadimage,
+    //loading: loadimage,
     attempt: 1
 }
 
