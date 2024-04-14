@@ -173,7 +173,7 @@
                                 class="item book" 
                                 :to="`/books/${item.id}`"
                             >
-                                <img class="book-image" :src="`./files/books/${item.img}`"/>
+                                <img class="book-image" style=" height: 300px; background: #333;" v-lazy="`./files/books/${item.img}`"/>
                             </router-link>
                         </div>
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
@@ -228,29 +228,27 @@ export default {
         }
     },
     mounted(){
-        this.$Lazyload.$on('loaded', function ({el}, formCache) {
-           // const paintings = document.querySelectorAll('.item.painting');
-           const paintings = el.parentNode.parentNode
-           // paintings.forEach(function(painting) {
-                const align = paintings.querySelector('.align');
-                const alignHeight = align.offsetHeight;
+        this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+            if (el.className!='image') return
+            const paintings = el.parentNode.parentNode
+            const align = paintings.querySelector('.align');
+            const alignHeight = align.offsetHeight
+            const animationDuration = alignHeight * 0.05;
+            align.style.transitionDuration = animationDuration + 's';
 
-                const animationDuration = alignHeight * 0.05;
-                align.style.transitionDuration = animationDuration + 's';
+            function startAnimation() {
+                align.style.transitionDuration = '0s';
+                align.style.transform = 'translateY(0)';
 
-                function startAnimation() {
-                    align.style.transitionDuration = '0s';
-                    align.style.transform = 'translateY(0)';
+                setTimeout(function() {
+                    align.style.transitionDuration = animationDuration + 's';
+                    align.style.transform = 'translateY(-' + alignHeight + 'px)';
+                }, 100);
+            }
 
-                    setTimeout(function() {
-                        align.style.transitionDuration = animationDuration + 's';
-                        align.style.transform = 'translateY(-' + alignHeight + 'px)';
-                    }, 100);
-                }
+            startAnimation(); // Запустить первую итерацию анимации сразу
 
-                startAnimation(); // Запустить первую итерацию анимации сразу
-
-                setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
+            setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
            // });
         })
         

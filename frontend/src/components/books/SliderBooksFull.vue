@@ -17,7 +17,7 @@
             <div :class="`slider__item item-${index < 10? '0' + (index + 1) : index} item book slider__item_active`" style="">  
                 <div class="book-title">{{item.name}}</div>
                 <div class="book-image">
-                    <img class="image" :src="`../files/books/${item.img}`"/>
+                    <img class="image" style="height: 900px; background: #333;" v-lazy="`../files/books/${item.img}`"/>
                 </div>
                 <div class="book-buttons">
                     <router-link 
@@ -101,6 +101,9 @@
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
             this.swiper.update()
+            this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+                el.style.height  = 'auto'
+             })
         },
         methods:{
             onSlideChange(e){

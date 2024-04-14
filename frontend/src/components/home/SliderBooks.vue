@@ -12,7 +12,7 @@
         <swiper-slide v-for = "(item, index) in data" :key="item" >
             <div :class="`slider__item item-0${index+1} slider__item_active`" style="">
                 <router-link class="item book" :to="`/books/${item.id}`">
-                    <img class="book-image" :src="`./files/books/` + item.img" />
+                    <img class="book-image" style="height: 1000px; background: #333;" v-lazy="`./files/books/` + item.img" />
                 </router-link>
             </div>
         </swiper-slide>
@@ -71,6 +71,10 @@
         mounted(){
             this.swiper = document.querySelector(".books .swiper").swiper;
             this.checkPrevNextStop(this.swiper.activeIndex)
+            this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+                el.style.height  = 'auto'
+
+             })
         },
         methods:{
             onSlideChange(e){

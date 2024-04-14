@@ -13,7 +13,9 @@
             <div class="slider__item painting item-01" style="">
                 <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.number">
                     <div class="painting-image">
-                        <img class="image" :src="`./files/gallery/` + item.preview"  loading="lazy"/>
+                        <img class="image"
+                        :style="`height: ${parseInt(item.height)}px; background: #333;`"
+                         v-lazy="`./files/gallery/` + item.preview"  />
                     </div>
                     <div class="painting-text">
                         <div  class="align">
