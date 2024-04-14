@@ -13,8 +13,8 @@
             <div class="slider__item painting item-01" style="">
                 <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.number">
                     <div class="painting-image">
-                        <img class="image"
-                        :style="`height: ${parseInt(item.height)}px; background: #333;`"
+                        <img :style="`height: ${parseInt(item.height)}px; `" class="image"
+                        
                          v-lazy="`./files/gallery/` + item.preview"  />
                     </div>
                     <div class="painting-text">
@@ -81,6 +81,9 @@
         mounted(){
            this.swiper = document.querySelector(".gallery .swiper").swiper;
            this.checkPrevNextStop(this.swiper.activeIndex)
+      /*   this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+            el.style.height  = 'auto'
+           })*/
         },
         methods:{
             onSlideChange(e){

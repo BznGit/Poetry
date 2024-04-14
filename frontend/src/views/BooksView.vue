@@ -53,7 +53,7 @@ export default {
     },
     mounted(){
         this.$Lazyload.$on('loaded', function ({ el }, formCache) {
-            el.style.maxHeight  = 'auto'
+            el.style.height  = 'auto'
            
         })
     }

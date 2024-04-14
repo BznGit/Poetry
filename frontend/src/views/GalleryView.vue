@@ -28,7 +28,7 @@
                             </button>
                             <div class="painting-image">
                       
-                                <img class="image" :style="`height: ${parseInt(item.height)}px; background: #333;`" v-lazy="`./files/gallery/` + item.preview" />
+                                <img class="image" :style="`height: ${parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
                                 
                             </div>
                             <div class="painting-text">

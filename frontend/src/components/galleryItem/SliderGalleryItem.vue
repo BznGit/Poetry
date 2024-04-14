@@ -20,7 +20,7 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img style="height: 1000px; background: #333;" class="image" v-lazy="`../../files/gallery/${item.img}`">
+                    <img :style="`height: ${parseInt(item.height)}px; `" class="image" v-lazy="`../../files/gallery/${item.img}`">
                    
                     <div class="painting-info">
                         <div class="info">
@@ -98,6 +98,9 @@
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
             this.$emit('setCurrIndex', index + 1 )
+        /*   this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+            el.style.height  = 'auto'
+           })*/
         },
         methods:{
             onSlideChange(e){
