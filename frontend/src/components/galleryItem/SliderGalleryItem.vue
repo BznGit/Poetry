@@ -12,7 +12,7 @@
     >
         <swiper-slide v-for="(item, index) in paitings">
             <div :class="`slider__item painting item-${index < 10? '0' + index : index} slider__item_active`" style="">
-                <button class="painting-buy"@click="addToCart(item.number)" >
+                <button class="painting-buy" @click="addToCart(item.number)" >
                     <img class="icon" src="@/assets/svg/cart_w.svg">
                 </button>
                 <div v-if="item.poem" class="painting-text">
