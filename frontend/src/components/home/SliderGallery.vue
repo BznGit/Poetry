@@ -81,9 +81,9 @@
         mounted(){
            this.swiper = document.querySelector(".gallery .swiper").swiper;
            this.checkPrevNextStop(this.swiper.activeIndex)
-      /*   this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+         this.$Lazyload.$on('loaded', function ({ el }, formCache) {
             el.style.height  = 'auto'
-           })*/
+           })
         },
         methods:{
             onSlideChange(e){

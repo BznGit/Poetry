@@ -17,7 +17,7 @@
             <div :class="`slider__item item-${index < 10? '0' + (index + 1) : index} item book slider__item_active`" style="">  
                 <div class="book-title">{{item.name}}</div>
                 <div class="book-image">
-                    <img class="image" style="height: 900px; background: #333;" v-lazy="`../files/books/${item.img}`"/>
+                    <img class="image" :style="`height: ${mobile? 600 : 1000}px; `" v-lazy="`../files/books/${item.img}`"/>
                 </div>
                 <div class="book-buttons">
                     <router-link 
@@ -92,8 +92,16 @@
             return{
                 swiper: null,
                 prevStop: true,
-                nextStop: true      
+                nextStop: true,
+                mobile: false         
             }
+        },
+        created() {
+            window.addEventListener('resize', this.handleResize);
+            this.handleResize();
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
         },
         mounted(){
             let index = this.books.findIndex(item=>item.id == this.$route.params.id)
@@ -106,6 +114,9 @@
              })
         },
         methods:{
+            handleResize() { 
+                if(window.innerWidth < 768)  this.mobile = true; else this.mobile = false
+            },
             onSlideChange(e){
                 const index = e.activeIndex
                 let currId = this.books[index].id

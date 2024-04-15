@@ -20,7 +20,8 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img :style="`height: ${parseInt(item.height)}px; `" class="image" v-lazy="`../../files/gallery/${item.img}`">
+                    <img :style="`height: ${mobile? parseInt(item.height) : 1000}px;`"
+                     class="image" v-lazy="`../../files/gallery/${item.img}`">
                    
                     <div class="painting-info">
                         <div class="info">
@@ -89,8 +90,16 @@
                 swiper: null,
                 prevStop: true,
                 nextStop: true ,
-                vis: false     
+                vis: false  ,
+                mobile: false   
             }
+        },
+        created() {
+            window.addEventListener('resize', this.handleResize);
+            this.handleResize();
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
         },
          mounted(){
             this.swiper = document.querySelector(`.swiper`).swiper;  
@@ -98,11 +107,11 @@
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
             this.$emit('setCurrIndex', index + 1 )
-        /*   this.$Lazyload.$on('loaded', function ({ el }, formCache) {
-            el.style.height  = 'auto'
-           })*/
-        },
+           },
         methods:{
+            handleResize() { 
+                if(window.innerWidth < 768)  this.mobile = true; else this.mobile = false
+            },
             onSlideChange(e){
                 const index = e.activeIndex + 1
                 this.$emit('setCurrIndex', index)
