@@ -16,7 +16,7 @@
                         </div>
                         <a class="button primary green" @click="addToCart(this.$route.params.id)">
                             <img class="icon" src="@/assets/svg/cart_w.svg"/>
-                            <span class="text">купить</span>
+                            <span class="text">в избранное</span>
                         </a>
                     </div>
                     <div class="module-content">

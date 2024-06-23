@@ -6,11 +6,13 @@
                 <div class="module-line cart">
                     <img class="image" src="@/assets/svg/about_brush.svg">
                 </div>
-                <h2 class="module-title">Приобрести холсты</h2>
+                <h2 class="module-title">Избранное</h2>
                 <div class="module-text">
                     <i>
-                        Для приобретения уникальных картин И. Я. Булгакова,<br/>
-                        выберите их в галерее и заполните заявку
+                        Здесь отложены понравившиеся вам холсты. <br/>
+                        Вы всегда можете связаться с автором, чтобы обсудить их. <br/>
+                        Для этого заполните форму обратной связи с вашим именем <br/>
+                        и адресом электронной почты.
                     </i>
                 </div>
                 <div class="module-content">
@@ -36,7 +38,7 @@
                             <div class="painting-delete" @click="deleteItemBook(item.id)">
                                 <img class="image" src="@/assets/svg/close_w.svg"/>
                             </div>
-                            <div class="painting-image">
+                            <div class="painting-book">
                                 <img class="image" v-lazy="`./files/books/${item.img}`"/>
                             </div>
                             <div class="painting-info">

@@ -12,7 +12,7 @@
     >
         <swiper-slide v-for="(item, index) in paitings">
             <div :class="`slider__item painting item-${index < 10? '0' + index : index} slider__item_active`" style="">
-                <button class="painting-buy"@click="addToCart(item.number)" >
+                <button class="painting-buy" @click="addToCart(item.number)" >
                     <img class="icon" src="@/assets/svg/cart_w.svg">
                 </button>
                 <div v-if="item.poem" class="painting-text">
@@ -20,7 +20,8 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img :style="`height: ${parseInt(item.height)}px; `" class="image" v-lazy="`../../files/gallery/${item.img}`">
+                    <img :style="`height: ${mobile? parseInt(item.height) : 1000}px;`"
+                     class="image" v-lazy="`../../files/gallery/${item.img}`">
                    
                     <div class="painting-info">
                         <div class="info">
@@ -29,7 +30,7 @@
                         </div>
                         <a class="button primary green" @click="addToCart(item.number)" >
                             <img class="icon" src="@/assets/svg/cart_w.svg"/>
-                            <span class="text">купить</span>
+                            <span class="text">в избранное</span>
                         </a>
                     </div>
                 </div>
@@ -89,8 +90,16 @@
                 swiper: null,
                 prevStop: true,
                 nextStop: true ,
-                vis: false     
+                vis: false  ,
+                mobile: false   
             }
+        },
+        created() {
+            window.addEventListener('resize', this.handleResize);
+            this.handleResize();
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
         },
          mounted(){
             this.swiper = document.querySelector(`.swiper`).swiper;  
@@ -98,11 +107,11 @@
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
             this.$emit('setCurrIndex', index + 1 )
-        /*   this.$Lazyload.$on('loaded', function ({ el }, formCache) {
-            el.style.height  = 'auto'
-           })*/
-        },
+           },
         methods:{
+            handleResize() { 
+                if(window.innerWidth < 768)  this.mobile = true; else this.mobile = false
+            },
             onSlideChange(e){
                 const index = e.activeIndex + 1
                 this.$emit('setCurrIndex', index)
