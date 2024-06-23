@@ -30,7 +30,7 @@
                     </router-link>
                     <a class="button primary green"  @click="addToCart(item.id)">
                         <img class="icon" src="@/assets/svg/cart_w.svg"/>
-                        <span class="text">купить PDF</span>
+                        <span class="text">в избранное</span>
                     </a>
                 </div>
                 <div class="book-content">
