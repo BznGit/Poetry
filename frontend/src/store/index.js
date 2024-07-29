@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { poems } from '@/store/data/poems'
+import { poems } from '@/store/data/poems-2'
 import { collectionsPoems } from '@/store/data/collectionsPoems'
 import { paintings } from '@/store/data/paintings'
 import { gallerys } from '@/store/data/gallerys'
@@ -72,7 +72,7 @@ export const useStore = defineStore('counter', {
       let arr2 = [];
       let arr3 = [];
    
-      let arr = [ '18', '19',  '20', '21', '06', '10', '22', '09', '07','01', ]
+      let arr = [ '18', '17',  '20', '22', '06', '10', '22', '04', '03','02', ]
       let partArr = []
       if(!all){
         arr.forEach(number=>{        
@@ -130,6 +130,7 @@ export const useStore = defineStore('counter', {
       let arr = [];
       curCollection.poems.forEach(item=>{
         let allPoems =structuredClone(this.poems.find(elem=>elem.name == item))
+        console.log(allPoems)
         allPoems.text =  structuredClone(this.addDivPoems(allPoems.text))
         arr.push(allPoems)
       })
