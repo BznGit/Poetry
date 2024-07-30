@@ -123,7 +123,8 @@
                 const swiper = this.swiper            
          
                 console.log(swiper)
-
+                event.preventDefault();
+                event.stopPropagation()
                 console.log(event)
                 if (event.keyCode == 37) swiper.slidePrev()
                 if (event.keyCode == 39) swiper.slideNext() 
