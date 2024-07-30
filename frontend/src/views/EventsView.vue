@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="event-info">
                                         <div class="location">
-                                            <div class="icons">
+                                            <div class="icons" v-if="item.place" >
                                                 <img class="image active" src="@/assets/svg/map_pointer_y.svg">
                                                 <img class="image archive" src="@/assets/svg/map_pointer_y.svg">
                                             </div>
