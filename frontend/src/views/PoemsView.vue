@@ -68,8 +68,8 @@
                 <div class="text quote" style="white-space: pre-wrap;">
                     {{item.foreword?item.foreword.quote2: ''}}
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{item.foreword?item.foreword.end: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.end: ''">
+            
                 </div>
             </div>
         </div>

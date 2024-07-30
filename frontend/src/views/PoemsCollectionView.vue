@@ -66,8 +66,8 @@
                 <div class="text quote" style="white-space: pre-wrap;">
                     {{collection.foreword?collection.foreword.quote2: ''}}
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{collection.foreword?collection.foreword.end: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.end: ''">
+                   
                 </div>
             </div>
         </div>
