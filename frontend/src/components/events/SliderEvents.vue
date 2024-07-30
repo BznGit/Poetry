@@ -57,8 +57,8 @@
                                 allowfullscreen></iframe>
                     </div>
                     <div class="event-text">
-                        <div class="text">
-                            {{ item.additionally.text }}
+                        <div class="text" v-html="item.additionally?item.additionally.text: ''">
+
                         </div>    
                     </div>
                     <div class="event-photo event-02">

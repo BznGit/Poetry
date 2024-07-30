@@ -51,20 +51,23 @@
                 <div class="title">
                     Предисловие
                 </div>
-                <div class="text">
-                    {{collection.titel}}
+                <div class="text" v-html="collection.foreword?collection.foreword.titel: ''">
+
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{collection.foreword? collection.foreword.text1 : ''}}
+                <div class="text quote" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.quote1: ''">
+
                 </div>
-                <div class="text quote" style="white-space: pre-wrap;">
-                    {{collection.foreword? collection.foreword.quote1: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.text1: ''">
+
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{collection.foreword?collection.foreword.text2: ''}}
+                <div class="text quote" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.quote2: ''">
+
                 </div>
-                <div class="text quote" style="white-space: pre-wrap;">
-                    {{collection.foreword?collection.foreword.quote2: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.text2: ''">
+
+                </div>
+                <div class="text quote" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.quote3: ''">
+
                 </div>
                 <div class="text" style="white-space: pre-wrap;" v-html="collection.foreword?collection.foreword.end: ''">
                    

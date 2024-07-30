@@ -53,20 +53,23 @@
                 <div class="title">
                     Предисловие
                 </div>
-                <div class="text">
-                    {{item.titel}}
+                <div class="text" v-html="item.foreword?item.foreword.titel: ''">
+
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{item.foreword? item.foreword.text1 : ''}}
+                <div class="text quote" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.quote1: ''">
+
                 </div>
-                <div class="text quote" style="white-space: pre-wrap;">
-                    {{item.foreword? item.foreword.quote1: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.text1: ''">
+
                 </div>
-                <div class="text" style="white-space: pre-wrap;">
-                    {{item.foreword?item.foreword.text2: ''}}
+                <div class="text quote" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.quote2: ''">
+
                 </div>
-                <div class="text quote" style="white-space: pre-wrap;">
-                    {{item.foreword?item.foreword.quote2: ''}}
+                <div class="text" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.text2: ''">
+
+                </div>
+                <div class="text quote" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.quote3: ''">
+
                 </div>
                 <div class="text" style="white-space: pre-wrap;" v-html="item.foreword?item.foreword.end: ''">
             
