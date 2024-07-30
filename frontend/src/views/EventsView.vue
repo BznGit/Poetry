@@ -39,7 +39,7 @@
                                         </div>
                                         <div class="date">
                                             <div class="icons">
-                                                <img class="image" src="@/assets/svg/time_g.svg">
+                                                <img class="image" v-if="item.time" src="@/assets/svg/time_g.svg">
                                             </div>
                                             <div class="text">
                                                 <div class="row">{{item.time}}</div>

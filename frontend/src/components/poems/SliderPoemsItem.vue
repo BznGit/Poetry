@@ -80,7 +80,15 @@
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
             this.swiper.update()
-            this.$emit('setCurrIndex', index + 1)
+            this.$emit('setCurrIndex', index + 1);
+            
+            document.addEventListener("keydown", function(event) {
+            event.preventDefault();
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext()
+                
+            });
         },
         methods:{
             onSlideChange(e){

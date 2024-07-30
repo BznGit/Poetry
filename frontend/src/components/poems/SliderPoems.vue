@@ -81,7 +81,14 @@
         },
         mounted(){
             this.swiper = document.querySelector(`.slide-${this.indexPoem} .swiper`).swiper;
-            this.checkPrevNextStop(this.swiper.activeIndex )
+            this.checkPrevNextStop(this.swiper.activeIndex );
+            document.addEventListener("keydown", function(event) {
+            event.preventDefault();
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext()
+                
+            });
         },
         methods:{
             handleResize() { 

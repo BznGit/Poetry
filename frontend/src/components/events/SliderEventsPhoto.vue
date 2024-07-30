@@ -72,7 +72,15 @@
            this.swiper = document.querySelector(".photo .swiper").swiper;
            this.swiper.activeIndex = index
            this.checkPrevNextStop(index)
-           this.swiper.update()
+           this.swiper.update();
+
+           document.addEventListener("keydown", function(event) {
+            event.preventDefault();
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext()
+                
+            });
         },
         methods:{
             onSlideChange(e){

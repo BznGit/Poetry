@@ -19,7 +19,7 @@
                     <div class="status active">сейчас</div>
                     <div class="status archive">в архиве</div>
                 </div>
-                <div :class="`item event ${!item.active? 'archive' : ''}`">
+                <div :class="`item event ${!item.active? 'archive' : 'active'}`">
                     <div class="event-media">
                         <img class="image" :src="`../files/events/${item.img}`"/>
                     </div>
@@ -31,8 +31,8 @@
                     <div class="event-info">
                         <div class="location">
                             <div class="icons">
-                                <img class="image active" src="@/assets/svg/map_pointer_y.svg">
-                                <img class="image archive" src="@/assets/svg/map_pointer_y.svg">
+                                <img :class="`image ${item.active? 'active':'archive' }`" src="@/assets/svg/map_pointer_y.svg">
+                               
                             </div>
                             <div class="text">
                                 {{ item.place }}
@@ -40,7 +40,7 @@
                         </div>
                         <div class="date">
                             <div class="icons">
-                                <img class="image" src="@/assets/svg/time_g.svg">
+                                <img class="image" v-if="item.time" src="@/assets/svg/time_g.svg">
                             </div>
                             <div class="text">
                                 <div class="row">{{item.time}}</div>
@@ -71,7 +71,7 @@
             </div>
         </swiper-slide>
     </swiper>
-        <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
+        <button @click="slidePrev"  v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
             <img class="icon one" src="@/assets/svg/prev_g.svg">
             <img class="icon two" src="@/assets/svg/prev_y.svg">
         </button>
@@ -126,7 +126,17 @@
             let index = this.events.findIndex(item=>item.id == this.$route.params.id)
             this.swiper = document.querySelector(".swiper").swiper;
             this.swiper.activeIndex = index;
-            this.checkPrevNextStop(index)
+            this.checkPrevNextStop(index);
+            
+            document.addEventListener("keydown", function(event) {
+                event.preventDefault();
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext()
+                
+            });
+            
+
         },
         methods:{
             letPopup(allPhotos, photo){
