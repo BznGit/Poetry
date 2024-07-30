@@ -112,6 +112,10 @@
             this.$Lazyload.$on('loaded', function ({ el }, formCache) {
                 el.style.height  = 'auto'
              })
+             window.addEventListener("keydown", this.move);
+        },
+        beforeUnmount(){
+            window.removeEventListener("keydown", this.move)
         },
         methods:{
             handleResize() { 
@@ -137,6 +141,13 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index  == this.books.length-1) this.nextStop = false; else this.nextStop = true;
             },
+            move(event) {
+                event.preventDefault();
+                event.stopPropagation()
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext() 
+            }
         }
     };
   </script>

@@ -57,8 +57,8 @@
                                 allowfullscreen></iframe>
                     </div>
                     <div class="event-text">
-                        <div class="text">
-                            {{ item.additionally.text }}
+                        <div class="text" v-html="item.additionally?item.additionally.text: ''">
+
                         </div>    
                     </div>
                     <div class="event-photo event-02">
@@ -127,16 +127,11 @@
             this.swiper = document.querySelector(".swiper").swiper;
             this.swiper.activeIndex = index;
             this.checkPrevNextStop(index);
-            
-            document.addEventListener("keydown", function(event) {
-                event.preventDefault();
-                const swiper = document.querySelector(".swiper").swiper;
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext()
-                
-            });
-            
+            window.addEventListener("keydown", this.move);       
 
+        },
+        beforeUnmount(){
+            window.removeEventListener("keydown", this.move)
         },
         methods:{
             letPopup(allPhotos, photo){
@@ -159,6 +154,13 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index  == this.events.length-1) this.nextStop = false; else this.nextStop = true;
             },
+            move(event) {
+                event.preventDefault();
+                event.stopPropagation()
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext() 
+            }
         }
     };
   </script>

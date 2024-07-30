@@ -10,7 +10,7 @@
     @slideChange="onSlideChange"
     >
         <swiper-slide v-for="(item, index) in poems">
-            <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
+            <div :class="`slider__item item-0${indexPoem} slider__item_active`"  @mouseenter="set" @mouseleave="del"  >
                 <router-link :class="`item poem poem-0${indexPoem}`" :to="`/poems/${collectionId}/${item.id}`">
                     <div class="poem-text">
                         <div v-html="item.text"></div>
@@ -69,7 +69,8 @@
                 swiper: null,
                 slidesCount: null,
                 prevStop: true,
-                nextStop: true
+                nextStop: true,
+                swiper: null
             }
         },
         created() {
@@ -82,15 +83,23 @@
         mounted(){
             this.swiper = document.querySelector(`.slide-${this.indexPoem} .swiper`).swiper;
             this.checkPrevNextStop(this.swiper.activeIndex );
-            document.addEventListener("keydown", function(event) {
-            event.preventDefault();
-                const swiper = document.querySelector(".swiper").swiper;
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext()
-                
-            });
+          // window.addEventListener("keydown", this.move)
+
+        },
+        beforeUnmount(){
+           // window.removeEventListener("keydown", this.move)
         },
         methods:{
+            set(e){
+                const teg = e.target.parentNode
+                const swiper = teg.parentNode.parentNode.swiper 
+                this.swiper = swiper
+                window.addEventListener("keydown", this.move)
+            },
+            del(e){
+                window.removeEventListener("keydown", this.move)
+          
+            },
             handleResize() { 
                 if(window.innerWidth < 1024) this.slidesCount = 3
                 if(window.innerWidth < 768)  this.slidesCount = 1
@@ -109,6 +118,18 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index == this.poems.length-5) this.nextStop = false; else this.nextStop = true;
             },
+            move(event) {
+            
+                const swiper = this.swiper            
+         
+                console.log(swiper)
+
+                console.log(event)
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext() 
+        
+   
+            }
 
         }
     };

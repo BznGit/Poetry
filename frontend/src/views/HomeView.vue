@@ -249,6 +249,7 @@ export default {
             startAnimation(); // Запустить первую итерацию анимации сразу
 
             setInterval(startAnimation, 40000); // Повторять каждые 40 секунд
+
            // });
         })
         

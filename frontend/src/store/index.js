@@ -130,7 +130,6 @@ export const useStore = defineStore('counter', {
       let arr = [];
       curCollection.poems.forEach(item=>{
         let allPoems =structuredClone(this.poems.find(elem=>elem.name == item))
-        console.log(allPoems)
         allPoems.text =  structuredClone(this.addDivPoems(allPoems.text))
         arr.push(allPoems)
       })

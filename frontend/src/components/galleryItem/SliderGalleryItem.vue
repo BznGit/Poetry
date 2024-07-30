@@ -106,8 +106,14 @@
             let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
             this.swiper.activeIndex = index
             this.checkPrevNextStop(index)
-            this.$emit('setCurrIndex', index + 1 )
-           },
+            this.$emit('setCurrIndex', index + 1 );
+
+            window.addEventListener("keydown", this.move);
+           
+        },
+        beforeUnmount(){
+            window.removeEventListener("keydown", this.move)
+        },
         methods:{
             handleResize() { 
                 if(window.innerWidth < 768)  this.mobile = true; else this.mobile = false
@@ -132,9 +138,23 @@
             },
             addToCart(id){
                 this.userStore.addCart(id) 
+            },
+            move(event) {
+                event.preventDefault();
+                event.stopPropagation()
+                const swiper = document.querySelector(".swiper").swiper;
+                if (event.keyCode == 37) swiper.slidePrev()
+                if (event.keyCode == 39) swiper.slideNext() 
             }
         }
     };
+    function move(event) {
+        event.preventDefault();
+        event.stopPropagation()
+        const swiper = document.querySelector(".gallery-slider .swiper").swiper;
+        if (event.keyCode == 37) swiper.slidePrev()
+        if (event.keyCode == 39) swiper.slideNext() 
+    }
   </script>
   <style >
 .swiper-button-next{
