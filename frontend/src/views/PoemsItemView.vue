@@ -27,6 +27,9 @@
                             />
                         </div>   
                     </div>
+                    <div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,6 +40,7 @@
 import SliderPoemsItem from '../components/poems/SliderPoemsItem.vue'
 import { useStore } from '../store/index'
 
+
 export default {
     setup () {
         const userStore = useStore()
@@ -44,12 +48,14 @@ export default {
     },
     name: 'PoemsItemView',
     components: {
-        SliderPoemsItem
+        SliderPoemsItem,
+     
     },
     data(){
         return {
            currIndex: null,
-           collection: null
+           collection: null,
+          
         }
     },
     created(){
@@ -60,7 +66,8 @@ export default {
     methods:{
         setCurrIndex(index){
                this.currIndex = index;
-        }
+        },
+      
     }  
 }
 </script>

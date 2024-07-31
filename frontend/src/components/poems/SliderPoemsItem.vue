@@ -17,6 +17,17 @@
                     </div>
                 </div>
             </div>
+            <vue-audio-player
+                v-if="item.sound"
+                theme-color = "#FFC200"
+                ref="audioPlayer"
+                :audio-list="[`../../files/sounds/${item.sound}`]"
+                :before-play="handleBeforePlay"
+                :show-play-loading="false"
+                @ended="handleEnded"
+
+                >
+            </vue-audio-player>
         </swiper-slide>
     </swiper>
         <button @click="slidePrev" v-if="prevStop" class="slider__btn slider__btn_prev" style="z-index: 2;">
@@ -27,6 +38,8 @@
             <img class="icon one" src="@/assets/svg/next_g.svg">
             <img class="icon two" src="@/assets/svg/next_y.svg">
         </button>
+
+
   </template>
   <script>
     // Import Swiper Vue.js components
@@ -44,6 +57,7 @@
         components: {
             Swiper,
             SwiperSlide,
+
         },
         setup() {
             const swiper = useSwiper();
@@ -71,7 +85,15 @@
             return{
                 swiper: null,
                 prevStop: true,
-                nextStop: true
+                nextStop: true,
+                currentAudioName: '',
+                audioList: [
+                    {
+                    src: '../../files/sounds/dvn-mozhno-ya-s-toboj-mp3.mp3', // Required
+                    title: 'Audio Title 1', // Optional，Phone lock screen music player display
+                    }
+                ],
+            
             }
         },
         mounted(){
@@ -93,13 +115,18 @@
                 this.$emit('setCurrIndex', index)
                 let id = this.poems[e.activeIndex].id
                 this.$router.push({  params: {  id: id }}) 
-                this.checkPrevNextStop(e.activeIndex)            
+                this.checkPrevNextStop(e.activeIndex)   
+                this.$refs.audioPlayer.forEach(item => {
+                    item.pause()
+                });      
             },
             slideNext(){
                 this.swiper.slideNext()
+            
             },
             slidePrev(){
                 this.swiper.slidePrev()
+                console.log(this.$refs.audioPlayer[0])
             },
             checkPrevNextStop(index){
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
@@ -125,4 +152,10 @@
     color: #FFC200
     
 }
+.vue-audio-player{
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>

@@ -4,8 +4,9 @@ import App from './App.vue'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
 import '@/style/less/style.less';
+import VueAudioPlayer from "@liripeng/vue-audio-player";
+//import "@liripeng/vue-audio-player/lib/vue-audio-player.css";
 
-import loadimage from '@/assets/gif/ass.svg'
 import errorimage from '@/assets/svg/img_error.svg'
 //const errorimage = require('@/assets/svg/imgError.svg')
 const VueLazyloadOptions = {
@@ -19,4 +20,5 @@ const app = createApp(App)
 app.use(router)
 app.use(createPinia())
 app.use(VueLazyload, VueLazyloadOptions)
+app.use(VueAudioPlayer)
 app.mount('#app')

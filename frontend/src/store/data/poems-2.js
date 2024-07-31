@@ -19,7 +19,8 @@ export const  poems =  [
       Куда важней Суть Смысла понимать
       <em>Запомнить их а Сути не понять</em>
       <em>Как не нашедши</em>
-    `
+    `,
+    sound:'dvn-mozhno-ya-s-toboj-mp3.mp3'
   },
   {
     id:'3',
@@ -31,7 +32,8 @@ export const  poems =  [
       Но новизна звучаний
       Откроет <strong>то</strong>
       Что не предполагал
-    `
+    `,
+    sound:'basta-na-zare-alyans-cover-mp3.mp3'
   },
   {
     id:'4',

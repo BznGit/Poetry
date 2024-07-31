@@ -118,14 +118,10 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index == this.poems.length-5) this.nextStop = false; else this.nextStop = true;
             },
-            move(event) {
-            
+            move(event) {         
                 const swiper = this.swiper            
-         
-                console.log(swiper)
                 event.preventDefault();
                 event.stopPropagation()
-                console.log(event)
                 if (event.keyCode == 37) swiper.slidePrev()
                 if (event.keyCode == 39) swiper.slideNext() 
         
