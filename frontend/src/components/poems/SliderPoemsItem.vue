@@ -25,7 +25,11 @@
                 :before-play="handleBeforePlay"
                 :show-play-loading="false"
                 @ended="handleEnded"
-
+                :show-prev-button = "false"
+                :show-next-button ="false"
+                :show-playback-rate = "false"
+                :show-progress-bar = "false"
+                :show-volume-button	="false"
                 >
             </vue-audio-player>
         </swiper-slide>
@@ -153,7 +157,7 @@
     
 }
 .vue-audio-player{
-    width: 35%;
+
     margin-left: auto;
     margin-right: auto;
 }
