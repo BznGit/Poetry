@@ -20,7 +20,7 @@ export const  poems =  [
       <em>Запомнить их а Сути не понять</em>
       <em>Как не нашедши</em>
     `,
-    sound:'dvn-mozhno-ya-s-toboj-mp3.mp3'
+   // sound:'dvn-mozhno-ya-s-toboj-mp3.mp3'
   },
   {
     id:'3',
@@ -33,7 +33,7 @@ export const  poems =  [
       Откроет <strong>то</strong>
       Что не предполагал
     `,
-    sound:'basta-na-zare-alyans-cover-mp3.mp3'
+   // sound:'basta-na-zare-alyans-cover-mp3.mp3'
   },
   {
     id:'4',

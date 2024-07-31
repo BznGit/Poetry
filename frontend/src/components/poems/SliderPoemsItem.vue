@@ -120,9 +120,13 @@
                 let id = this.poems[e.activeIndex].id
                 this.$router.push({  params: {  id: id }}) 
                 this.checkPrevNextStop(e.activeIndex)   
-                this.$refs.audioPlayer.forEach(item => {
+                console.log(this.$refs.audioPlayer)
+                if(this.$refs.audioPlayer){
+                        this.$refs.audioPlayer.forEach(item => {
                     item.pause()
-                });      
+                });
+                }
+                  
             },
             slideNext(){
                 this.swiper.slideNext()
@@ -130,7 +134,7 @@
             },
             slidePrev(){
                 this.swiper.slidePrev()
-                console.log(this.$refs.audioPlayer[0])
+           
             },
             checkPrevNextStop(index){
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
