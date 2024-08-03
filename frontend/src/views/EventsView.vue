@@ -17,7 +17,7 @@
                                         <div :class="!item.active? 'archive' : ''">в архиве</div>
                                     </div>
                                     <div class="event-media">
-                                        <img class="image" v-lazy="`./files/events/${item.img}`"/>
+                                        <img class="image" v-lazy="`./files/events/eventsPage/${item.img}`"/>
                                     </div>
                                     <div class="event-text">
                                         <div class="title" style="white-space: pre-wrap;">

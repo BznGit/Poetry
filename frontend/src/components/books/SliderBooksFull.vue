@@ -22,7 +22,7 @@
                 <div class="book-buttons">
                     <router-link 
                         v-if="item.onlineLink" 
-                        :to="`${item.onlineLink=='poetic-paintings'? '/gallery/ecology-of-consciousness/1' : '/poems/'+ item.onlineLink}`"
+                        :to="`${item.onlineLink=='poetic-paintings' || item.onlineLink=='bulgakovs-paintings'? '/gallery/ecology-of-consciousness/1' : '/poems/'+ item.onlineLink}`"
                         class="link-more"
                     >
                         <div class="text" >Сборник онлайн</div>
