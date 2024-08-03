@@ -21,11 +21,11 @@
                 </div>
                 <div class="book-buttons">
                     <router-link 
-                        v-if="item.onlineLink != 'words-born-from-the-soul'" 
+                        v-if="item.onlineLink" 
                         :to="`${item.onlineLink=='poetic-paintings'? '/gallery/ecology-of-consciousness/1' : '/poems/'+ item.onlineLink}`"
                         class="link-more"
                     >
-                        <div class="text">Сборник онлайн</div>
+                        <div class="text" >Сборник онлайн</div>
                         <img class="icon" src="@/assets/svg/more.svg">
                     </router-link>
                     <a class="button primary green"  @click="addToCart(item.id)">
@@ -33,8 +33,8 @@
                         <span class="text">в избранное</span>
                     </a>
                 </div>
-                <div class="book-content">
-                    <div class="text" style="white-space: pre-wrap;">
+                <div v-if="item.titel" class="book-content">
+                    <div  class="text" style="white-space: pre-wrap;">
                        {{item.titel}}
                     </div>
                 </div>

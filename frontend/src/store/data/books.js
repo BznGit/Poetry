@@ -109,7 +109,7 @@ export const  books =  [
     id: 'bulgakovs-paintings',
     name: 'Булгаковские полотна',
     img:'book_07.jpg',
-    onlineLink: 'bulgakovs-paintings',
+    onlineLink: null,//'bulgakovs-paintings',
     titel: null,
   }
 ]
