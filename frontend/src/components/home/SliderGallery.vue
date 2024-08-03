@@ -13,7 +13,7 @@
             <div class="slider__item painting item-01" style="">
                 <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.number">
                     <div class="painting-image">
-                        <img :style="`min-height: ${parseInt(item.height)}px;` "class="image" v-lazy="`./files/gallery/` + item.preview"/>
+                        <img :style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px;` "class="image" v-lazy="`./files/gallery/` + item.preview"/>
                     </div>
                     <div class="painting-text">
                         <div  class="align">
@@ -97,6 +97,15 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index  == this.data.length-1) this.nextStop = false; else this.nextStop = true;
             },
+            getHeightKoef(text){
+                let index = text.indexOf('x')
+                if(index != -1){
+                    let h = parseInt(text.substring(0, index))
+                    let w = parseInt(text.substring(index + 1, text.length))
+                    let k = h/w
+                    return k  
+                }
+            }
         }
     };
   </script>

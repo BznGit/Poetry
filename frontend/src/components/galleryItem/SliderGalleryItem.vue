@@ -20,9 +20,10 @@
 
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`">
-                    <img :style="`min-height: ${mobile? parseInt(item.height) : 1000}px;`"
-                     class="image" v-lazy="`../../files/gallery/${item.img}`">
-                   
+                  
+                    <img :style="`min-height: ${ getHeightKoef(item.size) * parseInt(item.height)}px;`"
+                        class="image" v-lazy="`../../files/gallery/${item.img}`">
+                      
                     <div class="painting-info">
                         <div class="info">
                             <div class="info-row">Картина {{item.number}}</div>
@@ -115,6 +116,15 @@
             window.removeEventListener("keydown", this.move)
         },
         methods:{
+            getHeightKoef(text){
+                let index = text.indexOf('x')
+                if(index != -1){
+                    let h = parseInt(text.substring(0, index))
+                    let w = parseInt(text.substring(index + 1, text.length))
+                    let k = h/w
+                    return k  
+                }
+            },
             handleResize() { 
                 if(window.innerWidth < 768)  this.mobile = true; else this.mobile = false
             },

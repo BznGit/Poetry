@@ -27,7 +27,7 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image">
-                                <img class="image" :style="`min-height: ${parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
+                                <img class="image" :style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
                             </div>
                             <div class="painting-text">
                                 <div  class="align">
@@ -157,10 +157,22 @@ export default {
         //   window.addEventListener('load', function() {
 
         //  });
-  },
-  beforeUnmount(){
+    },
+    beforeUnmount(){
         this.$Lazyload.$off('loaded')
+    },
+    methods: {
+        getHeightKoef(text){
+                let index = text.indexOf('x')
+                if(index != -1){
+                    let h = parseInt(text.substring(0, index))
+                    let w = parseInt(text.substring(index + 1, text.length))
+                    let k = h/w
+                    return k  
+                }
+        }
     }
+
 }
 
 </script>
