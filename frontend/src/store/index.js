@@ -25,11 +25,16 @@ export const useStore = defineStore('counter', {
     getBooks: (state) => state.books,
     getCart: (state) => state.cart,
     getCartBook: (state) => state.cartBook,
-    getLastpic: (state) => state.lastPic
+    getLastpic: (state) => state.lastPic,
+    
   },
 
   actions: {
-
+    getActiveEvents(){
+      let arr = [];
+      events.forEach(item =>{if(item.active) arr.push(item)})
+      return arr
+    },
     // Cart service ===============================================
     addCart(number){
       let obj = paintings.find(item=>item.number == number)

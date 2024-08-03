@@ -21,7 +21,7 @@
                 </div>
                 <div :class="`item event ${!item.active? 'archive' : 'active'}`">
                     <div class="event-media">
-                        <img class="image" :src="`../files/events/${item.img}`"/>
+                        <img class="image" :src="`../files/events/eventsPage/${item.img}`"/>
                     </div>
                     <div class="event-text">
                         <div class="text">

@@ -12,6 +12,8 @@ export const  events =  [
     `,
     time: 'С 12:00 до 21:00. Выходной: понедельник. ',
     img: 'event_title_polotna.png',
+    imgMainDesktop:'photo_5292249446932930802_y.jpg',
+    imgMainMobile:'event_title_polotna.jpg',
     additionally: {
       text: `
 <h2>Поэтические полотна</h2>
@@ -107,6 +109,8 @@ export const  events =  [
     `,
     time: '17 — 19 декабря 2021 г., с 10:00 до 22:00',
     img:'event_title_yaroslavl.jpg',
+    imgMainDesktop: null,
+    imgMainMobile: null,
     additionally: {
       video: 'https://www.youtube.com/embed/WfTwF_Z5b4A?si=O9J7dRFej0pO5MEL',
       text:`
@@ -186,6 +190,8 @@ export const  events =  [
     `,
     time: null,
     img:'event_title_zvezdopad.jpg',
+    imgMainDesktop: null,
+    imgMainMobile:null,
     additionally: {
       video: null,
       text: `
@@ -223,6 +229,8 @@ export const  events =  [
     `,
     time: '11 сентября 2012',
     img: 'vinzavod_title.jpg',
+    imgMainDesktop: null,
+    imgMainMobile:null,
     additionally: {
       text: `
       <p>Звездопад на каждый день</p>
@@ -245,6 +253,8 @@ export const  events =  [
       `,
     time: '3 апреля - 2 мая 2015',
     img: 'bogoroditsk_title.jpg',
+    imgMainDesktop: null,
+    imgMainMobile:null,
     additionally: {
       text: `
         <p>Такое событие как выставка живописных работ Игоря Булгакова для Богородицкого дворца-музея и парка &mdash; не новость: несколько лет назад богородчане очень тепло восприняли творческий посыл Игоря Яковлевича. В этот раз он представляет свои новые работы в жанре, который он сам характеризует как энергоинформационная живопись: &laquo;&hellip;что проявит холст не я решаю /Тот решает кто рукою водит /Я лишь удивляясь наблюдаю кто и как ко мне на холст приходит&hellip;&raquo;</p>
@@ -261,6 +271,8 @@ export const  events =  [
     place: null,
     time: `3 апреля 2017`,
     img:'xudozhnik_title.jpg',
+    imgMainDesktop: null,
+    imgMainMobile:null,
     additionally: {
       video: null,
       text: `
@@ -289,6 +301,8 @@ export const  events =  [
     place: null,
     time: `2019 г.`,
     img:'2019gallery_title.jpg',
+    imgMainDesktop: null,
+    imgMainMobile:null,
     additionally: {
       video: null,
       text: null,
@@ -323,6 +337,8 @@ export const  events =  [
     place: null,
     time: `24.05.2021`,
     img:'bolgaria_title.jpg',
+    imgMainDesktop: null,
+    imgMainMobule: null,
     additionally: {
       video: null,
       text: `

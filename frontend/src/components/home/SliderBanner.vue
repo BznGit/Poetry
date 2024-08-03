@@ -7,10 +7,10 @@
       @slideChange="onSlideChange"
     >
       <swiper-slide v-for="(item, index) in data" :key="item.name">
-        <router-link :class="`slider__item item-${index < 10? '0' + (index + 1) : index}`" :to="`/events/${item.i}`" style="">
+        <router-link v-if="item.active" :class="`slider__item item-${index < 10? '0' + (index + 1) : index}`" :to="`/events/${item.i}`" style="">
                         <div class="banner">
                             <div class="banner-image">
-                              <img :src="`./files/events/` + item.img" >
+                              <img v-if="item.imgMainMobile || item.imgMainDesktop" :src="`./files/events/${ sizeX < 1024? 'homePageMobile/' + item.imgMainMobile : 'homePageDesktop/'+ item.imgMainDesktop}`" >
                             </div>
                             <div class="center">
                                 <div class="banner-text">
@@ -64,11 +64,20 @@
           userStore
         };
       },
-        data () {
-      return {
-        data: this.userStore.getEvents,
+      data () {
+        return {
+          data: this.userStore.getActiveEvents(),
+          sizeX: document.documentElement.clientWidth
 
+        }
+      },
+      created(){
+          window.addEventListener('resize' , () => {
+          this.sizeX = document.documentElement.clientWidth;
+          
+        })
       }
-    },
+
+     
     };
   </script>
