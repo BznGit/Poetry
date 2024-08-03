@@ -167,7 +167,7 @@ export default {
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = h/w
+                    let k = w/h
                     return k  
                 }
         }

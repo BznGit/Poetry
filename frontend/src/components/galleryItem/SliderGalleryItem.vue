@@ -21,7 +21,7 @@
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`">
                   
-                    <img :style="`min-height: ${ getHeightKoef(item.size) * parseInt(item.height)}px;`"
+                    <img :style="`min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`"
                         class="image" v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
@@ -121,7 +121,7 @@
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = h/w
+                    let k = w/h
                     return k  
                 }
             },

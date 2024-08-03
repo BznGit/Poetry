@@ -44,6 +44,7 @@
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
     import 'swiper/css/scrollbar';
+import { handleError } from 'vue';
        
     export default {
   
@@ -102,7 +103,7 @@
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = h/w
+                    let k = w/h
                     return k  
                 }
             }
