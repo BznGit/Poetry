@@ -27,9 +27,7 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image">
-                      
-                                <img class="image" :style="`height: ${parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
-                                
+                                <img class="image" :style="`min-height: ${parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
                             </div>
                             <div class="painting-text">
                                 <div  class="align">

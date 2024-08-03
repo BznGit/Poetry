@@ -19,8 +19,8 @@
                     <div class="align" v-html="item.poem"></div>
 
                 </div>
-                <div class="painting-image" :style="`${item.poem? '' :'margin-left: 20px; margin-right: 20px;'}`">
-                    <img :style="`height: ${mobile? parseInt(item.height) : 1000}px;`"
+                <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`">
+                    <img :style="`min-height: ${mobile? parseInt(item.height) : 1000}px;`"
                      class="image" v-lazy="`../../files/gallery/${item.img}`">
                    
                     <div class="painting-info">

@@ -1,5 +1,12 @@
 export const  books =  [
   {
+    id: 'bulgakovs-paintings',
+    name: 'Булгаковские полотна',
+    img:'book_07.jpg',
+    onlineLink: null,//'bulgakovs-paintings',
+    titel: null,
+  },
+  {
     id: 'words-born-from-the-soul',
     name: 'Слова рожденные душой',
     img:'book_01.jpg',
@@ -105,11 +112,5 @@ export const  books =  [
 Счастливого пути!
 И. Булгаков`,
   },
-  {
-    id: 'bulgakovs-paintings',
-    name: 'Булгаковские полотна',
-    img:'book_07.jpg',
-    onlineLink: null,//'bulgakovs-paintings',
-    titel: null,
-  }
+
 ]
