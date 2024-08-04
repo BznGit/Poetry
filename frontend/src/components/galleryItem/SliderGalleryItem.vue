@@ -19,10 +19,9 @@
                     <div class="align" v-html="item.poem"></div>
 
                 </div>
-                <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`">
+                <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`" >
                   
-                    <img :style="`min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`"
-                        class="image" v-lazy="`../../files/gallery/${item.img}`">
+                    <img class="image":style="`min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
                         <div class="info">
@@ -121,7 +120,7 @@
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = w/h
+                    let k = h/w
                     return k  
                 }
             },

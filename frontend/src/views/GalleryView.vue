@@ -26,7 +26,7 @@
                             <button class="painting-buy">
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
-                            <div class="painting-image">
+                            <div class="painting-image" >
                                 <img class="image" :style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
                             </div>
                             <div class="painting-text">
@@ -167,7 +167,7 @@ export default {
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = w/h
+                    let k = h/w
                     return k  
                 }
         }

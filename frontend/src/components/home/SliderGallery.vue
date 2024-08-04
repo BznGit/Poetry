@@ -12,8 +12,8 @@
         <swiper-slide v-for = "(item, index) in data " :key="item">
             <div class="slider__item painting item-01" style="">
                 <router-link class="item painting item-01" :to="`/gallery/`+ galleryId +`/` + item.number">
-                    <div class="painting-image">
-                        <img :style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px;` "class="image" v-lazy="`./files/gallery/` + item.preview"/>
+                    <div class="painting-image" >
+                        <img  class="image":style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px;`" v-lazy="`./files/gallery/` + item.preview"/>
                     </div>
                     <div class="painting-text">
                         <div  class="align">
@@ -103,7 +103,7 @@ import { handleError } from 'vue';
                 if(index != -1){
                     let h = parseInt(text.substring(0, index))
                     let w = parseInt(text.substring(index + 1, text.length))
-                    let k = w/h
+                    let k = h/w
                     return k  
                 }
             }
