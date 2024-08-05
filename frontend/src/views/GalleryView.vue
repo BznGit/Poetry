@@ -27,7 +27,7 @@
                                 <img class="icon" src="@/assets/svg/cart_w.svg">
                             </button>
                             <div class="painting-image" >
-                                <img class="image" :style="`min-height: ${getHeightKoef(item.size) * parseInt(item.height)}px; `" v-lazy="`./files/gallery/` + item.preview" />
+                               <img class="image"  :style="`min-height: ${parseInt(item.height)}px;`"  v-lazy="`./files/gallery/` + item.preview" />
                             </div>
                             <div class="painting-text">
                                 <div  class="align">
@@ -100,8 +100,9 @@ export default {
 
     },
     mounted(){ 
-        this.$Lazyload.$on('loaded', function ({ el }, formCache) {
-            el.style.height  = 'auto'
+        this.$Lazyload.$on('loaded', function ({ el, naturalHeight, naturalWidth }, formCache) {
+            el.style = 'min-height:'+ toString(Math.trunc(el.width*naturalHeight / naturalWidth)) + 'px';
+
             const paintings = el.parentNode.parentNode
             const align = paintings.querySelector('.align');
             const alignHeight = align.offsetHeight;

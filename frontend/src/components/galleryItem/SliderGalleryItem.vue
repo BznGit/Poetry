@@ -19,9 +19,9 @@
                     <div class="align" v-html="item.poem"></div>
 
                 </div>
-                <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`" >
+                <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`" >
                   
-                    <img class="image":style="`min-height: ${mobile? getHeightKoef(item.size) * parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
+                    <img class="image":style="`min-height: ${mobile?  parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
                         <div class="info">
@@ -102,6 +102,11 @@
             window.removeEventListener('resize', this.handleResize);
         },
          mounted(){
+           
+            this.$Lazyload.$on('loaded', function ({ el, naturalHeight, naturalWidth }, formCache) {
+                el.style = 'min-height:'+ toString(Math.trunc(el.width*naturalHeight / naturalWidth)) + 'px';
+
+             })
             this.swiper = document.querySelector(`.swiper`).swiper;  
             let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
             this.swiper.activeIndex = index
@@ -157,13 +162,7 @@
             }
         }
     };
-    function move(event) {
-        event.preventDefault();
-        event.stopPropagation()
-        const swiper = document.querySelector(".gallery-slider .swiper").swiper;
-        if (event.keyCode == 37) swiper.slidePrev()
-        if (event.keyCode == 39) swiper.slideNext() 
-    }
+
   </script>
   <style >
 .swiper-button-next{
