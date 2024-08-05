@@ -101,7 +101,7 @@ export default {
     },
     mounted(){ 
         this.$Lazyload.$on('loaded', function ({ el, naturalHeight, naturalWidth }, formCache) {
-            el.style = 'min-height:'+ toString(Math.trunc(el.width*naturalHeight / naturalWidth)) + 'px';
+            el.style = 'min-height:'+ Math.trunc(el.width*naturalHeight / naturalWidth) + 'px';
 
             const paintings = el.parentNode.parentNode
             const align = paintings.querySelector('.align');

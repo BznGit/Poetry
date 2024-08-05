@@ -10,7 +10,7 @@ import VueAudioPlayer from "@liripeng/vue-audio-player";
 import errorimage from '@/assets/svg/img_error.svg'
 //const errorimage = require('@/assets/svg/imgError.svg')
 const VueLazyloadOptions = {
-    preLoad: 1,
+    preLoad: 1.3,
     error: errorimage,
    // loading: loadimage,
     attempt: 1

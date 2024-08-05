@@ -21,7 +21,7 @@
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`" >
                   
-                    <img class="image":style="`min-height: ${mobile?  parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
+                    <img class="image" :style="`min-height: ${mobile?  parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
                         <div class="info">
@@ -102,11 +102,11 @@
             window.removeEventListener('resize', this.handleResize);
         },
          mounted(){
-           
-            this.$Lazyload.$on('loaded', function ({ el, naturalHeight, naturalWidth }, formCache) {
-                el.style = 'min-height:'+ toString(Math.trunc(el.width*naturalHeight / naturalWidth)) + 'px';
 
-             })
+            this.$Lazyload.$on('loaded', function ({ el, naturalHeight, naturalWidth, loading}, formCache) {
+                el.style = ''//'min-height: '+ Math.trunc(el.width*naturalHeight / naturalWidth) + 'px';
+                
+            })
             this.swiper = document.querySelector(`.swiper`).swiper;  
             let index= this.paitings.findIndex(item=>item.number == this.$route.params.id)
             this.swiper.activeIndex = index
