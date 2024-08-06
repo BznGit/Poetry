@@ -30,7 +30,7 @@
   </template>
   <script>
     // Import Swiper Vue.js components
-    import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
+    import { Swiper, SwiperSlide,   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
     // Import Swiper styles
@@ -46,7 +46,7 @@
             SwiperSlide,
         },
         setup() {
-            const swiperSlide = useSwiperSlide();
+           // const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
             const onSlideChange = (e) => {

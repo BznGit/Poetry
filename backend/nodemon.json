@@ -1,5 +1,0 @@
-{
-    "watch": ["backend", "app.js"],
-    "ext": "mustache, js"
-
-}

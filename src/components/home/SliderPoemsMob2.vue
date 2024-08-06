@@ -52,7 +52,7 @@
             SwiperSlide,
         },
         setup() {
-            const swiperSlide = useSwiperSlide();
+         //   const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
             const onSlideChange = (e) => {
