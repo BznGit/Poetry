@@ -36,7 +36,7 @@
   </template>
   <script>
     // Import Swiper Vue.js components
-    import { Swiper, SwiperSlide, useSwiper, useSwiperSlide   } from 'swiper/vue';
+    import { Swiper, SwiperSlide, useSwiperSlide   } from 'swiper/vue';
     import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 
     // Import Swiper styles
@@ -53,7 +53,7 @@ import { handleError } from 'vue';
             SwiperSlide,
         },
         setup() {
-            const swiperSlide = useSwiperSlide();
+           // const swiperSlide = useSwiperSlide();
             const onSwiper = (swiper) => {
             };
             const onSlideChange = (e) => {
@@ -80,8 +80,8 @@ import { handleError } from 'vue';
         mounted(){
            this.swiper = document.querySelector(".gallery .swiper").swiper;
            this.checkPrevNextStop(this.swiper.activeIndex)
-         this.$Lazyload.$on('loaded', function ({ el }, formCache) {
-          //  el.style.height  = 'auto'
+           this.$Lazyload.$on('loaded', function ({ el }, formCache) {
+             //  el.style.height  = 'auto'
            })
         },
         methods:{

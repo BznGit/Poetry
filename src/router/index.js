@@ -1,6 +1,6 @@
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-import VueScrollTo from "vue-scrollto";
+import { createRouter, createWebHashHistory } from 'vue-router'
 
+import VueScrollTo from "vue-scrollto";
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import GalleryView from '../views/GalleryView.vue'
@@ -93,7 +93,7 @@ const routes = [
 ]
 
 const router = createRouter({
- scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       VueScrollTo.scrollTo("#app", 500, { offset: savedPosition.y });
       return savedPosition;

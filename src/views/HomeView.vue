@@ -78,7 +78,7 @@
                          </div>
                         <div class="slider primary" data-slider="itc-slider" data-loop="false">
                             <div class="slider__wrapper collection">
-                                <SliderPoemsMob1 :data="collection.allPoems" :collectionId="collection.id"  class="slider__items grid texts" />
+                                <SliderPoemsMob1 :data="collection.allPoems" :collectionId="collection.id"  />
                             </div>
                         </div>
                     </div>
