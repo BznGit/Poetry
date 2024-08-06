@@ -21,7 +21,7 @@
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`" >
                   
-                    <img class="image" :style="`min-height: ${mobile?  parseInt(item.height) : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
+                    <img class="image" :style="`min-height: ${mobile?  parseInt(item.height)*0.7 : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
                         <div class="info">
