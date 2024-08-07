@@ -21,7 +21,7 @@
                 </div>
                 <div class="painting-image" :style="`${item.poem? '' :'margin-left: auto; margin-right: auto;'}`" >
                   
-                    <img class="image" :style="`min-height: ${mobile?  parseInt(item.height)*0.7 : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
+                    <img class="image" :style="`min-height: ${mobile?  parseInt(item.height)*0.8 : 1000}px;`"  v-lazy="`../../files/gallery/${item.img}`">
                       
                     <div class="painting-info">
                         <div class="info">
@@ -154,11 +154,15 @@
                 this.userStore.addCart(id) 
             },
             move(event) {
-                event.preventDefault();
-                event.stopPropagation()
                 const swiper = document.querySelector(".swiper").swiper;
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext() 
+                if (event.keyCode == 37){
+                    event.preventDefault();
+                    swiper.slidePrev()
+                } 
+                if (event.keyCode == 39) {
+                    event.preventDefault();
+                    swiper.slideNext() 
+                }
             }
         }
     };

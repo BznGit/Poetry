@@ -24,6 +24,7 @@
                                 @setCurrIndex="setCurrIndex"
                                 :collectionId="collection.id"
                                 :indexPoem="collection.color"
+                                
                             />
                         </div>   
                     </div>

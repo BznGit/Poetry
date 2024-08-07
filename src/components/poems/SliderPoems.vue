@@ -87,7 +87,7 @@
 
         },
         beforeUnmount(){
-           // window.removeEventListener("keydown", this.move)
+            window.removeEventListener("keydown", this.move)
         },
         methods:{
             set(e){
@@ -120,10 +120,14 @@
             },
             move(event) {         
                 const swiper = this.swiper            
-                event.preventDefault();
-                event.stopPropagation()
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext() 
+                if (event.keyCode == 37){
+                    event.preventDefault();
+                    swiper.slidePrev()
+                } 
+                if (event.keyCode == 39) {
+                    event.preventDefault();
+                    swiper.slideNext() 
+                }
         
    
             }

@@ -155,11 +155,15 @@
                 if(index  == this.events.length-1) this.nextStop = false; else this.nextStop = true;
             },
             move(event) {
-                event.preventDefault();
-                event.stopPropagation()
                 const swiper = document.querySelector(".swiper").swiper;
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext() 
+                if (event.keyCode == 37){
+                    event.preventDefault();
+                    swiper.slidePrev()
+                } 
+                if (event.keyCode == 39) {
+                    event.preventDefault();
+                    swiper.slideNext() 
+                }
             }
         }
     };

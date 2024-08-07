@@ -7,6 +7,8 @@
         :effect="'none'"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
+        @keyup.left = "slideNext"
+        @keyup.right = "slidePrev"
     >
         <swiper-slide v-for="item in poems" :key="item.id">
             <div :class="`slider__item item-0${indexPoem} slider__item_active`" style="">
@@ -140,12 +142,16 @@
                 if(index == 0) this.prevStop = false; else this.prevStop = true;
                 if(index  == this.poems.length-1) this.nextStop = false; else this.nextStop = true;
             },
-            move(event) {
-                event.preventDefault();
-                event.stopPropagation()
+            move(event) {         
                 const swiper = document.querySelector(".swiper").swiper;
-                if (event.keyCode == 37) swiper.slidePrev()
-                if (event.keyCode == 39) swiper.slideNext() 
+                if (event.keyCode == 37){
+                    event.preventDefault();
+                    swiper.slidePrev()
+                } 
+                if (event.keyCode == 39) {
+                    event.preventDefault();
+                    swiper.slideNext() 
+                }
             }
         }
     };
